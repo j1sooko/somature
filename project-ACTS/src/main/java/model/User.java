@@ -4,25 +4,30 @@ package model;
  * 사용자 관리를 위해 필요한 도메인 클래스. USERINFO 테이블과 대응됨
  */
 public class User {
-	private String userId;
+	private String accountId;
 	private String password;
-	private String name;
-	private String email;
+	private String userName;
 	private String phone;
+	private String email;
+	private String registrationNumber;
+	private String nickname;
+
 
 	public User() { }		// 기본 생성자
 	
-	public User(String userId, String password, String name, String email, String phone) {
-		this.userId = userId;
+	public User(String accountId, String password, String userName, String phone, String email, String registrationNumber, String nickname) {
+		this.accountId = accountId;
 		this.password = password;
-		this.name = name;
-		this.email = email;
+		this.userName = userName;
 		this.phone = phone;
+		this.email = email;
+		this.registrationNumber = registrationNumber;
+		this.nickname = nickname;
 	}
 
-	public User(String userId, String name, String email, String phone) {
-		this.userId = userId;
-		this.name = name;
+	public User(String accountId, String userName, String email, String phone) {
+		this.accountId = accountId;
+		this.userName = userName;
 		this.email = email;
 		this.phone = phone;		
 	}
@@ -34,12 +39,13 @@ public class User {
         this.phone = updateUser.phone;
     }*/
 	
-	public String getUserId() {
-		return userId;
+
+	public String getAccountId() {
+		return accountId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
 	}
 
 	public String getPassword() {
@@ -50,12 +56,20 @@ public class User {
 		this.password = password;
 	}
 
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getEmail() {
@@ -66,29 +80,26 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getRegistrationNumber() {
+		return registrationNumber;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setRegistrationNumber(String registrationNumber) {
+		this.registrationNumber = registrationNumber;
 	}
-	
-	/* 비밀번호 검사 */
-	public boolean matchPassword(String password) {
-		if (password == null) {
-			return false;
-		}
-		return this.password.equals(password);
+
+	public String getNickname() {
+		return nickname;
 	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}	
 	
-	public boolean isSameUser(String userid) {
-        return this.userId.equals(userid);
-    }
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + ", phone="
-				+ phone + "]";
-	}	
+		return "User [accountId=" + accountId + ", password=" + password + ", userName=" + userName + ", phone=" + phone + ", email="
+				+ email + ", registrationNumber=" + registrationNumber + ", nickname=" + nickname +"]";
+	}
 }
