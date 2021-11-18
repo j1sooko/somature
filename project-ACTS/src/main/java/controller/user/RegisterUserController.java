@@ -31,8 +31,7 @@ public class RegisterUserController implements Controller {
 			request.getParameter("password"),
 			request.getParameter("name"),
 			request.getParameter("email"),
-			request.getParameter("phone"),
-			Integer.parseInt(request.getParameter("commId")));
+			request.getParameter("phone"));
 		
         log.debug("Create User : {}", user);
 

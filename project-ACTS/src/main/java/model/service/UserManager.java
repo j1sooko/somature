@@ -37,12 +37,10 @@ public class UserManager {
 	}
 
 	public int update(User user) throws SQLException, UserNotFoundException {
-		int oldCommId = findUser(user.getUserId()).getCommId();
 		return userDAO.update(user);
 	}	
 
 	public int remove(String userId) throws SQLException, UserNotFoundException {
-		int commId = findUser(userId).getCommId();
 		return userDAO.remove(userId);
 	}
 

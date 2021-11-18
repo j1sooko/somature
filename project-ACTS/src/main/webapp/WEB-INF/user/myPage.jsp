@@ -54,10 +54,10 @@ h2{
 <table id = "detail">
 <tr>
 <td id = "list">
-<%@ include file = "list.jsp" %>
+<%@ include file = "myPageList.jsp" %>
 </td>
 <td id = "page">
-<%@ include file = "table.jsp" %>
+<%@ include file = "myPageTable.jsp" %>
 </td>
 </tr>
 </table>

@@ -9,23 +9,15 @@ public class User {
 	private String name;
 	private String email;
 	private String phone;
-	private int commId;
-	private String commName;
 
 	public User() { }		// 기본 생성자
 	
-	public User(String userId, String password, String name, String email, String phone, int commId) {
+	public User(String userId, String password, String name, String email, String phone) {
 		this.userId = userId;
 		this.password = password;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
-		this.commId = commId;
-	}
-	
-	public User(String userId, String password, String name, String email, String phone, int commId, String commName) {
-		this(userId, password, name, email, phone, commId);
-		this.commName = commName;
 	}
 
 	public User(String userId, String name, String email, String phone) {
@@ -81,23 +73,6 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	public int getCommId() {
-		return commId;
-	}
-
-	public void setCommId(int commId) {
-		this.commId = commId;
-	}
-
-	public String getCommName() {
-		return commName;
-	}
-
-	public void setCommName(String commName) {
-		this.commName = commName;
-	}
-
 	
 	/* 비밀번호 검사 */
 	public boolean matchPassword(String password) {
@@ -114,6 +89,6 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + ", phone="
-				+ phone + ", commId=" + commId + "]";
+				+ phone + "]";
 	}	
 }
