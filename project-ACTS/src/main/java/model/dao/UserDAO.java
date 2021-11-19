@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.User;
+import java.sql.Date;
 
 /**
  * 사용자 관리를 위해 데이터베이스 작업을 전담하는 DAO 클래스
@@ -90,7 +91,7 @@ public class UserDAO {
 	 * 저장하여 반환.
 	 */
 	public User findUser(String accountId) throws SQLException {
-        String sql = "SELECT phoneNumber, emailAddress, userName, registrationNumber,  password, accountId, rating, nickName "
+        String sql = "SELECT phoneNumber, emailAddress, userName, registrationNumber,  password, accountId, joinDate, rating, nickName "
         			+ "FROM ACCOUNT "
         			+ "WHERE accountId=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {accountId});	// JDBCUtil에 query문과 매개 변수 설정
@@ -101,10 +102,10 @@ public class UserDAO {
 				User user = new User(		// User 객체를 생성하여 학생 정보를 저장
 					accountId,
 					rs.getString("password"),
-					rs.getString("name"),
-					rs.getString("email"),
-					rs.getString("phone"),
-					rs.getString("regNum"),
+					rs.getString("userName"),
+					rs.getString("emailAddress"),
+					rs.getString("phoneNumber"),
+					rs.getString("registrationNumber"),
 					rs.getDate("joinDate"),
 					rs.getInt("rating"),
 					rs.getString("nickName"));
@@ -122,7 +123,7 @@ public class UserDAO {
 	 * 전체 사용자 정보를 검색하여 List에 저장 및 반환
 	 */
 	public List<User> findUserList() throws SQLException {
-        String sql = "SELECT phoneNumber, emailAddress, userName, registrationNumber,  accountId, rating, nickName " 
+        String sql = "SELECT phoneNumber, emailAddress, userName, registrationNumber, joinDate, accountId, rating, nickName " 
         		   + "FROM ACCOUNT "
         		   + "ORDER BY userId";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil에 query문 설정
@@ -134,11 +135,11 @@ public class UserDAO {
 				User user = new User(			// User 객체를 생성하여 현재 행의 정보를 저장
 						rs.getString("accountId"),
 						null,
-						rs.getString("name"),
-						rs.getString("email"),
-						rs.getString("phone"),
-						rs.getString("regNum"),
-						rs.getDate("joinDate"),
+						rs.getString("userName"),
+						rs.getString("emailAddress"),
+						rs.getString("phoneNumber"),
+						rs.getString("registrationNumber"),
+						valueOf(rs.getDate("joinDate")),
 						rs.getInt("rating"),
 						rs.getString("nickName"));
 				userList.add(user);				// List에 User 객체 저장
@@ -190,6 +191,11 @@ public class UserDAO {
 //	}
 
 	
+	private java.util.Date valueOf(Date date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/**
 	 * 주어진 사용자 ID에 해당하는 사용자가 존재하는지 검사 
 	 */
