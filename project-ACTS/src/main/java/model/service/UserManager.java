@@ -63,9 +63,9 @@ public class UserManager {
 //		return userDAO.findUserList(currentPage, countPerPage);
 //	}
 
-	public boolean login(String userId, String password)
+	public boolean login(String accountId, String password)
 		throws SQLException, UserNotFoundException, PasswordMismatchException {
-		User user = findUser(userId);
+		User user = userDAO.findUser(accountId);
 
 		if (!user.matchPassword(password)) {
 			throw new PasswordMismatchException("비밀번호가 일치하지 않습니다.");
