@@ -15,14 +15,13 @@ public class Post {
 	private int views;
 	private String status;
 	private int price;
-	private char pType;
+	private String pType;
 	private int writerId;
 	
 	public Post() {
 	} // 기본 생성자
 
-	public Post(int postId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status,
-			int price, char pType, int writerId) {
+	public Post(int postId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status, int price, String pType, int writerId) {
 		super();
 		this.postId = postId;
 		this.title = title;
@@ -30,6 +29,18 @@ public class Post {
 		this.imgUrl = imgUrl;
 		this.cTime = cTime;
 		this.categoryId = categoryId;
+		this.views = views;
+		this.status = status;
+		this.price = price;
+		this.pType = pType;
+		this.writerId = writerId;
+	}
+
+	// List 출력을 위한 생성자
+	public Post(int postId, String title, int views, String status, int price, String pType, int writerId) {
+		super();
+		this.postId = postId;
+		this.title = title;
 		this.views = views;
 		this.status = status;
 		this.price = price;
@@ -109,11 +120,11 @@ public class Post {
 		this.price = price;
 	}
 
-	public char getpType() {
+	public String getpType() {
 		return pType;
 	}
 
-	public void setpType(char pType) {
+	public void setpType(String pType) {
 		this.pType = pType;
 	}
 
