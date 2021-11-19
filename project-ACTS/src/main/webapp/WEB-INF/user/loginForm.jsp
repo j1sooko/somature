@@ -6,7 +6,7 @@
 <title>Acts On</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> -->
-<link rel="stylesheet" href="./css/bootstrap.css">
+<!-- <link rel="stylesheet" href="./css/bootstrap.css"> -->
 <script>
    function login() {
       if (form.userId.value == "") {
@@ -79,12 +79,11 @@ a {
 </style>
 </head>
 <body>
-	<script type="text/javascript" src="js/bootstrap.js">
-        </script>
+	<!--<script type="text/javascript" src="js/bootstrap.js"></script>  -->
 
 	<div id="headLine" align="center">
 		<div id="headLineText" align="left">
-			Acts <img id="small" src="./image/작은새싹.GIF">
+			Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
 		</div>
 	</div>
 
@@ -131,11 +130,7 @@ a {
 							</tr>
 						</table></td>
 				</tr>
-				<tr height="100">
-					<td>&nbsp;</td>
-					<td><a href="http://cs.dongduk.ac.kr"> <img
-							src="<c:url value='/images/logo.gif' />" /></a></td>
-				</tr>
+				
 			</table>
 		</form>
 	</div>

@@ -48,7 +48,7 @@ table {
 			form.password2.focus();
 			return false;
 		}
-		if (form.userName.value == "") {
+		if (form.name.value == "") {
 			alert("이름을 입력하십시오.");
 			form.userName.focus();
 			return false;
@@ -65,14 +65,14 @@ table {
 			form.phone.focus();
 			return false;
 		}
-		if (form.registrationNumber.value == "") {
+		if (form.regNum.value == "") {
 			alert("주민등록번호를 입력하십시오.");
-			form.registrationNumber.focus();
+			form.regNum.focus();
 			return false;
 		}
-		if (form.nickname.value == "") {
+		if (form.nickName.value == "") {
 			alert("닉네임을 입력하십시오.");
-			form.nickname.focus();
+			form.nickName.focus();
 			return false;
 		}
 		form.submit();
@@ -85,9 +85,10 @@ table {
 </script>
 </head>
 <body>
+<!-- ACTS 누르면 메인으로 이동하는 기능 구현해야함 -->
 	<h1 id="title">
-		ACTS <a href="url"><img src="./image/sprout2.png" border="0"
-			width="45" height="30"></a>
+		ACTS <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
+			
 	</h1>
 	<div class="d">
 		<form name="form" method="POST"
@@ -100,15 +101,15 @@ table {
 			<h4>비밀번호 확인</h4>
 			<input type='password' name="password2" />
 			<h4>이름</h4>
-			<input type='text' name="userName" />
+			<input type='text' name="name" />
 			<h4>전화번호</h4>
 			<input type='text' name="phone" />
 			<h4>이메일</h4>
 			<input type='text' name="email" />
 			<h4>주민등록번호</h4>
-			<input type='text' name="registrationNumber" />
+			<input type='text' name="regNum" />
 			<h4>닉네임</h4>
-			<input type='text' name="nickname" /><br>
+			<input type='text' name="nickName" /><br>
 			<br> <input type="button" value="회원 가입" onClick="userCreate()"
 				id="b"> <input type="reset" value="다시 입력" id="b" />
 		</form>

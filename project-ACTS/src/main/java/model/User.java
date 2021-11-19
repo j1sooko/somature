@@ -1,44 +1,54 @@
 package model;
 
+import java.util.Date;
+
 /**
  * 사용자 관리를 위해 필요한 도메인 클래스. USERINFO 테이블과 대응됨
  */
 public class User {
 	private String accountId;
 	private String password;
-	private String userName;
-	private String phone;
+	private String name;
 	private String email;
-	private String registrationNumber;
-	private String nickname;
+	private String phone;
+	private String regNum; // 주민 번호
+	private Date joinDate;
+	private int rating;
+	private String nickName;
 
+	public User() {
+	} // 기본 생성자
 
-	public User() { }		// 기본 생성자
-	
-	public User(String accountId, String password, String userName, String phone, String email, String registrationNumber, String nickname) {
+	public User(String accountId, String password, String name, String email, String phone, String regNum,
+			Date joinDate, int rating, String nickName) {
 		this.accountId = accountId;
 		this.password = password;
-		this.userName = userName;
-		this.phone = phone;
+		this.name = name;
 		this.email = email;
-		this.registrationNumber = registrationNumber;
-		this.nickname = nickname;
+		this.phone = phone;
+		this.regNum = regNum;
+		this.joinDate = joinDate;
+		this.rating = rating;
+		this.nickName = nickName;
 	}
 
-	public User(String accountId, String userName, String email, String phone) {
+	// joinDate, rating 없는 생성자(회원가입용)
+	public User(String accountId, String password, String name, String email, String phone, String regNum,
+			String nickName) {
 		this.accountId = accountId;
-		this.userName = userName;
+		this.password = password;
+		this.name = name;
 		this.email = email;
-		this.phone = phone;		
+		this.phone = phone;
+		this.regNum = regNum;
+		this.nickName = nickName;
 	}
-	
-	/*public void update(User updateUser) {
-        this.password = updateUser.password;
-        this.name = updateUser.name;
-        this.email = updateUser.email;
-        this.phone = updateUser.phone;
-    }*/
-	
+
+	/*
+	 * public void update(User updateUser) { this.password = updateUser.password;
+	 * this.name = updateUser.name; this.email = updateUser.email; this.phone =
+	 * updateUser.phone; }
+	 */
 
 	public String getAccountId() {
 		return accountId;
@@ -56,20 +66,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getname() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setname(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -80,26 +82,70 @@ public class User {
 		this.email = email;
 	}
 
-	public String getRegistrationNumber() {
-		return registrationNumber;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setRegistrationNumber(String registrationNumber) {
-		this.registrationNumber = registrationNumber;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getName() {
+		return name;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}	
-	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getRegNum() {
+		return regNum;
+	}
+
+	public void setRegNum(String regNum) {
+		this.regNum = regNum;
+	}
+
+	public Date getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	/* 비밀번호 검사 */
+	public boolean matchPassword(String password) {
+		if (password == null) {
+			return false;
+		}
+		return this.password.equals(password);
+	}
+
+	public boolean isSameUser(String accountId) {
+		return this.accountId.equals(accountId);
+	}
 
 	@Override
 	public String toString() {
-		return "User [accountId=" + accountId + ", password=" + password + ", userName=" + userName + ", phone=" + phone + ", email="
-				+ email + ", registrationNumber=" + registrationNumber + ", nickname=" + nickname +"]";
+		return "User [accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email
+				+ ", phone=" + phone + ", regNum=" + regNum + ", joinDate=" + joinDate + ", rating=" + rating
+				+ ", nickName=" + nickName + "]";
 	}
 }
