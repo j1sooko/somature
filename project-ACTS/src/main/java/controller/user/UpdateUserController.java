@@ -48,6 +48,7 @@ public class UpdateUserController implements Controller {
     	
     	// POST request (�뜝�럩�뤂�뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥吏쀥뜝�럩援� parameter�뜝�럥�맶�뜝�럥吏쀥뜝�럩援� �뜝�럥�맶�뜝�럥吏쀥뜝�럩援꿨뜝�럥�맶�뜝�럥�넍�뜝�럥荑덂뜝�럩援�)
     	User updateUser = new User(
+
     			request.getParameter("accountId"),
     			request.getParameter("password"),
     			request.getParameter("name"),
