@@ -2,6 +2,7 @@ package controller.user;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -51,8 +52,8 @@ public class UpdateUserController implements Controller {
     		request.getParameter("password"),
     		request.getParameter("name"),
     		request.getParameter("email"),
-    		request.getParameter("phone"));
-
+    		request.getParameter("nickname"));
+    	//제가 userUpdateForm건드리면서 생긴 User 객체 생성자들 수정 필요할 거 같음..!*
     	log.debug("Update User : {}", updateUser);
 
 		UserManager manager = UserManager.getInstance();
