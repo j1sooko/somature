@@ -8,7 +8,7 @@ import model.service.UserManager;
 import model.service.UserNotFoundException;
 import model.User;
 
-public class MypageController implements Controller {
+public class MyInfoController implements Controller {
 
 	@Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			

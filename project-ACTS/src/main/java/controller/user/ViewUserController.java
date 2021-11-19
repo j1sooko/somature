@@ -27,6 +27,6 @@ public class ViewUserController implements Controller {
 		}	
 		
     	request.setAttribute("user", user);		// 사용자 정보 저장				
-		return "/user/view.jsp";				// 사용자 보기 화면으로 이동
+		return "/user/myInfo.jsp";				// 사용자 보기 화면으로 이동
     }
 }
