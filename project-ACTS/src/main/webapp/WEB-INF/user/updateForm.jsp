@@ -90,24 +90,16 @@ function userList(targetUri) {
 			</td>
 		  </tr>	
 		  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">전화번호</td>
+			<!--  <td width="150" align="center" bgcolor="E6ECDE">전화번호</td>
 			<td width="250" bgcolor="ffffff" style="padding-left: 10">
 		 		<input type="text" style="width: 240" name="phone" value="${user.phone}">
+			</td>-->
+			<!-- 일단 ovenapp에 있는대로 수정했음(정보 전화번호 없이 닉네임이있길래 그걸로 일단 주석하고 나머지 바꿨고, UpdateUserController도 수정 필요함. -->
+			<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>
+			<td width="250" bgcolor="ffffff" style="padding-left: 10">
+				<input type="text" style="width: 240" name="nickname" value="${user.nickname}">
 			</td>
 		  </tr>		
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">커뮤니티</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
- 			 	<select name="commId" style="width: 240">
-					<option value="0">없음</option>
-					<c:forEach var="comm" items="${commList}">
-						<option value="${comm.id}"
-							<c:if test="${comm.id eq user.commId}">selected="selected"</c:if>
-							>${comm.name}</option>
-					</c:forEach>
-				</select>
-			</td>
-		  </tr>	  
 	    </table>
 	    <br>	  
 	    <table style="width: 100%">

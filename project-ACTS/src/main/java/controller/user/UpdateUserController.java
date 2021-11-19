@@ -20,32 +20,32 @@ public class UpdateUserController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
  
     	if (request.getMethod().equals("GET")) {	
-    		// GET request: ȸ������ ���� form ��û	
-    		// ������ UpdateUserFormController�� ó���ϴ� �۾��� ���⼭ ����
+    		// GET request: 회占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 form 占쏙옙청	
+    		// 占쏙옙占쏙옙占쏙옙 UpdateUserFormController占쏙옙 처占쏙옙占싹댐옙 占쌜억옙占쏙옙 占쏙옙占썩서 占쏙옙占쏙옙
     		String updateId = request.getParameter("userId");
 
     		log.debug("UpdateForm Request : {}", updateId);
     		
     		UserManager manager = UserManager.getInstance();
-			User user = manager.findUser(updateId);	// �����Ϸ��� ����� ���� �˻�
+			User user = manager.findUser(updateId);	// 占쏙옙占쏙옙占싹뤄옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占싯삼옙
 			request.setAttribute("user", user);			
 
 			HttpSession session = request.getSession();
 			if (UserSessionUtils.isLoginUser(updateId, session) ||
 				UserSessionUtils.isLoginUser("admin", session)) {
-				// ���� �α����� ����ڰ� ���� ��� ������̰ų� �������� ��� -> ���� ����
+				// 占쏙옙占쏙옙 占싸깍옙占쏙옙占쏙옙 占쏙옙占쏙옙微占� 占쏙옙占쏙옙 占쏙옙占� 占쏙옙占쏙옙占쏙옙隔킬占� 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占� -> 占쏙옙占쏙옙 占쏙옙占쏙옙
 				
-				return "/user/updateForm.jsp";   // �˻��� ����� ������ update form���� ����     
+				return "/user/updateForm.jsp";   // 占싯삼옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙占쏙옙 update form占쏙옙占쏙옙 占쏙옙占쏙옙     
 			}    
 			
-			// else (���� �Ұ����� ���) ����� ���� ȭ������ ���� �޼����� ����
+			// else (占쏙옙占쏙옙 占쌀곤옙占쏙옙占쏙옙 占쏙옙占�) 占쏙옙占쏙옙占� 占쏙옙占쏙옙 화占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쌨쇽옙占쏙옙占쏙옙 占쏙옙占쏙옙
 			request.setAttribute("updateFailed", true);
 			request.setAttribute("exception", 
-					new IllegalStateException("Ÿ���� ������ ������ �� �����ϴ�."));            
-			return "/user/view.jsp";	// ����� ���� ȭ������ �̵� (forwarding)
+					new IllegalStateException("타占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙占싹댐옙."));            
+			return "/user/view.jsp";	// 占쏙옙占쏙옙占� 占쏙옙占쏙옙 화占쏙옙占쏙옙占쏙옙 占싱듸옙 (forwarding)
 	    }	
     	
-    	// POST request (ȸ�������� parameter�� ���۵�)
+    	// POST request (회占쏙옙占쏙옙占쏙옙占쏙옙 parameter占쏙옙 占쏙옙占쌜듸옙)
     	User updateUser = new User(
     		request.getParameter("userId"),
     		request.getParameter("password"),
