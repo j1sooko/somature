@@ -21,10 +21,9 @@ public class UserDAO {
 	 * 사용자 관리 테이블에 새로운 사용자 생성.
 	 */
 	public int create(User user) throws SQLException {
-		String sql = "INSERT INTO USERINFO VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";		
+		String sql = "INSERT INTO ACCOUNT VALUES (id_seq.nextval, ?, ?, ?, ?, ?, DEFAULT, ?, 5, ?)";		
 		Object[] param = new Object[] { user.getPhone(), user.getEmail(), user.getName(), 
-						user.getRegNum(), user.getPassword(), user.getJoinDate(), 
-						user.getAccountId(),  user.getRating(), user.getNickName()};		
+						user.getRegNum(), user.getPassword(), user.getAccountId(), user.getNickName()};		
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 에 insert문과 매개 변수 설정	
 		try {
 			int result = jdbcUtil.executeUpdate();	// insert 문 실행
@@ -43,7 +42,7 @@ public class UserDAO {
 	 * 기존의 사용자 정보를 수정.
 	 */
 	public int update(User user) throws SQLException {
-		String sql = "UPDATE USERINFO "
+		String sql = "UPDATE ACCOUNT "
 					+ "SET phoneNumber=?, emailAddress=?, userName=?, registrationNumber=?, "
 					+ "password=?, accountId=?, rating=?, nickName=? "
 					+ "WHERE userid=?";

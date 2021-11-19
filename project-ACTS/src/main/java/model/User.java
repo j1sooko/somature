@@ -16,11 +16,11 @@ public class User {
 	private int rating;
 	private String nickName;
 
-	public User() { }		// 기본 생성자
-	
+	public User() {
+	} // 기본 생성자
+
 	public User(String accountId, String password, String name, String email, String phone, String regNum,
 			Date joinDate, int rating, String nickName) {
-		super();
 		this.accountId = accountId;
 		this.password = password;
 		this.name = name;
@@ -32,20 +32,24 @@ public class User {
 		this.nickName = nickName;
 	}
 
-	public User(String accountId, String name, String email, String phone) {
+	// joinDate, rating 없는 생성자(회원가입용)
+	public User(String accountId, String password, String name, String email, String phone, String regNum,
+			String nickName) {
 		this.accountId = accountId;
+		this.password = password;
 		this.name = name;
 		this.email = email;
-		this.phone = phone;		
+		this.phone = phone;
+		this.regNum = regNum;
+		this.nickName = nickName;
 	}
-	
-	/*public void update(User updateUser) {
-        this.password = updateUser.password;
-        this.name = updateUser.name;
-        this.email = updateUser.email;
-        this.phone = updateUser.phone;
-    }*/
-	
+
+	/*
+	 * public void update(User updateUser) { this.password = updateUser.password;
+	 * this.name = updateUser.name; this.email = updateUser.email; this.phone =
+	 * updateUser.phone; }
+	 */
+
 	public String getAccountId() {
 		return accountId;
 	}
@@ -53,7 +57,6 @@ public class User {
 	public void setAccountId(String accountId) {
 		this.accountId = accountId;
 	}
-
 
 	public String getPassword() {
 		return password;
@@ -85,7 +88,7 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}	
+	}
 
 	public String getName() {
 		return name;
@@ -98,7 +101,7 @@ public class User {
 	public String getRegNum() {
 		return regNum;
 	}
-	
+
 	public void setRegNum(String regNum) {
 		this.regNum = regNum;
 	}
@@ -134,14 +137,15 @@ public class User {
 		}
 		return this.password.equals(password);
 	}
-	
+
 	public boolean isSameUser(String accountId) {
-        return this.accountId.equals(accountId);
-    }
+		return this.accountId.equals(accountId);
+	}
 
 	@Override
 	public String toString() {
-		return "User [accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email + ", phone="
-				+ phone + ", regNum=" + regNum + ", joinDate=" + joinDate + ", rating=" + rating + ", nickName=" + nickName + "]";
-	}	
+		return "User [accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email
+				+ ", phone=" + phone + ", regNum=" + regNum + ", joinDate=" + joinDate + ", rating=" + rating
+				+ ", nickName=" + nickName + "]";
+	}
 }
