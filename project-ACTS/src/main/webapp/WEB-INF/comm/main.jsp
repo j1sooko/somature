@@ -4,13 +4,13 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="/resource/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.js"></script>
         <meta charset="utf-8">
         <title>
             Acts On
         </title>
         <link rel="stylesheet" href="./css/bootstrap.css">
-        <script src="jquery-3.6.0.js"></script>
+        <script src="js/jquery-3.6.0.js"></script>
         
         
         <style>
