@@ -1,67 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MyPage</title>
-<style type="text/css">
-#title{
-	background-color: #C9E4C5;
-	color: white;
-}
-h2{
-	font-weight:bold;
-}
-#detail{
-		width:600px;
-		height:200px;
-}
-#list{
-	width:50%;
-	height:100%;
-}
-#page{
-	width:50%;
-	height:100%;
-}
-.container{
-	width:100%;
-	height:100%;
-}
-
+<title>Insert title here</title>
+<style>
+	.div {
+		padding-top:20px;
+		padding-bottom:20px;
+	}
 </style>
 </head>
 <body>
-<h1 id ="title">ACTS
-<a href="url"><img src="./image/sprout2.png" border="0" width = "45" height = "30"></a>
 
-</h1>
-<br>
-<center>
-<table>
-<tr>
-<td>
-<a href="url"><img src="./image/프로필.GIF" border="0" width = "100" height = "70"></a>
-</td>
-<td>
-<h2>김동덕</h2>
-<p>dongduk1234@dongduk.ac.kr</p>
-</td>
-</tr>
-</table>
-<div class="container">
-<table id = "detail">
-<tr>
-<td id = "list">
-<%@ include file = "myPageList.jsp" %>
-</td>
-<td id = "page">
-<%@ include file = "myPageTable.jsp" %>
-</td>
-</tr>
-</table>
-</div>
-</center>
+<h1>내정보</h1>
+
+	<div style="background-color: pink;">
+
+		<span>
+			<a href=".myInfo.jsp" target="a">내 정보 보기</a>
+		</span>
+		<span> 
+			<a href="./updateForm.jsp" target="a">회원 정보 수정</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span> 
+		<span>
+			<a href="./myPost.jsp" target="a">내가 쓴 글 관리</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>
+		<span>
+			<a href="./participatingTransaction.jsp" target="a">현재 거래내역</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</span>
+		<span>
+			<a href="./followingList.jsp" target="a">내가 팔로잉하는 계정</a>
+		</span>
+	</div>
+
+	<p></p>
+	<iframe width="1000" height="1500" name="a"></iframe>
 </body>
 </html>
