@@ -20,6 +20,8 @@ public class RequestMapping {
         mappings.put("/", new ForwardController("index.jsp")); //경원: 초기화면은 index.jsp로 이동하게
         //초기-메인화면
         mappings.put("/comm/main", new ForwardController("/comm/main.jsp"));
+        mappings.put("/comm/search", new ForwardController("/comm/search.jsp"));
+        mappings.put("/user/myPage", new ForwardController("/user/myPage.jsp"));
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp")); //경원: 로그인 버튼을 누르면 /user/loginForm.jsp로 이동하게
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
