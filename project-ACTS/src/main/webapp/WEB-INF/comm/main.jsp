@@ -24,7 +24,7 @@
             #headLine {
                 background-color: #b5cda3;
                 display: grid;
-                grid-template-columns: 8fr 1fr;
+                grid-template-columns: 7fr 1fr;
                 margin: 100px, 30px, 500px, 30px;
                 height: 50px;
                 width: auto;
@@ -85,9 +85,9 @@
                 Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
             </div>
                 
-            <div >
-            <i class="bi bi-search"></i>
-            <a href="<c:url value='/user/login/form' />" class="btn btn-light" role="button" data-bs-toggle="button">로그인</a>
+            <div>
+   			<c:if test="${accountId eq null}"><a href="<c:url value='/user/login/form' />" class="btn btn-light" role="button" >로그인</a></c:if>
+            <c:if test="${accountId ne null}"><a href="<c:url value='/user/logout' />" class="btn btn-light" role="button">로그아웃</a></c:if>
             	<a href="<c:url value='/comm/search' />"><i class="fa fa-search" aria-hidden="true"></i></a>
                 <a href="<c:url value='/comm/search' />"><img src="<c:url value='/images/searchIcon.GIF' />"/></a>
                 <!--  즐겨찾기 page 구현 필요  -->
@@ -98,10 +98,5 @@
 
         </div>
 
-
-
-
-
-        </div>
     </body>
 </html>
