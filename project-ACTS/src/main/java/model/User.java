@@ -31,6 +31,19 @@ public class User {
 		this.rating = rating;
 		this.nickName = nickName;
 	}
+	
+	// password 뺀 버전 (findUser에 이용)
+	public User(String accountId, String name, String email, String phone, String regNum,
+			Date joinDate, int rating, String nickName) {
+		this.accountId = accountId;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.regNum = regNum;
+		this.joinDate = joinDate;
+		this.rating = rating;
+		this.nickName = nickName;
+	}
 
 	// joinDate, rating 없는 생성자(회원가입용)
 	public User(String accountId, String password, String name, String email, String phone, String regNum,
@@ -43,6 +56,8 @@ public class User {
 		this.regNum = regNum;
 		this.nickName = nickName;
 	}
+	
+	
 
 	/*
 	 * public void update(User updateUser) { this.password = updateUser.password;

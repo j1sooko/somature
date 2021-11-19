@@ -25,7 +25,7 @@ public class RequestMapping {
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp")); //경원: 로그인 버튼을 누르면 /user/loginForm.jsp로 이동하게
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
-        
+        mappings.put("/user/view", new ViewUserController());
         
         
         mappings.put("/user/list", new ListUserController()); //경원: 유저리스트 보는건 사용자가 아닌 administrator가 보는거라서 뺌
