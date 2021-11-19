@@ -6,6 +6,7 @@ import java.util.Date;
  * 게시글 관리를 위해 필요한 도메인 클래스. POST 테이블과 대응됨
  */
 public class Post {
+	private int pId;
 	private String title;
 	private String desc;
 	private String imgUrl;
@@ -19,10 +20,11 @@ public class Post {
 	
 	public Post() {
 	} // 기본 생성자
-	
-	public Post(String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status,
+
+	public Post(int pId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status,
 			int price, char pType, int writerId) {
 		super();
+		this.pId = pId;
 		this.title = title;
 		this.desc = desc;
 		this.imgUrl = imgUrl;
@@ -33,6 +35,14 @@ public class Post {
 		this.price = price;
 		this.pType = pType;
 		this.writerId = writerId;
+	}
+
+	public int getpId() {
+		return pId;
+	}
+
+	public void setpId(int pId) {
+		this.pId = pId;
 	}
 
 	public String getTitle() {
