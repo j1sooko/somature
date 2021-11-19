@@ -12,6 +12,7 @@ public class LoginController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	String accountId = request.getParameter("accountId");
 		String password = request.getParameter("password");
+		System.out.println("accountID: " + accountId + ", password: " + password);
 		
 		try {
 			// 모델에 로그인 처리를 위임

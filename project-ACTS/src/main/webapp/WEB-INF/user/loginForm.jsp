@@ -9,9 +9,9 @@
 <!-- <link rel="stylesheet" href="./css/bootstrap.css"> -->
 <script>
    function login() {
-      if (form.userId.value == "") {
+      if (form.accountId.value == "") {
          alert("사용자 ID를 입력하십시오.");
-         form.userId.focus();
+         form.accountId.focus();
          return false;
       } 
       if (form.password.value == "") {
