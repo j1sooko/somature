@@ -2,6 +2,7 @@ package controller.user;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Controller;
 import model.service.UserManager;
@@ -18,11 +19,14 @@ public class MyPageController implements Controller {
         }
     	
 		UserManager manager = UserManager.getInstance();
-		String accountId = request.getParameter("accountId");
+		HttpSession session = request.getSession();
+		String loginAccountId = UserSessionUtils.getLoginUserId(session);
+		User user = null;
 
-    	User user = null;
+    	
     	try {
-			user = manager.findUser(accountId);	// 사용자 정보 검색
+    		user = manager.findUser(loginAccountId);	// 로그인 사용자 정보 검색
+			System.out.println("로그인아이디: " + user.getAccountId());
 		} catch (UserNotFoundException e) {				
 	        return "redirect:/user/login";
 		}	

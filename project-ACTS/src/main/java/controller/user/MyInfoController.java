@@ -2,6 +2,7 @@ package controller.user;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Controller;
 import model.service.UserManager;
@@ -12,17 +13,15 @@ public class MyInfoController implements Controller {
 
 	@Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
-    	// 로그인 여부 확인
-    	if (!UserSessionUtils.hasLogined(request.getSession())) {
-            return "redirect:/user/login/form";		// login form 요청으로 redirect
-        }
+    	
     	
 		UserManager manager = UserManager.getInstance();
-		String userId = request.getParameter("userId");
+		HttpSession session = request.getSession();
+		String loginAccountId = UserSessionUtils.getLoginUserId(session);
 
     	User user = null;
     	try {
-			user = manager.findUser(userId);	// 사용자 정보 검색
+			user = manager.findUser(loginAccountId);	// 사용자 정보 검색
 		} catch (UserNotFoundException e) {				
 	        return "redirect:/user/login";
 		}	
