@@ -6,7 +6,7 @@ import java.util.Date;
  * 게시글 관리를 위해 필요한 도메인 클래스. POST 테이블과 대응됨
  */
 public class Post {
-	private int pId;
+	private int postId;
 	private String title;
 	private String desc;
 	private String imgUrl;
@@ -15,16 +15,16 @@ public class Post {
 	private int views;
 	private String status;
 	private int price;
-	private char pType;
+	private String pType;
 	private int writerId;
 	
 	public Post() {
 	} // 기본 생성자
 
-	public Post(int pId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status,
-			int price, char pType, int writerId) {
+	public Post(int postId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status,
+			int price, String pType, int writerId) {
 		super();
-		this.pId = pId;
+		this.postId = postId;
 		this.title = title;
 		this.desc = desc;
 		this.imgUrl = imgUrl;
@@ -37,12 +37,24 @@ public class Post {
 		this.writerId = writerId;
 	}
 
-	public int getpId() {
-		return pId;
+	// List 출력을 위한 생성자
+	public Post(int postId, String title, int views, String status, int price, String pType, int writerId) {
+		super();
+		this.postId = postId;
+		this.title = title;
+		this.views = views;
+		this.status = status;
+		this.price = price;
+		this.pType = pType;
+		this.writerId = writerId;
 	}
 
-	public void setpId(int pId) {
-		this.pId = pId;
+	public int getPostId() {
+		return postId;
+	}
+
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 
 	public String getTitle() {
@@ -109,11 +121,11 @@ public class Post {
 		this.price = price;
 	}
 
-	public char getpType() {
+	public String getpType() {
 		return pType;
 	}
 
-	public void setpType(char pType) {
+	public void setpType(String pType) {
 		this.pType = pType;
 	}
 
