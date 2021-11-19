@@ -9,6 +9,7 @@
         <title>
             Acts On
         </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/bootstrap.css">
         <script src="js/jquery-3.6.0.js"></script>
         
@@ -75,18 +76,19 @@
     </head>
 
     <body>
-        <script type="text/javascript" src="js/bootstrap.js">
+        <!-- <script type="text/javascript" src="js/bootstrap.js"> -->
         </script>
 
         <div id="headLine" align="center" >
             <div id="headLineText" align="left">
-                Acts <img id="small" src="./image/작은새싹.GIF">
+                Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
             </div>
                 
             <div >
-                <a href = "./search.jsp"><img src="./image/돋보기.GIF"></a> 
+                <a href = "./search.jsp"><img src="<c:url value='/images/searchIcon.GIF' />"></a>
+                <!--  즐겨찾기 page 구현 필요  -->
                 <img src="./image/즐겨찾기.GIF"> 
-                <a href = "./myPage.jsp"><img src="./image/마이프로필.GIF"></a>
+                <a href = "./myPage.jsp"><img src="<c:url value='/images/mypageIcon.GIF' />"></a>
                 <!-- 로그인 되어있다면 MyPage로 안되어 있는 경우 NotLogin페이지로 가서 Login Page로 유도(이거도 foward 필요) -->
             </div>
 
