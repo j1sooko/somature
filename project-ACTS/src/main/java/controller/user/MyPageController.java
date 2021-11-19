@@ -18,11 +18,11 @@ public class MyPageController implements Controller {
         }
     	
 		UserManager manager = UserManager.getInstance();
-		String userId = request.getParameter("userId");
+		String accountId = request.getParameter("accountId");
 
     	User user = null;
     	try {
-			user = manager.findUser(userId);	// 사용자 정보 검색
+			user = manager.findUser(accountId);	// 사용자 정보 검색
 		} catch (UserNotFoundException e) {				
 	        return "redirect:/user/login";
 		}	
