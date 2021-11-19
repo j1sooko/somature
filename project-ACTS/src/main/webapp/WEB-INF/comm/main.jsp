@@ -87,7 +87,7 @@
                 
             <div >
             <i class="bi bi-search"></i>
-            <a href="<c:url value='/user/login/form' />" class="btn btn-primary" role="button" data-bs-toggle="button">로그인</a>
+            <a href="<c:url value='/user/login/form' />" class="btn btn-light" role="button" data-bs-toggle="button">로그인</a>
             	<a href="<c:url value='/comm/search' />"><i class="fa fa-search" aria-hidden="true"></i></a>
                 <a href="<c:url value='/comm/search' />"><img src="<c:url value='/images/searchIcon.GIF' />"/></a>
                 <!--  즐겨찾기 page 구현 필요  -->

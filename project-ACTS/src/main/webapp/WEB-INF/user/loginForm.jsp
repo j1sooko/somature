@@ -107,7 +107,7 @@ a {
 							<tr height="40">
 								<td width="150" align="center">사용자 ID</td>
 								<td width="250" bgcolor="ffffff" style="padding-left: 10">
-									<input type="text" style="width: 240" name="userId">
+									<input type="text" style="width: 240" name="accountId">
 								</td>
 							</tr>
 							<tr height="40">
@@ -120,8 +120,8 @@ a {
 						<table style="width: 100%">
 							<tr>
 								<td align=left><input type="button" value="로그인"
-									onClick="login()"> &nbsp; <input type="button"
-									value="회원가입"
+									onClick="login()"> &nbsp;
+									<input type="button" value="회원가입"
 									onClick="userCreate('<c:url value='/user/register/form'/>')">
 								</td>
 							</tr>
