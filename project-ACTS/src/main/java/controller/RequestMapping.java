@@ -30,14 +30,19 @@ public class RequestMapping {
         
         mappings.put("/user/list", new ListUserController()); //경원: 유저리스트 보는건 사용자가 아닌 administrator가 보는거라서 뺌
         
-        //자신의 정보를 업데이트하고 등록하는것.
-        mappings.put("/user/update/form", new ViewUserController()); //경원: 자기 자신의 정보를 보고자 할 때  
-        mappings.put("/user/update", new UpdateUserController());
         
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
         mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
         mappings.put("/user/register", new RegisterUserController());
-
+        
+        //마이페이지 관리
+        mappings.put("/user/myInfo", new MypageController());
+        //자신의 정보를 업데이트하고 등록하는것.
+        mappings.put("/user/update/form", new ViewUserController()); //경원: 자기 자신의 정보를 보고자 할 때  
+        mappings.put("/user/update", new UpdateUserController());
+        mappings.put("/user/myPost", new ForwardController("/user/myPost.jsp"));
+        mappings.put("/user/participatingTransaction", new ForwardController("/user/participatingTransaction.jsp"));
+        mappings.put("/user/followingList", new ForwardController("/user/followingList.jsp"));
         
         mappings.put("/user/delete", new DeleteUserController());
         

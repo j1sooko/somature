@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,19 +20,19 @@
 	<div style="background-color: pink;">
 
 		<span>
-			<a href=".myInfo.jsp" target="a">내 정보 보기</a>
+			<a href="<c:url value='/user/myInfo' />" target="a">내 정보 보기</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</span>
 		<span> 
-			<a href="./updateForm.jsp" target="a">회원 정보 수정</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="<c:url value='/user/update/form' />" target="a">회원 정보 수정</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</span> 
 		<span>
-			<a href="./myPost.jsp" target="a">내가 쓴 글 관리</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="<c:url value='/user/myPost' />" target="a">내가 쓴 글 관리</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</span>
 		<span>
-			<a href="./participatingTransaction.jsp" target="a">현재 거래내역</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="<c:url value='/user/participatingTransaction' />" target="a">현재 거래내역</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</span>
 		<span>
-			<a href="./followingList.jsp" target="a">내가 팔로잉하는 계정</a>
+			<a href="<c:url value='/user/followingList' />" target="a">내가 팔로잉하는 계정</a>
 		</span>
 	</div>
 

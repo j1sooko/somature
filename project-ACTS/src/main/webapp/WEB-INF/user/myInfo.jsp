@@ -1,32 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.util.*, model.*" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% User user = (User)request.getAttribute("user"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내 정보</title>
 </head>
 <body>
-	<h1>내정보</h1>
 	
-	<div>
-		아이디:
-		<p id="accountId"></p>
-		휴대폰:
-		<p id="phoneNumber"></p>
-		이메일 주소:
-		<p id="emailAddress"></p>
-		이름:
-		<p id="userName"></p>
-		비밀번호:
-		<p id="password"></p>
-		가입일:
-		<p id="joinDate"></p>
-		회원등급:
-		<p id="rating"></p>
-		닉네임:
-		<p id="nickname"></p>
-
-	</div>
+	<table>
+		<tr><td>아이디</td>
+			<td><%= user.getAccountId() %></td></tr>
+		<tr><td>이름</td>
+			<td><%= user.getName() %></td></tr>
+		<tr><td>닉네임</td>
+			<td><%= user.getNickName() %></td></tr>
+		<tr><td>전화번호</td>
+			<td><%= user.getPhone() %></td></tr>
+		<tr><td>이메일</td>
+			<td><%= user.getEmail() %></td></tr>
+		<tr><td>가입일</td>
+			<td><%= user.getJoinDate() %></td></tr>
+		<tr><td>클래스</td>
+			<td><%= user.getRating() %></td></tr>
+	</table>
 </body>
 </html>
