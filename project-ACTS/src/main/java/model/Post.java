@@ -49,6 +49,20 @@ public class Post {
 		this.pType = pType;
 		this.writerId = writerId;
 	}
+
+	
+	//post 업로드
+	public Post(String title, String desc, String status, int price, String pType, int writerId) {
+		this.title = title;
+		this.desc = desc;
+		this.status = status;
+		this.price = price;
+		this.pType = pType;
+		this.writerId = writerId;
+	}
+	
+
+
 //	UpdatePostController parameter생성자
 	public Post(int postId, String title, String status, int price, String description, String accountId, int curUserId) {
 		super();
@@ -60,6 +74,8 @@ public class Post {
 		this.accountId = accountId;
 		this.curUserId = curUserId;
 	}
+
+  
 	public int getPostId() {
 		return postId;
 	}
@@ -146,6 +162,13 @@ public class Post {
 
 	public void setWriterId(int writerId) {
 		this.writerId = writerId;
+	}
+
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", title=" + title + ", desc=" + desc + ", imgUrl=" + imgUrl + ", cTime="
+				+ cTime + ", categoryId=" + categoryId + ", views=" + views + ", status=" + status + ", price=" + price
+				+ ", pType=" + pType + ", writerId=" + writerId + "]";
 	}
 	
 	
