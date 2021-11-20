@@ -4,9 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Post;
-import model.User;
 import model.dao.PostDAO;
-import model.dao.UserDAO;
 
 /**
  * 사용자 관리 API를 사용하는 개발자들이 직접 접근하게 되는 클래스.
@@ -18,7 +16,6 @@ import model.dao.UserDAO;
 public class PostManager {
 	private static PostManager post = new PostManager();
 	private PostDAO postDAO;
-	private UserDAO userDAO;
 
 	private PostManager() {
 		try {
@@ -32,7 +29,7 @@ public class PostManager {
 		return post;
 	}
 	
-	public int create(Post post) {
+	public int create(Post post) throws SQLException {
 		return postDAO.create(post);
 	}
 
