@@ -6,7 +6,7 @@ import java.util.Date;
  * 사용자 관리를 위해 필요한 도메인 클래스. ACCOUNT 테이블과 대응됨
  */
 public class User {
-	private String userId;
+	private int userId;
 	private String accountId;
 	private String password;
 	private String name;
@@ -80,11 +80,11 @@ public class User {
 //	 }
 //	 
 	
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
