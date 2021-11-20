@@ -22,11 +22,13 @@ private JDBCUtil jdbcUtil = null;
 	 * 寃뚯떆湲� 愿�由� �뀒�씠釉붿뿉 �깉濡쒖슫 寃뚯떆湲� �깮�꽦.
 	 */
 	public int create(Post post) throws SQLException {
+
 		String sql = "INSERT INTO POST VALUES (id_seq.nextval, ?, ?, ?, DEFAULT, ?, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] { post.getTitle(), post.getDesc(), null, null, 
 				0, post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId()};		
 //		Object[] param = new Object[] { post.getTitle(), post.getDesc(), post.getImgUrl(), post.getCategoryId(), 
 //				post.getViews(), post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId()};		
+
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil �뿉 insert臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙	
 		try {
 			int result = jdbcUtil.executeUpdate();	// insert 臾� �떎�뻾
@@ -69,7 +71,7 @@ private JDBCUtil jdbcUtil = null;
 	/**
 	 * 寃뚯떆湲� ID�뿉 �빐�떦�븯�뒗 寃뚯떆湲��쓣 �궘�젣.
 	 */
-	public int remove(String postId) throws SQLException {
+	public int remove(int postId) throws SQLException {
 		String sql = "DELETE FROM POST WHERE postId=?";		
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	// JDBCUtil�뿉 delete臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙
 

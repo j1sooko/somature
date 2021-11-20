@@ -35,11 +35,12 @@ function postCreate() {
 		form.price.focus();
 		return false;
 	}
-	if (form.description.getData() == "") {
+	if (CKEDITOR.instances.editor1.getData() == "") {
 		alert("내용을 입력하십시오.");
 		form.description.focus();
 		return false;
 	}
+
 
 
 	form.submit();
@@ -108,15 +109,7 @@ function postCreate() {
 	</form>
 
 	<script>
-	ClassicEditor
-    .create( document.querySelector( '#title_textarea' ), )
-    .then( editor => {
-        console.log( editor );
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
-	
+
 	ClassicEditor
     .create( document.querySelector( '#content_textarea' ) )
     .then( editor => {
