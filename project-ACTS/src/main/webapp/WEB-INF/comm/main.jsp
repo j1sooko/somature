@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="/resource/js/bootstrap.js"></script>
+        <!-- <script type="text/javascript" src="/js/bootstrap.js"></script> -->
         <meta charset="utf-8">
         <title>
             Acts On
         </title>
-        <link rel="stylesheet" href="./css/bootstrap.css">
-        <script src="jquery-3.6.0.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="./css/bootstrap.css">
+        <script src="js/jquery-3.6.0.js"></script> -->
         
         
         <style>
@@ -22,7 +24,7 @@
             #headLine {
                 background-color: #b5cda3;
                 display: grid;
-                grid-template-columns: 8fr 1fr;
+                grid-template-columns: 7fr 1fr;
                 margin: 100px, 30px, 500px, 30px;
                 height: 50px;
                 width: auto;
@@ -73,92 +75,28 @@
 			}
         </style>
     </head>
-
     <body>
-        <script type="text/javascript" src="js/bootstrap.js">
-        </script>
+        <!-- <script type="text/javascript" src="js/bootstrap.js">
+        </script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
         <div id="headLine" align="center" >
             <div id="headLineText" align="left">
-                Acts <img id="small" src="./image/작은새싹.GIF">
+                Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
             </div>
                 
-            <div >
-                <a href = "./search.jsp"><img src="./image/돋보기.GIF"></a> 
-                <img src="./image/즐겨찾기.GIF"> 
-                <a href = "./myPage.jsp"><img src="./image/마이프로필.GIF"></a>
+            <div>
+   			<c:if test="${accountId eq null}"><a href="<c:url value='/user/login/form' />" class="btn btn-light" role="button" >로그인</a></c:if>
+            <c:if test="${accountId ne null}"><a href="<c:url value='/user/logout' />" class="btn btn-light" role="button">로그아웃</a></c:if>
+            	<a href="<c:url value='/comm/search' />"><i class="fa fa-search" aria-hidden="true"></i></a>
+                <a href="<c:url value='/comm/search' />"><img src="<c:url value='/images/searchIcon.GIF' />"/></a>
+                <!--  즐겨찾기 page 구현 필요  -->
+                <!-- <img src="./image/즐겨찾기.GIF">  -->
+                <a href="<c:url value='/user/myPage' />"><img src="<c:url value='/images/mypageIcon.GIF' />"/></a>
                 <!-- 로그인 되어있다면 MyPage로 안되어 있는 경우 NotLogin페이지로 가서 Login Page로 유도(이거도 foward 필요) -->
             </div>
 
         </div>
 
-
-        <div id="all">
-        <div id="mainContents">
-            <div id="title" align="left">
-                Acts on <img id="big" src="./img/큰새싹.GIF">
-            </div>
-
-            <div id="text" align="left" >
-                속에서 불러 내는 것이 따뜻한 봄바람이다. 인생에 따뜻한 봄바람을 불어 보내는 것은 청춘의 끓는 피다.
-                <br>청춘의 피가 뜨거운지라 인간의 동산에는 사랑의 풀이 돋고 이상의 꽃이 피고
-                <br><br>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6" style="padding-right: 20px;">
-                    <h1 style="color: rgb(193,172,149); font-weight: bold;">Actor</h1>
-                    <br>
-                    <div id="Actor">
-                    <a href = "./sellPage.jsp">
-                    <!--  게시글 정보 넘겨야되서 foward 쓰긴 해야되는데 아직 정보 x주석처리만 해놓음 -->
-                        <h4><img src="./image/프로필.GIF"> A1 / Field </h4>
-                        <div style="background-color: #e0e0e0; height: 150px; width: 350px; padding-left: 20px; padding-right: 20px; padding-top: 10px;"/>
-
-                        <h4><img src="./image/프로필.GIF"> A2 / Field </h4>
-                        <div style="background-color: #e0e0e0; height: 150px; width: 350px; padding-left: 20px; padding-right: 20px; padding-top: 10px;"></div>
-
-                        <h4><img src="./image/프로필.GIF"> A3 / Field </h4>
-                        <div style="background-color: #e0e0e0; height: 150px; width: 350px; padding-left: 20px; padding-right: 20px; padding-top: 10px;"></div>
-                       </a>
-                    </div>
-                </div>
-
-
-                <div class="col-sm-6" style="padding-right: 20px;">
-                    <h1 style="color: rgb(193,172,149); font-weight: bold;">Requestor</h1>
-                    <br>
-                    <div id="Requestor">
-                        <h4><img src="./image/프로필.GIF"> R1 / Field </h4>
-                        <div style="background-color: #e0e0e0; height: 150px; width: 350px; padding-left: 20px; padding-right: 20px; padding-top: 10px;"></div>
-
-                        <h4><img src="./image/프로필.GIF"> R2 / Field </h4>
-                        <div style="background-color: #e0e0e0; height: 150px; width: 350px; padding-left: 20px; padding-right: 20px; padding-top: 10px;"></div>
-
-                        <h4><img src="./image/프로필.GIF"> R3 / Field </h4>
-                        <div style="background-color: #e0e0e0; height: 150px; width: 350px; padding-left: 20px; padding-right: 20px; padding-top: 10px;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div id="subContents" style="margin-top: 20px;">
-                <h3 style="font-weight: bold;"> <img src="./img/하트.GIF"> 실시간 인기 Actor</h3>
-                <div>
-                    <h4><img src="./img/프로필.GIF"> R3 / Field </h4>
-                    <h4><img src="./img/프로필.GIF"> R3 / Field </h4>
-                    <h4><img src="./img/프로필.GIF"> R3 / Field </h4>
-                    <h4><img src="./img/프로필.GIF"> R3 / Field </h4>
-                    <h4><img src="./img/프로필.GIF"> R3 / Field </h4>
-                    <h4><img src="./img/프로필.GIF"> R3 / Field </h4>
-                    <h4><img src="./img/프로필.GIF"> R3 / Field </h4>
-                    <h4><img src="./img/프로필.GIF"> R3 / Field </h4>
-                    <h4><img src="./img/프로필.GIF"> R3 / Field </h4>
-                </div>
-        </div>
-
-
-        </div>
     </body>
 </html>
