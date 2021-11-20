@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.user.*;
+import controller.post.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -19,7 +20,7 @@ public class RequestMapping {
     	//초기화면 및 로그인과 로그아웃
         mappings.put("/", new ForwardController("index.jsp")); //경원: 초기화면은 index.jsp로 이동하게
         //초기-메인화면
-        mappings.put("/comm/main", new ForwardController("/comm/main.jsp"));
+        mappings.put("/comm/main", new ListPostController());
         mappings.put("/comm/search", new ForwardController("/comm/search.jsp"));
         mappings.put("/user/myPage", new MyPageController());
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp")); //경원: 로그인 버튼을 누르면 /user/loginForm.jsp로 이동하게
