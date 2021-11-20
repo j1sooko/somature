@@ -1,10 +1,11 @@
-<%@page contentType="text/html; charset=utf-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html; charset=utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>사용자 관리</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/user.css' />"
+	type="text/css">
 <script>
 function userModify() {
 	if (form.password.value == "") {
@@ -34,6 +35,12 @@ function userModify() {
 		form.phone.focus();
 		return false;
 	}
+	if (form.nickName.value == "") {
+		alert("닉네임을 입력하십시오.");
+		form.nickName.focus();
+		return false;
+	}
+	
 	form.submit();
 }
 
@@ -44,75 +51,74 @@ function userList(targetUri) {
 </script>
 </head>
 <body>
-<br>
-<!-- Update Form  -->
-<form name="form" method="POST" action="<c:url value='/user/update' />">
-  <input type="hidden" name="userId" value="${user.userId}"/>	  
-  <table style="width: 100%">
-	<tr>
-	  <td width="20"></td>
-	  <td>
-	    <table>
-		  <tr>
-			<td class="title">&nbsp;&nbsp;<b>사용자 관리 - 수정</b>&nbsp;&nbsp;</td>
-		  </tr>
-	    </table>  
-	    <br>	  
-	    <table style="background-color: YellowGreen">
-	  	  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				${user.userId}
-			</td>
-		  </tr>
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">비밀번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="password" value="${user.password}">
-			</td>
-		  </tr>
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">비밀번호 확인</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="password" style="width: 240" name="password2" value="${user.password}">
-			</td>
-		  </tr>
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">이름</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="name" value="${user.name}">
-			</td>
-		  </tr>
-		  <tr height="40">
-			<td width="150" align="center" bgcolor="E6ECDE">이메일 주소</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="email" value="${user.email}">
-			</td>
-		  </tr>	
-		  <tr height="40">
-			<!--  <td width="150" align="center" bgcolor="E6ECDE">전화번호</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-		 		<input type="text" style="width: 240" name="phone" value="${user.phone}">
-			</td>-->
-			<!-- 일단 ovenapp에 있는대로 수정했음(정보 전화번호 없이 닉네임이있길래 그걸로 일단 주석하고 나머지 바꿨고, UpdateUserController도 수정 필요함. -->
-			<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>
-			<td width="250" bgcolor="ffffff" style="padding-left: 10">
-				<input type="text" style="width: 240" name="nickname" value="${user.nickname}">
-			</td>
-		  </tr>		
-	    </table>
-	    <br>	  
-	    <table style="width: 100%">
-		  <tr>
-			<td align="left">
-			<input type="button" value="수정" onClick="userModify()"> &nbsp;
-			<input type="button" value="목록" onClick="userList('<c:url value='/user/list' />')">
-			</td>
-		  </tr>
-	    </table>
-	  </td>
-	</tr>
-  </table>  
-</form>
+	<br>
+	<!-- Update Form  -->
+	<form name="form" method="POST" action="<c:url value='/user/update' />">
+		<input type="hidden" name="accountId" value="${user.accountId}" />
+		<table style="width: 100%">
+			<tr>
+				<td width="20"></td>
+				<td>
+					<table>
+						<tr>
+							<td class="title">&nbsp;&nbsp;<b>사용자 관리 - 수정</b>&nbsp;&nbsp;
+							</td>
+						</tr>
+					</table> <br>
+					<table style="background-color: YellowGreen">
+						<tr height="40">
+							<td width="150" align="center" bgcolor="E6ECDE">사용자 ID</td>
+							<td width="250" bgcolor="ffffff" style="padding-left: 10">
+								${user.accountId}</td>
+						</tr>
+						<tr height="40">
+							<td width="150" align="center" bgcolor="E6ECDE">비밀번호</td>
+							<td width="250" bgcolor="ffffff" style="padding-left: 10"><input
+								type="password" style="width: 240" name="password"
+								value="${user.password}"></td>
+						</tr>
+						<tr height="40">
+							<td width="150" align="center" bgcolor="E6ECDE">비밀번호 확인</td>
+							<td width="250" bgcolor="ffffff" style="padding-left: 10"><input
+								type="password" style="width: 240" name="password2"
+								value="${user.password}"></td>
+						</tr>
+						<tr height="40">
+							<td width="150" align="center" bgcolor="E6ECDE">이름</td>
+							<td width="250" bgcolor="ffffff" style="padding-left: 10"><input
+								type="text" style="width: 240" name="name" value="${user.name}">
+							</td>
+						</tr>
+						<tr height="40">
+							<td width="150" align="center" bgcolor="E6ECDE">이메일 주소</td>
+							<td width="250" bgcolor="ffffff" style="padding-left: 10"><input
+								type="text" style="width: 240" name="email"
+								value="${user.email}"></td>
+						</tr>
+						<tr height="40">
+							<td width="150" align="center" bgcolor="E6ECDE">전화번호</td>
+							<td width="250" bgcolor="ffffff" style="padding-left: 10"><input
+								type="text" style="width: 240" name="phone"
+								value="${user.phone}"></td>
+						</tr>
+						<tr height="40">
+							<td width="150" align="center" bgcolor="E6ECDE">닉네임</td>
+							<td width="250" bgcolor="ffffff" style="padding-left: 10"><input
+								type="text" style="width: 240" name="nickName"
+								value="${user.nickName}"></td>
+						</tr>
+					</table> <br>
+					<table style="width: 100%">
+						<tr>
+							<td align="left"><input type="button" value="수정"
+								onClick="userModify()"> &nbsp; <input type="button"
+								value="목록" onClick="userList('<c:url value='/user/list' />')">
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
