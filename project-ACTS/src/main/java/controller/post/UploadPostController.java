@@ -19,7 +19,7 @@ public class UploadPostController implements Controller{
 			manager.createProduct(prod);
 			
 			log.debug("Create ProductForm : {}", prod);
-	        return "foward:/post/postList";
+	        return "foward:/comm/main";
 		}
 		catch(Exception e) {
 			request.setAttribute("uploadFail", true);
