@@ -17,6 +17,9 @@ public class UploadPostController implements Controller{
 				request.getParameter("title"),
 				request.getParameter("description"),
 				request.getParameter("accountId")
+				request.getParameterValues("status")
+				request.getParameter("price")
+				request.getParameterValues("pType")
 				);
 		try {
 			PostManager manager = PostManager.getInstance();

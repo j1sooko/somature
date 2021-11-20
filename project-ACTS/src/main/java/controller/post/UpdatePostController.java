@@ -17,7 +17,14 @@ public class UpdatePostController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		Post prod = new Post();
+		Post prod = new Post(
+				request.getParameter("title"),
+				request.getParameter("description"),
+				request.getParameter("accountId")
+				request.getParameterValues("status")
+				request.getParameter("price")
+				request.getParameterValues("pType")
+				);
 		try {
 			PostManager manager = PostManager.getInstance();
 			manager.createProduct(prod);
