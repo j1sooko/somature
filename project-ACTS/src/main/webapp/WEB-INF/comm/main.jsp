@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="model.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	User user = (User)request.getAttribute("user");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -88,6 +92,8 @@
             <div>
    			<c:if test="${accountId eq null}"><a href="<c:url value='/user/login/form' />" class="btn btn-light" role="button" >로그인</a></c:if>
             <c:if test="${accountId ne null}"><a href="<c:url value='/user/logout' />" class="btn btn-light" role="button">로그아웃</a></c:if>
+            <a href="<c:url value='/post/upload/form'></c:url>" class="btn btn-light" role="button" >업로드</a>
+            
             	<a href="<c:url value='/comm/search' />"><i class="fa fa-search" aria-hidden="true"></i></a>
                 <a href="<c:url value='/comm/search' />"><img src="<c:url value='/images/searchIcon.GIF' />"/></a>
                 <!--  즐겨찾기 page 구현 필요  -->

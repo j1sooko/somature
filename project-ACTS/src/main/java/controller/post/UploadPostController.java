@@ -15,8 +15,8 @@ public class UploadPostController implements Controller{
 		// TODO Auto-generated method stub
 		Post prod = new Post();
 		try {
-			PostManager manager = PostManager.getInstance();
-			manager.createProduct(prod);
+//			PostManager manager = PostManager.getInstance();
+//			manager.createProduct(prod);
 			
 			log.debug("Create ProductForm : {}", prod);
 	        return "foward:/comm/main";
@@ -27,7 +27,7 @@ public class UploadPostController implements Controller{
 			request.setAttribute("post", prod);
 			return "foward:/post/uploadFail";
 		}
-		return null;
+//		return null;
 	}
 	
 }
