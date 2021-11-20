@@ -22,14 +22,14 @@ public class UpdateProductController implements Controller{
 			PostManager manager = PostManager.getInstance();
 			manager.createProduct(prod);
 			
-			log.debug("Update Product : {}", prod);
-	        return "foward:/post/updateProduct";
+			log.debug("Update Post : {}", prod);
+	        return "foward:/post/updatePost";
 		}
 		catch(Exception e) {
 			request.setAttribute("uploadFail", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("product", prod);
-			return "redirect:/post/ProductList";
+			return "redirect:/post/postList";
 		}
 		return null;
 	}
