@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import model.Post;
+import model.service.*;
 //import model.service.UserManager;
 public class UploadPostController implements Controller{
 	private static final Logger log = LoggerFactory.getLogger(UploadPostController.class);
@@ -16,7 +17,7 @@ public class UploadPostController implements Controller{
 		Post prod = new Post();
 		try {
 			PostManager manager = PostManager.getInstance();
-			manager.createProduct(prod);
+			manager.create(prod);
 			
 			log.debug("Create ProductForm : {}", prod);
 	        return "foward:/comm/main";
@@ -27,7 +28,7 @@ public class UploadPostController implements Controller{
 			request.setAttribute("post", prod);
 			return "foward:/post/uploadFail";
 		}
-		return null;
+		//return null;
 	}
 	
 }
