@@ -13,7 +13,11 @@ public class UploadPostController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		Post prod = new Post();
+		Post prod = new Post(
+				request.getParameter("title"),
+				request.getParameter("description"),
+				request.getParameter("accountId")
+				);
 		try {
 			PostManager manager = PostManager.getInstance();
 			manager.createProduct(prod);
