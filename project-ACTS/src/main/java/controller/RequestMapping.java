@@ -22,6 +22,7 @@ public class RequestMapping {
         //초기-메인화면
         mappings.put("/comm/main", new ListPostController());
         mappings.put("/comm/search", new ForwardController("/comm/search.jsp"));
+        mappings.put("/comm/search/list", new SearchCategoryController());
         mappings.put("/user/myPage", new MyPageController());
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp")); //경원: 로그인 버튼을 누르면 /user/loginForm.jsp로 이동하게
         mappings.put("/user/login", new LoginController());
@@ -51,6 +52,7 @@ public class RequestMapping {
         // 게시글 관리
         mappings.put("/post/upload/form", new ForwardController("/post/postForm.jsp")); //경원: 자기 자신의 정보를 수정하고자 할 때  
 //        mappings.put("/post/upload", new UploadPostController());
+        
         
         logger.info("Initialized Request Mapping!");
     }

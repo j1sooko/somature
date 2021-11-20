@@ -52,7 +52,7 @@
 
             #icon i {
                 font-size: 5rem;
-                padding-right: 70px;           
+                padding-right: 70px; 
             }
 
 
@@ -90,29 +90,27 @@
                 <h4 style="font-weight: bold;">카테고리</h4>
                 <br>
                 <div id="icon">
-                	<!-- 1: 디자인 -->
-	                <a href="<c:url value='/'>
-		                <c:param name='categoryId' value=1/>
-				 	 </c:url>"><i class="bi bi-laptop"></i></a>
-				 	 
-				 	 <!-- 2: IT -->
-	                <a href="<c:url value='/user/update'>
-		                <c:param name='categoryId' value=1/>
-				 	 </c:url>"><i class="bi bi-laptop"></i></a>
-				 	 
-				 	 <!-- 3: 문서 -->
-	                <a href="<c:url value='/user/update'>
-		                <c:param name='categoryId' value=1/>
-				 	 </c:url>"><i class="bi bi-laptop"></i></a>
-				 	 
-				 	 <!-- 4: 기타 -->
-	                <a href="<c:url value='/user/update'>
-		                <c:param name='categoryId' value=1/>
-				 	 </c:url>"><i class="bi bi-laptop"></i></a>
-	                
-                	<i class="bi bi-easel2"></i>
-                	<i class="bi bi-file-text"></i>
-                	<i class="bi bi-archive"></i>
+                	<!-- 1: art -->
+	                <a href="<c:url value='/comm/search/list'>
+		                <c:param name='categoryName' value='디자인'/></c:url>">
+		                <i class="bi bi-easel2"></i></a>
+		            
+		            <!-- 2: IT -->
+	                <a href="<c:url value='/comm/search/list'>
+		                <c:param name='categoryName' value='IT'/></c:url>">
+		                <i class="bi bi-laptop"></i></a>
+		                
+		            <!-- 3: Text -->
+	                <a href="<c:url value='/comm/search/list'>
+		                <c:param name='categoryName' value='문서'/></c:url>">
+		                <i class="bi bi-file-text"></i></a>
+		                
+		            <!-- 4: ETC -->
+	                <a href="<c:url value='/comm/search/list'>
+		                <c:param name='categoryName' value='기타'/></c:url>">
+		                <i class="bi bi-archive"></i></a>
+		               
+                	
                 <!--  
                     <img src="./image/레슨.GIF"><img src="./image/디자인.GIF"><img src="image/it.GIF"><img src="./image/문서.GIF"> <br>
                     <img src="./image/번역.GIF"><img src="./image/영상.GIF"><img src="image/미용.GIF"><img src="./image/기타.GIF">

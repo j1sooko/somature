@@ -5,6 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import controller.post.SearchCategoryController;
 import model.Post;
 
 /**
@@ -12,6 +16,7 @@ import model.Post;
  * POST �뀒�씠釉붿뿉 �궗�슜�옄 �젙蹂대�� 異붽�, �닔�젙, �궘�젣, 寃��깋 �닔�뻾 
  */
 public class PostDAO {
+private static final Logger log = LoggerFactory.getLogger(PostDAO.class);
 private JDBCUtil jdbcUtil = null;
 	
 	public PostDAO() {			
@@ -144,6 +149,42 @@ private JDBCUtil jdbcUtil = null;
 						rs.getInt("writerId"));
 				postList.add(post);				// List�뿉 User 媛앹껜 ���옣
 			}		
+			return postList;					
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 諛섑솚
+		}
+		return null;
+	}
+	
+	/**
+	 * �쟾泥� 寃뚯떆湲� �젙蹂대�� 寃��깋�븯�뿬 List�뿉 ���옣 諛� 諛섑솚
+	 */
+	public List<Post> findPostListUseCategory(String cName) throws SQLException {
+        String sql = "SELECT postId, title, views, status, price, postType, writerId " 
+        		   + "FROM POST p JOIN CATEGORY c ON p.categoryId=c.categoryId "
+        		   + "WHERE categoryName=? "
+        		   + "ORDER BY postId";
+        jdbcUtil.setSqlAndParameters(sql, new Object[] {cName});		// JDBCUtil�뿉 query臾� �꽕�젙
+					
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();			// query �떎�뻾			
+			List<Post> postList = new ArrayList<Post>();	// User�뱾�쓽 由ъ뒪�듃 �깮�꽦
+			while (rs.next()) {
+				Post post = new Post(			// User 媛앹껜瑜� �깮�꽦�븯�뿬 �쁽�옱 �뻾�쓽 �젙蹂대�� ���옣
+						rs.getInt("postId"),
+						rs.getString("title"),
+						rs.getInt("views"),
+						rs.getString("status"),
+						rs.getInt("price"),
+						rs.getString("postType"),
+						rs.getInt("writerId"));
+				postList.add(post);				// List�뿉 User 媛앹껜 ���옣
+				log.debug(rs.getString("postType"));
+			}
+			
 			return postList;					
 			
 		} catch (Exception ex) {
