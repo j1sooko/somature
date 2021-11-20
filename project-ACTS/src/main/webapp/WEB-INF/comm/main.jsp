@@ -5,7 +5,6 @@
 <%
 @SuppressWarnings("unchecked")
 List<Post> postList = (List<Post>) request.getAttribute("postList");
-int curPostId = (int) request.getAttribute("curPostId");
 %>
 <!DOCTYPE html>
 <html>
@@ -120,6 +119,7 @@ a {
 
 	</div>
 
+	<br><br><br>
 	<table style="background-color: YellowGreen">
 		<tr>
 			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
@@ -148,7 +148,7 @@ a {
 				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${post.postType}</td>
 				<td width="200" align="center" bgcolor="ffffff" height="20">
-					${user.commName}</td>
+					${post.writerId}</td>
 			</tr>
 		</c:forEach>
 
