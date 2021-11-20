@@ -6,7 +6,7 @@ import java.util.Date;
  * 사용자 관리를 위해 필요한 도메인 클래스. ACCOUNT 테이블과 대응됨
  */
 public class User {
-	private String userId;
+	private int userId;
 	private String accountId;
 	private String password;
 	private String name;
@@ -20,6 +20,20 @@ public class User {
 	public User() {
 	} // 기본 생성자
 
+	public User(int userId, String accountId, String password, String name, String email, String phone, String regNum,
+			Date joinDate, int rating, String nickName) {
+		this.userId = userId;
+		this.accountId = accountId;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.regNum = regNum;
+		this.joinDate = joinDate;
+		this.rating = rating;
+		this.nickName = nickName;
+	}
+	
 	public User(String accountId, String password, String name, String email, String phone, String regNum,
 			Date joinDate, int rating, String nickName) {
 		this.accountId = accountId;
@@ -80,11 +94,11 @@ public class User {
 //	 }
 //	 
 	
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -182,7 +196,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email
+		return "User [userId=" + userId + "accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email
 				+ ", phone=" + phone + ", regNum=" + regNum + ", joinDate=" + joinDate + ", rating=" + rating
 				+ ", nickName=" + nickName + "]";
 	}

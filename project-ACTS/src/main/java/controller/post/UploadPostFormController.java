@@ -32,8 +32,9 @@ public class UploadPostFormController implements Controller {
 //		request.setAttribute("userList", userList);				
 		request.setAttribute("curUserId", 
 				UserSessionUtils.getLoginUserId(request.getSession()));		
-
-		// 사용자 리스트 화면으로 이동(forwarding)
+		System.out.println("현재로그인한 아이디:" + UserSessionUtils.getLoginUserId(request.getSession()));
+		System.out.println("ㄱㄷ현재로그인한 아이디:" + request.getParameter("curUserId"));
+		//게시글 작성 화면으로 이동
 		return "/post/postForm.jsp";
     }
 		

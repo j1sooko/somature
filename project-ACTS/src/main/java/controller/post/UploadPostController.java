@@ -6,7 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
+import controller.user.UserSessionUtils;
 import model.Post;
+import model.User;
 import model.service.*;
 //import model.service.UserManager;
 public class UploadPostController implements Controller{
@@ -14,37 +16,40 @@ public class UploadPostController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		String curUserId = UserSessionUtils.getLoginUserId(request.getSession());
+		UserManager userManager = UserManager.getInstance();
+		User user = userManager.findUser(curUserId);
+		System.out.println("user: " + user);
 		Post prod = new Post(
 				request.getParameter("title"),
 				request.getParameter("description"),
-				request.getParameter("accountId")
-				request.getParameterValues("status")
-				request.getParameter("price")
-				request.getParameterValues("pType")
+				request.getParameter("status"),
+				Integer.parseInt(request.getParameter("price")),
+				request.getParameter("pType"),
+				user.getUserId()
 				);
+		
+		log.debug("Create ProductForm : {}", prod);
+		
 		try {
-<<<<<<< HEAD
-//			PostManager manager = PostManager.getInstance();
-//			manager.createProduct(prod);
-=======
-			PostManager manager = PostManager.getInstance();
-			manager.create(prod);
->>>>>>> branch 'master' of https://github.com/yuna9927/somature.git
+
+			PostManager postManager = PostManager.getInstance();
+			postManager.create(prod);
+
 			
 			log.debug("Create ProductForm : {}", prod);
-	        return "foward:/comm/main";
+	        return "redirect:/comm/main";
 		}
 		catch(Exception e) {
 			request.setAttribute("uploadFail", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("post", prod);
-			return "foward:/post/uploadFail";
+			//게시글 작성 화면으로 이동
+			return "/post/postForm.jsp";
 		}
-<<<<<<< HEAD
-//		return null;
-=======
-		//return null;
->>>>>>> branch 'master' of https://github.com/yuna9927/somature.git
+
+	
+
 	}
 	
 }

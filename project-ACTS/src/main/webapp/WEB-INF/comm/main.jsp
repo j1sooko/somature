@@ -10,7 +10,6 @@
 
 @SuppressWarnings("unchecked")
 List<Post> postList = (List<Post>) request.getAttribute("postList");
-int curPostId = (int) request.getAttribute("curPostId");
 
 %>
 <!DOCTYPE html>
@@ -118,14 +117,11 @@ a {
                 <!-- 로그인 되어있다면 MyPage로 안되어 있는 경우 NotLogin페이지로 가서 Login Page로 유도(이거도 foward 필요) -->
             </div>
 
-	<div id="headLine" align="center">
-		<div id="headLineText" align="left">
-			Acts <img src="<c:url value='/images/sprout2.png' />" border="0"
-				width="45" height="30" />
-		</div>
 
 
 	</div>
+
+	<br><br><br>
 
 	<table style="background-color: YellowGreen">
 		<tr>
@@ -155,7 +151,7 @@ a {
 				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${post.postType}</td>
 				<td width="200" align="center" bgcolor="ffffff" height="20">
-					${user.commName}</td>
+					${post.writerId}</td>
 			</tr>
 		</c:forEach>
 

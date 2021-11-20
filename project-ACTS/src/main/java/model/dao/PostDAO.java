@@ -23,12 +23,16 @@ private JDBCUtil jdbcUtil = null;
 	 */
 	public int create(Post post) throws SQLException {
 
-		String sql = "INSERT INTO POST VALUES (id_seq.nextval, ?, ?, ?, DEFAULT, ?, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] { post.getTitle(), post.getDesc(), null, null, 
+		String sql = "INSERT INTO POST VALUES (id_seq.nextval, ?, ?, 'imageUrl', DEFAULT, 4, ?, ?, ?, ?, ?)";
+		Object[] param = new Object[] { post.getTitle(), post.getDesc(),
 				0, post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId()};		
 //		Object[] param = new Object[] { post.getTitle(), post.getDesc(), post.getImgUrl(), post.getCategoryId(), 
 //				post.getViews(), post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId()};		
-
+		System.out.println("sql: " + sql);
+		System.out.println("param: " + param);
+		for (Object p : param) {
+			System.out.println(p);
+		}
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil �뿉 insert臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙	
 		try {
 			int result = jdbcUtil.executeUpdate();	// insert 臾� �떎�뻾

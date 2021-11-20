@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 
 /**
- * 게시글 관리를 위해 필요한 도메인 클래스. POST 테이블과 대응됨
+ * 寃뚯떆湲� 愿�由щ�� �쐞�빐 �븘�슂�븳 �룄硫붿씤 �겢�옒�뒪. POST �뀒�씠釉붽낵 ���쓳�맖
  */
 public class Post {
 	private int postId;
@@ -19,7 +19,7 @@ public class Post {
 	private int writerId;
 	
 	public Post() {
-	} // 기본 생성자
+	} // 湲곕낯 �깮�꽦�옄
 
 	public Post(int postId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status, int price, String pType, int writerId) {
 		super();
@@ -36,7 +36,7 @@ public class Post {
 		this.writerId = writerId;
 	}
 
-	// List 출력을 위한 생성자
+	// List 異쒕젰�쓣 �쐞�븳 �깮�꽦�옄
 	public Post(int postId, String title, int views, String status, int price, String pType, int writerId) {
 		super();
 		this.postId = postId;
@@ -47,6 +47,17 @@ public class Post {
 		this.pType = pType;
 		this.writerId = writerId;
 	}
+	
+	//post 업로드
+	public Post(String title, String desc, String status, int price, String pType, int writerId) {
+		this.title = title;
+		this.desc = desc;
+		this.status = status;
+		this.price = price;
+		this.pType = pType;
+		this.writerId = writerId;
+	}
+	
 
 	public int getPostId() {
 		return postId;
@@ -134,6 +145,13 @@ public class Post {
 
 	public void setWriterId(int writerId) {
 		this.writerId = writerId;
+	}
+
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", title=" + title + ", desc=" + desc + ", imgUrl=" + imgUrl + ", cTime="
+				+ cTime + ", categoryId=" + categoryId + ", views=" + views + ", status=" + status + ", price=" + price
+				+ ", pType=" + pType + ", writerId=" + writerId + "]";
 	}
 	
 	

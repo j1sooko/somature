@@ -35,11 +35,22 @@ function postCreate() {
 		form.price.focus();
 		return false;
 	}
-	if (CKEDITOR.instances.editor1.getData() == "") {
+	
+	if (form.content_textarea.value == "") {
 		alert("내용을 입력하십시오.");
-		form.description.focus();
+		form.content_textarea.focus();
 		return false;
 	}
+	
+	
+	//editor = CKEDITOR.instances.content_textarea;
+	//var mytext = editor.getData();
+	//if (mytext == "") {
+		//alert("내용을 입력하십시오.");
+		//form.description.focus();
+		//return false;
+	//}
+	
 
 
 
@@ -65,13 +76,13 @@ function postCreate() {
 		<label for="exampleFormControlInput1" class="form-label">acts 타입</label>
 		<div class="form-check">
 			<input class="form-check-input" type="radio" name="pType"
-				id="flexRadioDefault1" checked> <label class="form-check-label"
-				for="flexRadioDefault1"> seller </label>
+				id="flexRadioDefault1" value="s" checked> <label class="form-check-label"
+				> seller </label>
 		</div>
 		<div class="form-check">
 			<input class="form-check-input" type="radio" name="pType"
-				id="flexRadioDefault2"> <label
-				class="form-check-label" for="flexRadioDefault2"> buyer </label>
+				id="flexRadioDefault2" value="b" > <label
+				class="form-check-label"> buyer </label>
 		</div>
 		
 		<!-- 게시글 status -->
@@ -95,7 +106,7 @@ function postCreate() {
 		<!-- 게시글 내용 -->
 		<div>
 			<div>
-				<textarea name="description" id="content_textarea"></textarea>
+				<textarea name="description" id="content_textarea" cols="100" rows="20"></textarea>
 			</div>
 		</div>
 		
@@ -108,8 +119,11 @@ function postCreate() {
 			class="btn btn-primary">
 	</form>
 
+
+	<!-- 
 	<script>
 
+	
 	ClassicEditor
     .create( document.querySelector( '#content_textarea' ) )
     .then( editor => {
@@ -120,7 +134,6 @@ function postCreate() {
     } );
 	    
 	</script>
-	<!-- 
 		<h1>작성하기</h1>
 		<form name="form" method="POST"
 			action="<c:url value='/post/upload' />">
