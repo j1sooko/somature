@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.Controller;
 import model.service.UserManager;
+import model.service.PostManager;
 import model.Post;
 import model.User;
 
@@ -18,16 +19,17 @@ public class UpdatePostController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		Post prod = new Post(
+				Integer.parseInt(request.getParameter("postId")),
 				request.getParameter("title"),
+				request.getParameter("status"),
+				Integer.parseInt(request.getParameter("price")),
 				request.getParameter("description"),
-				request.getParameter("accountId")
-				request.getParameterValues("status")
-				request.getParameter("price")
-				request.getParameterValues("pType")
+				request.getParameter("accountId"),
+				Integer.parseInt(request.getParameter("curUserId"))
 				);
 		try {
 			PostManager manager = PostManager.getInstance();
-			manager.createProduct(prod);
+			manager.create(prod);
 			
 			log.debug("Update Post : {}", prod);
 	        return "foward:/post/updatePost";
@@ -38,7 +40,6 @@ public class UpdatePostController implements Controller{
 			request.setAttribute("product", prod);
 			return "redirect:/post/postList";
 		}
-		return null;
 	}
 
 }
