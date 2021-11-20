@@ -46,6 +46,10 @@ public class RequestMapping {
         
         mappings.put("/user/delete", new DeleteUserController());
         
+        // 게시글 관리
+        mappings.put("/post/upload/form", new ForwardController("/post/postForm.jsp")); //경원: 자기 자신의 정보를 수정하고자 할 때  
+        mappings.put("/post/upload", new UploadPostController());
+        
         logger.info("Initialized Request Mapping!");
     }
 
