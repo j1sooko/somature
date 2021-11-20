@@ -6,6 +6,7 @@ import java.util.Date;
  * 사용자 관리를 위해 필요한 도메인 클래스. USERINFO 테이블과 대응됨
  */
 public class User {
+	private String userId;
 	private String accountId;
 	private String password;
 	private String name;
@@ -57,13 +58,35 @@ public class User {
 		this.nickName = nickName;
 	}
 	
+	//(user update용)
+	public User(String accountId, String password, String name, String email, String phone, String nickName) {
+		this.accountId = accountId;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.nickName = nickName;
+	}
+	
 	
 
-	/*
-	 * public void update(User updateUser) { this.password = updateUser.password;
-	 * this.name = updateUser.name; this.email = updateUser.email; this.phone =
-	 * updateUser.phone; }
-	 */
+	
+//	 public void update(User updateUser) { 
+//		 this.password = updateUser.password;
+//		 this.name = updateUser.name; 
+//		 this.email = updateUser.email; 
+//		 this.phone = updateUser.phone; 
+//		 this.nickName = updateUser.nickName; 
+//	 }
+//	 
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public String getAccountId() {
 		return accountId;
