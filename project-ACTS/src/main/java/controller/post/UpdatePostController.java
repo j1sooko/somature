@@ -12,8 +12,8 @@ import model.service.UserManager;
 import model.Post;
 import model.User;
 
-public class UpdateProductController implements Controller{
-	private static final Logger log = LoggerFactory.getLogger(UpdateProductController.class);
+public class UpdatePostController implements Controller{
+	private static final Logger log = LoggerFactory.getLogger(UpdatePostController.class);
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
