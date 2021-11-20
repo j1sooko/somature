@@ -21,8 +21,7 @@ public class Post {
 	public Post() {
 	} // 기본 생성자
 
-	public Post(int postId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status,
-			int price, String pType, int writerId) {
+	public Post(int postId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status, int price, String pType, int writerId) {
 		super();
 		this.postId = postId;
 		this.title = title;
