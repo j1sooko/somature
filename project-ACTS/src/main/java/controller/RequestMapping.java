@@ -52,7 +52,8 @@ public class RequestMapping {
         // 게시글 관리
         mappings.put("/post/upload/form", new UploadPostFormController()); //게시글 작성 폼 요청(로그인 아이디 정보 넘김->writerId로 쓰기위함)
         mappings.put("/post/upload", new UploadPostController());
-        
+        mappings.put("/post/postInfo", new ForwardController("/post/postInfo.jsp"));
+        mappings.put("/post/postList", new ForwardController("/post/postList.jsp"));
         logger.info("Initialized Request Mapping!");
     }
 
