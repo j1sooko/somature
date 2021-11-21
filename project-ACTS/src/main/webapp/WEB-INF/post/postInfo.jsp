@@ -78,6 +78,11 @@
 				<c:param name='postId' value='${post.postId}'/>
 				</c:url>">게시글 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
+				<!-- 수정 또는 삭제가  실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
+        <c:if test="${postUpdateFailed || deleteFailed}">
+	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
+	    </c:if>
+				
 			</td>
 		</tr>
 	</table>

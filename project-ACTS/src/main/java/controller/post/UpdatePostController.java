@@ -58,6 +58,7 @@ public class UpdatePostController implements Controller{
     		
 			request.setAttribute("user", user);	
 			request.setAttribute("post", post);
+		
 //			request.setAttribute("writerId", post.getWriterId());
 			
 			if (writerId == post.getWriterId()) {
@@ -68,6 +69,9 @@ public class UpdatePostController implements Controller{
 			}    
 			
 			// else 수정 불가능한 경우 사용자 보기 화면으로 오류 메세지를 전달
+			postUserNickName = postManager.getPostUserNickName( post.getWriterId());
+			System.out.println("수정실패: " + postUserNickName);
+			request.setAttribute("nickname", postUserNickName);
 			request.setAttribute("postUpdateFailed", true);
 			request.setAttribute("exception", 
 					new IllegalStateException("타인의 게시글은 수정할 수 없습니다."));      
@@ -93,6 +97,7 @@ public class UpdatePostController implements Controller{
 		log.debug("Update Post : {}", updatePost);
 		postManager.increasePostView(updatePost);
 		postManager.update(updatePost);
+		
 		request.setAttribute("postId", updatePost.getPostId());	
 		request.setAttribute("post", updatePost);	
 		request.setAttribute("nickname", postUserNickName);
