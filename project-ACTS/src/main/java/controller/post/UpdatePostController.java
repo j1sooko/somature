@@ -1,7 +1,5 @@
 package controller.post;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,24 +18,48 @@ public class UpdatePostController implements Controller{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		
+		//사용자 정보 넘김
+    	UserManager manager = UserManager.getInstance();
+    	PostManager postManager = PostManager.getInstance();
+    	HttpSession session = request.getSession();
+    	String loginAccountId = UserSessionUtils.getLoginUserId(session);
+    	User user = null;
+    	Post post = null;
+    	
+
+		// 로그인 여부 확인
+    	if (!UserSessionUtils.hasLogined(request.getSession())) {
+            return "redirect:/user/login/form";		// login form 요청으로 redirect
+        }
+    	
+  
+    	
 		if (request.getMethod().equals("GET")) {	
+			//현재 글 작성중인 writerId를 얻기 위함
+//			String curUserId = UserSessionUtils.getLoginUserId(request.getSession());
+//		    User curUser = manager.findUser(curUserId);
+//		    System.out.println("curUser" + curUser);
+//		    int writerId = curUser.getUserId();
+		    
+		    
+		    
     		// GET request: 회원정보 수정 form 요청	
     		// 원래는 UpdateUserFormController가 처리하던 작업을 여기서 수행
-    		String updateId = request.getParameter("accountId");
+//    		String updateId = request.getParameter("accountId");
     		int postId = Integer.parseInt(request.getParameter("postId"));
-
-    		log.debug("PostUpdateForm Request : {}{}", updateId, postId);
+    		log.debug("PostUpdateForm Request : {}, {}", loginAccountId, postId);
     		
-    		UserManager manager = UserManager.getInstance(); 
-    		User user = manager.findUser(updateId);	
+    		user = manager.findUser(loginAccountId);
+    		int writerId = user.getUserId();
     		
- 
+    		post = postManager.findPost(postId);
+    		
+    		
+			request.setAttribute("user", user);	
+			request.setAttribute("post", post);
+//			request.setAttribute("writerId", post.getWriterId());
 			
-			request.setAttribute("user", user);			
-
-			HttpSession session = request.getSession();
-			if (UserSessionUtils.isLoginUser(updateId, session)) {
+			if (writerId == post.getWriterId()) {
 				 
 				// 현재 로그인한 사용자가 수정 대상 사용자인 경우 -> 수정 가능
 				return "/post/postUpdateForm.jsp";   // 검색한 게시글 정보를 post update form으로 전송     
@@ -51,8 +73,7 @@ public class UpdatePostController implements Controller{
 		
 			return "/post/postInfo.jsp";
 		}
-		PostManager postManager = PostManager.getInstance();
-//		Post post = postManager.findPost(postId); // 수정하려는 게시글 정보 검색
+	
 		
 		// POST request
 		Post updatePost = new Post(
@@ -63,12 +84,15 @@ public class UpdatePostController implements Controller{
 				Integer.parseInt(request.getParameter("categoryId")),
 				request.getParameter("status"),
 				Integer.parseInt(request.getParameter("price")),
-				request.getParameter("pType")
-				);
+				request.getParameter("pType"),
+				Integer.parseInt(request.getParameter("writerId")));
 			
+
 		log.debug("Update Post : {}", updatePost);
 		postManager.update(updatePost);
-        return "redirect:/post/postInfo";
+		request.setAttribute("postId", updatePost.getPostId());	
+		request.setAttribute("post", updatePost);	
+        return "/post/postInfo";
 
 	
 	}

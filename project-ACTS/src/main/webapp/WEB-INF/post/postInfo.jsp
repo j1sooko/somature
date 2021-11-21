@@ -3,10 +3,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 
-User user = (User)request.getAttribute("user");
+
 
 	Post post = (Post)request.getAttribute("post");	
 	String nickName = (String)request.getAttribute("nickname");
+	
 
 %>
 <html>
@@ -73,10 +74,10 @@ User user = (User)request.getAttribute("user");
 					
 				</table> <br> 
 				<a href="<c:url value='/post/update'>
-				<c:param name='accountId' value='<%=user.getAccountId()%>'/>
-				<c:param name='postId' value='<%=post.getPostId()%>'/>
-				</c:url>">회원
-		정보 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				<c:param name='postId' value='${post.postId}'/>
+				</c:url>">게시글 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
 			</td>
 		</tr>
 	</table>

@@ -64,7 +64,7 @@ public class Post {
 	}
 	
 //	UpdatePostController parameter생성자
-	public Post(int postId, String title, String desc, String imgUrl, int categoryId, String status, int price, String pType) {
+	public Post(int postId, String title, String desc, String imgUrl, int categoryId, String status, int price, String pType, int writerId) {
 		this.postId = postId;
 		this.title = title;
 		this.desc = desc;
@@ -73,6 +73,7 @@ public class Post {
 		this.status = status;
 		this.price = price;
 		this.pType = pType;
+		this.writerId = writerId;
 	}
 
   

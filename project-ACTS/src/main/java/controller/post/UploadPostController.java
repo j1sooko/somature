@@ -16,6 +16,7 @@ public class UploadPostController implements Controller{
    @Override
    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
       // TODO Auto-generated method stub
+	 //현재 글 작성중인 writerId를 얻기 위함
       String curUserId = UserSessionUtils.getLoginUserId(request.getSession());
       UserManager userManager = UserManager.getInstance();
       User user = userManager.findUser(curUserId);

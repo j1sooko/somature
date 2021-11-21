@@ -4,6 +4,7 @@
 <%@page import="model.*"%>
 <% User user = (User)request.getAttribute("user"); %>
 <% Post post = (Post)request.getAttribute("post"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,12 +67,13 @@ function postCreate() {
 
 	<!-- title -->
 	<form name="form" method="POST" action="<c:url value='/post/update' />">
-		<input type="hidden" name="userId" value="${user.userId}"/>
+		<input type="hidden" name="postId" value="${post.postId}"/>
+		<input type="hidden" name="writerId" value="${post.writerId}"/>
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label">Title</label>
 			<br> <input name="title" class="form-control  input-sm"
 				id="exampleFormControlInput1" placeholder="제목을 입력하세요."
-				aria-label=".form-control-lg example">
+				aria-label=".form-control-lg example" value="${post.title}">
 		</div>
 
 		<!-- seller or buyer -->
@@ -112,14 +114,14 @@ function postCreate() {
 			<label for="exampleFormControlInput1" class="form-label">가격</label>
 			<br> <input name="price" class="form-control  input-sm"
 				id="exampleFormControlInput1"
-				aria-label=".form-control-lg example">원
+				aria-label=".form-control-lg example" value="${post.price}">원
 		</div>	
 		
 	
 		<!-- 게시글 내용 -->
 		<div>
 			<div>
-				<textarea name="description" id="content_textarea" cols="100" rows="20"></textarea>
+				<textarea name="description" id="content_textarea" cols="100" rows="20">${post.desc}</textarea>
 			</div>
 		</div>
 		

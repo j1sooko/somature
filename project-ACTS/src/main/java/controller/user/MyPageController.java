@@ -31,6 +31,7 @@ public class MyPageController implements Controller {
 	        return "redirect:/user/login";
 		}	
 		
+    	
     	request.setAttribute("user", user);		// 사용자 정보 저장				
 		return "/user/myPage.jsp";				// 사용자 보기 화면으로 이동
     }
