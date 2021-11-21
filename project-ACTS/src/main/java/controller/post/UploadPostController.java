@@ -23,11 +23,12 @@ public class UploadPostController implements Controller{
       Post prod = new Post(
             request.getParameter("title"),
             request.getParameter("description"),
+            request.getParameter("imgUrl"),
+            Integer.parseInt(request.getParameter("categoryId")),
             request.getParameter("status"),
             Integer.parseInt(request.getParameter("price")),
             request.getParameter("pType"),
-            user.getUserId()
-            );
+            user.getUserId());
       
       log.debug("Create ProductForm : {}", prod);
       
