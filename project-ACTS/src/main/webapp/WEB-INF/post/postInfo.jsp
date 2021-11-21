@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Post post = (Post)request.getAttribute("post");
+User user = (User)request.getAttribute("user");
 %>
 <html>
 <head>
@@ -64,8 +65,13 @@
 						<td width="470" bgcolor="ffffff" style="padding-left: 10">
 							${post.views}</td>
 					</tr>
-
+					
 				</table> <br> 
+				<a href="<c:url value='/post/update'>
+				<c:param name='accountId' value='<%=user.getAccountId()%>'/>
+				<c:param name='postId' value='<%=post.getPostId()%>'/>
+				</c:url>">회원
+		정보 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			</td>
 		</tr>
 	</table>
