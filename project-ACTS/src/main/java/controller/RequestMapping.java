@@ -22,6 +22,7 @@ public class RequestMapping {
         //초기-메인화면
         mappings.put("/comm/main", new ListPostController());
         mappings.put("/comm/search", new ForwardController("/comm/search.jsp"));
+        mappings.put("/comm/search/searchForm", new ForwardController("/comm/searchForm.jsp"));
         mappings.put("/comm/search/list", new SearchCategoryController());
         mappings.put("/user/myPage", new MyPageController());
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp")); //경원: 로그인 버튼을 누르면 /user/loginForm.jsp로 이동하게
