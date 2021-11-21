@@ -45,7 +45,7 @@
 				</td>
 				
 				<td width="200" align="center" bgcolor="ffffff" height="20">
-					${post.postType}
+					${post.pType}
 				</td>
 				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${post.writerId}

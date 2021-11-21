@@ -237,5 +237,27 @@ private JDBCUtil jdbcUtil = null;
 		
 		return null;
 	}
+	
+	public void increasePostView(Post post) throws SQLException {
+		String sql = "UPDATE POST "
+				+ "SET views=? "
+				+ "WHERE postId=?";
+	
+		Object[] param = new Object[]  { post.getViews() + 1, post.getPostId() };			
+	
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil�뿉 update臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙
+		
+	
+		try {				
+			jdbcUtil.executeUpdate();	// update 臾� �떎�뻾
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 諛섑솚
+		}		
+		
+	}
 
 }

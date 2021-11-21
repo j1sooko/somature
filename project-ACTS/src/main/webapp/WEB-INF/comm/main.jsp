@@ -31,7 +31,7 @@ body {
 #headLine {
 	background-color: #b5cda3;
 	display: grid;
-	grid-template-columns: 7fr 1fr;
+	grid-template-columns: 4fr 1fr;
 	margin: 100px, 30px, 500px, 30px;
 	height: 50px;
 	width: auto;

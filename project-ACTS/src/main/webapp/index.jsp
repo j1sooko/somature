@@ -1,1 +1,1 @@
-<% response.sendRedirect(request.getContextPath() + "/post/postList"); %>
+<% response.sendRedirect(request.getContextPath() + "/comm/main"); %>
