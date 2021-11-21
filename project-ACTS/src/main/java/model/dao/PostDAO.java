@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.post.SearchCategoryController;
 import model.Post;
+import model.User;
 
 /**
  * 寃뚯떆湲� 愿�由щ�� �쐞�빐 �뜲�씠�꽣踰좎씠�뒪 �옉�뾽�쓣 �쟾�떞�븯�뒗 DAO �겢�옒�뒪
@@ -258,6 +259,25 @@ private JDBCUtil jdbcUtil = null;
 			jdbcUtil.close();	// resource 諛섑솚
 		}		
 		
+	}
+	
+	public String findUserNickNameByUserId(int userId) throws SQLException {
+        String sql = "SELECT nickName "
+        			+ "FROM ACCOUNT "
+        			+ "WHERE userId=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil占쎈퓠 query�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 占쎈뼄占쎈뻬
+			if (rs.next()) {						// 占쎈린占쎄문 占쎌젟癰귨옙 獄쏆뮄猿�
+				return rs.getString("nickName");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 獄쏆꼹�넎
+		}
+		return null;
 	}
 
 }

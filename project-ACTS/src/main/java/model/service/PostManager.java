@@ -5,7 +5,6 @@ import java.util.List;
 
 import model.Post;
 import model.dao.PostDAO;
-
 /**
  * 占쏙옙占쏙옙占� 占쏙옙占쏙옙 API占쏙옙 占쏙옙占쏙옙求占� 占쏙옙占쏙옙占쌘듸옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占싹곤옙 占실댐옙 클占쏙옙占쏙옙.
  * UserDAO占쏙옙 占싱울옙占싹울옙 占쏙옙占쏙옙占싶븝옙占싱쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쌜억옙占쏙옙 占쏙옙占쏙옙占싹듸옙占쏙옙 占싹몌옙,
@@ -65,5 +64,10 @@ public class PostManager {
 	
 	public void increasePostView(Post post) throws SQLException {
 		postDAO.increasePostView(post);
+	}
+	
+	public String getPostUserNickName (int userId) throws SQLException {
+		
+		return postDAO.findUserNickNameByUserId(userId);
 	}
 }

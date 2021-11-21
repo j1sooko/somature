@@ -13,6 +13,7 @@ public class ListPostController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {		
     	
 		PostManager manager = PostManager.getInstance();
+		request.setAttribute("postList", null);
 		List<Post> postList = manager.findPostList();
 		// List<User> userList = manager.findUserList(currentPage, countPerPage);
 
