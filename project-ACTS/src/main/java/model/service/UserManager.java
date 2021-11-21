@@ -40,16 +40,16 @@ public class UserManager {
 		return userDAO.update(user);
 	}	
 
-	public int remove(String userId) throws SQLException, UserNotFoundException {
-		return userDAO.remove(userId);
+	public int remove(String accountId) throws SQLException, UserNotFoundException {
+		return userDAO.remove(accountId);
 	}
 
-	public User findUser(String userId)
+	public User findUser(String accountId)
 		throws SQLException, UserNotFoundException {
-		User user = userDAO.findUser(userId);
+		User user = userDAO.findUser(accountId);
 		
 		if (user == null) {
-			throw new UserNotFoundException(userId + "는 존재하지 않는 아이디입니다.");
+			throw new UserNotFoundException(accountId + "는 존재하지 않는 아이디입니다.");
 		}		
 		return user;
 	}
