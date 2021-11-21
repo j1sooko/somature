@@ -13,25 +13,25 @@ import model.Post;
 import model.User;
 
 /**
- * 寃뚯떆湲� 愿�由щ�� �쐞�빐 �뜲�씠�꽣踰좎씠�뒪 �옉�뾽�쓣 �쟾�떞�븯�뒗 DAO �겢�옒�뒪
- * POST �뀒�씠釉붿뿉 �궗�슜�옄 �젙蹂대�� 異붽�, �닔�젙, �궘�젣, 寃��깋 �닔�뻾 
+ * 野껊슣�뻻疫뀐옙 �꽴占썹뵳�됵옙占� 占쎌맄占쎈퉸 占쎈쑓占쎌뵠占쎄숲甕곗쥙�뵠占쎈뮞 占쎌삂占쎈씜占쎌뱽 占쎌읈占쎈뼖占쎈릭占쎈뮉 DAO 占쎄깻占쎌삋占쎈뮞
+ * POST 占쎈�믭옙�뵠�뇡遺용퓠 占쎄텢占쎌뒠占쎌쁽 占쎌젟癰귣�占쏙옙 �빊遺쏙옙, 占쎈땾占쎌젟, 占쎄텣占쎌젫, 野껓옙占쎄퉳 占쎈땾占쎈뻬 
  */
 public class PostDAO {
 private static final Logger log = LoggerFactory.getLogger(PostDAO.class);
 private JDBCUtil jdbcUtil = null;
 	
 	public PostDAO() {			
-		jdbcUtil = new JDBCUtil();	// JDBCUtil 媛앹껜 �깮�꽦
+		jdbcUtil = new JDBCUtil();	// JDBCUtil 揶쏆빘猿� 占쎄문占쎄쉐
 	}
 		
 	/**
-	 * 寃뚯떆湲� 愿�由� �뀒�씠釉붿뿉 �깉濡쒖슫 寃뚯떆湲� �깮�꽦.
+	 * 野껊슣�뻻疫뀐옙 �꽴占썹뵳占� 占쎈�믭옙�뵠�뇡遺용퓠 占쎄퉱嚥≪뮇�뒲 野껊슣�뻻疫뀐옙 占쎄문占쎄쉐.
 	 */
 	public int create(Post post) throws SQLException {
 
-		String sql = "INSERT INTO POST VALUES (id_seq.nextval, ?, ?, 'imageUrl', DEFAULT, DEFAULT, ?, ?, ?, ?, ?)";
-		Object[] param = new Object[] { post.getTitle(), post.getDesc(),
-				post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId(), "1"};		
+		String sql = "INSERT INTO POST VALUES (id_seq.nextval, ?, ?, ?, DEFAULT, DEFAULT, ?, ?, ?, ?, ?, null)";
+		Object[] param = new Object[] { post.getTitle(), post.getDesc(), post.getImgUrl(),
+				post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId(), post.getCategoryId()};		
 //		Object[] param = new Object[] { post.getTitle(), post.getDesc(), post.getImgUrl(), post.getCategoryId(), 
 //				post.getViews(), post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId()};		
 		System.out.println("sql: " + sql);
@@ -40,22 +40,22 @@ private JDBCUtil jdbcUtil = null;
 			System.out.println(p);
 		}
 
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil �뿉 insert臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙	
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 占쎈퓠 insert�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟	
 		try {
-			int result = jdbcUtil.executeUpdate();	// insert 臾� �떎�뻾
+			int result = jdbcUtil.executeUpdate();	// insert �눧占� 占쎈뼄占쎈뻬
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {	 
 			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 諛섑솚
+			jdbcUtil.close();	// resource 獄쏆꼹�넎
 		}
 		return 0;			
 	}
 
 	/**
-	 * 湲곗〈�쓽 寃뚯떆湲� �젙蹂대�� �닔�젙.
+	 * 疫꿸퀣�덌옙�벥 野껊슣�뻻疫뀐옙 占쎌젟癰귣�占쏙옙 占쎈땾占쎌젟.
 	 */
 	public int update(Post post) throws SQLException {
 		String sql = "UPDATE POST "
@@ -63,10 +63,10 @@ private JDBCUtil jdbcUtil = null;
 					+ "WHERE postId=?";
 		Object[] param = new Object[]  { post.getTitle(), post.getDesc(), post.getImgUrl(), post.getCategoryId(), 
 				post.getViews(), post.getStatus(), post.getPrice() };			
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil�뿉 update臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil占쎈퓠 update�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
 			
 		try {				
-			int result = jdbcUtil.executeUpdate();	// update 臾� �떎�뻾
+			int result = jdbcUtil.executeUpdate();	// update �눧占� 占쎈뼄占쎈뻬
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -74,20 +74,20 @@ private JDBCUtil jdbcUtil = null;
 		}
 		finally {
 			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 諛섑솚
+			jdbcUtil.close();	// resource 獄쏆꼹�넎
 		}		
 		return 0;
 	}
 
 	/**
-	 * 寃뚯떆湲� ID�뿉 �빐�떦�븯�뒗 寃뚯떆湲��쓣 �궘�젣.
+	 * 野껊슣�뻻疫뀐옙 ID占쎈퓠 占쎈퉸占쎈뼣占쎈릭占쎈뮉 野껊슣�뻻疫뀐옙占쎌뱽 占쎄텣占쎌젫.
 	 */
 	public int remove(int postId) throws SQLException {
 		String sql = "DELETE FROM POST WHERE postId=?";		
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	// JDBCUtil�뿉 delete臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	// JDBCUtil占쎈퓠 delete�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
 
 		try {				
-			int result = jdbcUtil.executeUpdate();	// delete 臾� �떎�뻾
+			int result = jdbcUtil.executeUpdate();	// delete �눧占� 占쎈뼄占쎈뻬
 			return result;
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
@@ -95,26 +95,26 @@ private JDBCUtil jdbcUtil = null;
 		}
 		finally {
 			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 諛섑솚
+			jdbcUtil.close();	// resource 獄쏆꼹�넎
 		}		
 		return 0;
 	}
 
 	/**
-	 * 二쇱뼱吏� 寃뚯떆湲� ID�뿉 �빐�떦�븯�뒗 寃뚯떆湲� �젙蹂대�� �뜲�씠�꽣踰좎씠�뒪�뿉�꽌 李얠븘 Post �룄硫붿씤 �겢�옒�뒪�뿉 
-	 * ���옣�븯�뿬 諛섑솚.
+	 * 雅뚯눘堉깍쭪占� 野껊슣�뻻疫뀐옙 ID占쎈퓠 占쎈퉸占쎈뼣占쎈릭占쎈뮉 野껊슣�뻻疫뀐옙 占쎌젟癰귣�占쏙옙 占쎈쑓占쎌뵠占쎄숲甕곗쥙�뵠占쎈뮞占쎈퓠占쎄퐣 筌≪뼚釉� Post 占쎈즲筌롫뗄�뵥 占쎄깻占쎌삋占쎈뮞占쎈퓠 
+	 * 占쏙옙占쎌삢占쎈릭占쎈연 獄쏆꼹�넎.
 	 */
 	public Post findPost(int postId) throws SQLException {
         String sql = "SELECT title, description, imageUrl, createdTime, categoryId, "
         			+ "views, status, price, postType, writerId "
         			+ "FROM POST "
         			+ "WHERE postId=? ";              
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	// JDBCUtil�뿉 query臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {postId});	// JDBCUtil占쎈퓠 query�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
 
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();		// query �떎�뻾
-			if (rs.next()) {						// �븰�깮 �젙蹂� 諛쒓껄
-				Post post = new Post(		// User 媛앹껜瑜� �깮�꽦�븯�뿬 �븰�깮 �젙蹂대�� ���옣
+			ResultSet rs = jdbcUtil.executeQuery();		// query 占쎈뼄占쎈뻬
+			if (rs.next()) {						// 占쎈린占쎄문 占쎌젟癰귨옙 獄쏆뮄猿�
+				Post post = new Post(		// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎈린占쎄문 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
 					postId,
 					rs.getString("title"),
 					rs.getString("description"),
@@ -131,25 +131,25 @@ private JDBCUtil jdbcUtil = null;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource 諛섑솚
+			jdbcUtil.close();		// resource 獄쏆꼹�넎
 		}
 		return null;
 	}
 
 	/**
-	 * �쟾泥� 寃뚯떆湲� �젙蹂대�� 寃��깋�븯�뿬 List�뿉 ���옣 諛� 諛섑솚
+	 * 占쎌읈筌ｏ옙 野껊슣�뻻疫뀐옙 占쎌젟癰귣�占쏙옙 野껓옙占쎄퉳占쎈릭占쎈연 List占쎈퓠 占쏙옙占쎌삢 獄쏉옙 獄쏆꼹�넎
 	 */
 	public List<Post> findPostList() throws SQLException {
         String sql = "SELECT postId, title, views, status, price, postType, writerId " 
         		   + "FROM POST "
         		   + "ORDER BY postId";
-		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil�뿉 query臾� �꽕�젙
+		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil占쎈퓠 query�눧占� 占쎄퐬占쎌젟
 					
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();			// query �떎�뻾			
-			List<Post> postList = new ArrayList<Post>();	// User�뱾�쓽 由ъ뒪�듃 �깮�꽦
+			ResultSet rs = jdbcUtil.executeQuery();			// query 占쎈뼄占쎈뻬			
+			List<Post> postList = new ArrayList<Post>();	// User占쎈굶占쎌벥 �뵳�딅뮞占쎈뱜 占쎄문占쎄쉐
 			while (rs.next()) {
-				Post post = new Post(			// User 媛앹껜瑜� �깮�꽦�븯�뿬 �쁽�옱 �뻾�쓽 �젙蹂대�� ���옣
+				Post post = new Post(			// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎌겱占쎌삺 占쎈뻬占쎌벥 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
 						rs.getInt("postId"),
 						rs.getString("title"),
 						rs.getInt("views"),
@@ -157,33 +157,33 @@ private JDBCUtil jdbcUtil = null;
 						rs.getInt("price"),
 						rs.getString("postType"),
 						rs.getInt("writerId"));
-				postList.add(post);				// List�뿉 User 媛앹껜 ���옣
+				postList.add(post);				// List占쎈퓠 User 揶쏆빘猿� 占쏙옙占쎌삢
 			}		
 			return postList;					
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource 諛섑솚
+			jdbcUtil.close();		// resource 獄쏆꼹�넎
 		}
 		return null;
 	}
 	
 	/**
-	 * �쟾泥� 寃뚯떆湲� �젙蹂대�� 寃��깋�븯�뿬 List�뿉 ���옣 諛� 諛섑솚
+	 * 占쎌읈筌ｏ옙 野껊슣�뻻疫뀐옙 占쎌젟癰귣�占쏙옙 野껓옙占쎄퉳占쎈릭占쎈연 List占쎈퓠 占쏙옙占쎌삢 獄쏉옙 獄쏆꼹�넎
 	 */
 	public List<Post> findPostListUseCategory(String cName) throws SQLException {
         String sql = "SELECT postId, title, views, status, price, postType, writerId " 
         		   + "FROM POST p JOIN CATEGORY c ON p.categoryId=c.categoryId "
         		   + "WHERE categoryName=? "
         		   + "ORDER BY postId";
-        jdbcUtil.setSqlAndParameters(sql, new Object[] {cName});		// JDBCUtil�뿉 query臾� �꽕�젙
+        jdbcUtil.setSqlAndParameters(sql, new Object[] {cName});		// JDBCUtil占쎈퓠 query�눧占� 占쎄퐬占쎌젟
 					
 		try {
-			ResultSet rs = jdbcUtil.executeQuery();			// query �떎�뻾			
-			List<Post> postList = new ArrayList<Post>();	// User�뱾�쓽 由ъ뒪�듃 �깮�꽦
+			ResultSet rs = jdbcUtil.executeQuery();			// query 占쎈뼄占쎈뻬			
+			List<Post> postList = new ArrayList<Post>();	// User占쎈굶占쎌벥 �뵳�딅뮞占쎈뱜 占쎄문占쎄쉐
 			while (rs.next()) {
-				Post post = new Post(			// User 媛앹껜瑜� �깮�꽦�븯�뿬 �쁽�옱 �뻾�쓽 �젙蹂대�� ���옣
+				Post post = new Post(			// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎌겱占쎌삺 占쎈뻬占쎌벥 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
 						rs.getInt("postId"),
 						rs.getString("title"),
 						rs.getInt("views"),
@@ -191,7 +191,7 @@ private JDBCUtil jdbcUtil = null;
 						rs.getInt("price"),
 						rs.getString("postType"),
 						rs.getInt("writerId"));
-				postList.add(post);				// List�뿉 User 媛앹껜 ���옣
+				postList.add(post);				// List占쎈퓠 User 揶쏆빘猿� 占쏙옙占쎌삢
 				log.debug(rs.getString("postType"));
 			}
 			
@@ -200,7 +200,7 @@ private JDBCUtil jdbcUtil = null;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource 諛섑솚
+			jdbcUtil.close();		// resource 獄쏆꼹�넎
 		}
 		return null;
 	}
@@ -246,17 +246,17 @@ private JDBCUtil jdbcUtil = null;
 	
 		Object[] param = new Object[]  { post.getViews() + 1, post.getPostId() };			
 	
-		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil�뿉 update臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil占쎈퓠 update�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
 		
 	
 		try {				
-			jdbcUtil.executeUpdate();	// update 臾� �떎�뻾
+			jdbcUtil.executeUpdate();	// update �눧占� 占쎈뼄占쎈뻬
 		} catch (Exception ex) {
 			jdbcUtil.rollback();
 			ex.printStackTrace();
 		} finally {
 			jdbcUtil.commit();
-			jdbcUtil.close();	// resource 諛섑솚
+			jdbcUtil.close();	// resource 獄쏆꼹�넎
 		}		
 		
 	}

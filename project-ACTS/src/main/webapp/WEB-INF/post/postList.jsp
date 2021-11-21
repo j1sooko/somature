@@ -13,7 +13,6 @@
 	type="text/css">
 </head>
 <body>
-
 	<table style="background-color: YellowGreen">
 		<tr>
 			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
