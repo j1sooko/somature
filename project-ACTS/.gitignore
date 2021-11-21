@@ -15,8 +15,11 @@ local.properties
 .loadpath
 .recommenders
 
+# ignore properties file
+pom.properties
+
 # External tool builders
-.externalToolBuilders/
+.externalToolBuilders/	
 
 # Locally stored "Eclipse launch configurations"
 *.launch

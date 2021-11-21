@@ -149,7 +149,7 @@ a {
 					${post.price}</td>
 
 				<td width="200" align="center" bgcolor="ffffff" height="20">
-					${post.postType}</td>
+					${post.pType}</td>
 				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${post.writerId}</td>
 			</tr>
