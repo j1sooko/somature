@@ -74,6 +74,11 @@
             <div id="headLineText" align="left">
                 Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
             </div>
+            <div id = "search">
+            	<a href = "<c:url value='/comm/search/searchForm'>
+		                <c:param name='searchForm' value='검색'/></c:url>"></a>
+            	<i class="bi bi-search"></i>
+            </div>
                 <!--  
             <div>
                 <img src="./image/돋보기.GIF"><img src="./image/즐겨찾기.GIF"><img src="./image/마이프로필.GIF">
