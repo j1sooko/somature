@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%@include file="/WEB-INF/navbar.jsp" %>
 	팔로잉리스트
 </body>
 </html>

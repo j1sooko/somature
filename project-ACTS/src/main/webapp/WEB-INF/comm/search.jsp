@@ -65,6 +65,10 @@
                 color: white;
             }
             
+            a {
+				text-decoration: none;
+			}
+            
 
         </style>
     </head>
@@ -72,8 +76,11 @@
     <body>
         <div id="headLine" align="center" >
             <div id="headLineText" align="left">
-                Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
+            <a href="<c:url value='/comm/main'></c:url>" id="headLineText" >
+                Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/></a>         
             </div>
+            
+            
             <div id = "search">
             	<a href = "<c:url value='/comm/search/searchForm'>
 		                <c:param name='searchForm' value='검색'/></c:url>"></a>

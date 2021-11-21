@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%@include file="/WEB-INF/navbar.jsp" %>
 	내가 올린 포스트
 </body>
 </html>

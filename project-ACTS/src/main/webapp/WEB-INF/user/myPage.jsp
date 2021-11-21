@@ -18,7 +18,7 @@
 </style>
 </head>
 <body>
-
+<%@include file="/WEB-INF/navbar.jsp" %>
 	<h1>내정보</h1>
 	<a href="<c:url value='/user/myInfo' />">내 정보 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
