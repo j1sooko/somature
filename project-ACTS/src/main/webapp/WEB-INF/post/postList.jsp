@@ -3,7 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	@SuppressWarnings("unchecked") 
-	List<Post> postList = (List<Post>)request.getAttribute("postList");
+	List<Post> postList = null;
+	postList = (List<Post>)request.getAttribute("postList");
 %>
 <html>
 <head>
@@ -23,6 +24,7 @@
 		</tr>
 		
 		<%
+			
 			if (postList != null) {	
 	  			Iterator<Post> postIter = postList.iterator();
 	
