@@ -17,8 +17,6 @@ public class Post {
 	private int price;
 	private String pType;
 	private int writerId;
-	private String accountId;
-	private int curUserId;
 	public Post() {
 	} // 湲곕낯 �깮�꽦�옄
 
@@ -63,15 +61,14 @@ public class Post {
 
 
 //	UpdatePostController parameter생성자
-	public Post(int postId, String title, String status, int price, String desc, String accountId, int curUserId) {
+	public Post(int postId, String title, String status, int price, String desc, int writerId) {
 		super();
 		this.postId = postId;
 		this.title = title;
 		this.status = status;
 		this.price = price;
 		this.desc = desc;
-		this.accountId = accountId;
-		this.curUserId = curUserId;
+		this.writerId = writerId;
 	}
 
   

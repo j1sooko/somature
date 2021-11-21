@@ -24,8 +24,7 @@ public class UpdatePostController implements Controller{
 				request.getParameter("status"),
 				Integer.parseInt(request.getParameter("price")),
 				request.getParameter("description"),
-				request.getParameter("accountId"),
-				Integer.parseInt(request.getParameter("curUserId"))
+				Integer.parseInt(request.getParameter("writerUserId"))
 				);
 		try {
 			PostManager manager = PostManager.getInstance();
