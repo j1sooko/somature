@@ -69,6 +69,7 @@ function postCreate() {
 	<form name="form" method="POST" action="<c:url value='/post/update' />">
 		<input type="hidden" name="postId" value="${post.postId}"/>
 		<input type="hidden" name="writerId" value="${post.writerId}"/>
+		<input type="hidden" name="views" value="${post.views}"/>
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label">Title</label>
 			<br> <input name="title" class="form-control  input-sm"

@@ -59,10 +59,10 @@ private JDBCUtil jdbcUtil = null;
 	 */
 	public int update(Post post) throws SQLException {
 		String sql = "UPDATE POST "
-					+ "SET title=?, description=?, imageUrl=?, categoryId=?, views=?, status=?, price=? "
+					+ "SET title=?, description=?, imageUrl=?, categoryId=?, status=?, price=? "
 					+ "WHERE postId=?";
 		Object[] param = new Object[]  { post.getTitle(), post.getDesc(), post.getImgUrl(), post.getCategoryId(), 
-				post.getViews(), post.getStatus(), post.getPrice(), post.getPostId() };			
+				post.getStatus(), post.getPrice(), post.getPostId() };			
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil占쎈퓠 update�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
 			
 		try {				

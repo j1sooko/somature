@@ -26,7 +26,7 @@ public class UpdatePostController implements Controller{
     	User user = null;
     	Post post = null;
     	
-
+    	String postUserNickName = null;
 		// 로그인 여부 확인
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
             return "redirect:/user/login/form";		// login form 요청으로 redirect
@@ -46,6 +46,7 @@ public class UpdatePostController implements Controller{
     		// GET request: 회원정보 수정 form 요청	
     		// 원래는 UpdateUserFormController가 처리하던 작업을 여기서 수행
 //    		String updateId = request.getParameter("accountId");
+			
     		int postId = Integer.parseInt(request.getParameter("postId"));
     		log.debug("PostUpdateForm Request : {}, {}", loginAccountId, postId);
     		
@@ -82,17 +83,20 @@ public class UpdatePostController implements Controller{
 				request.getParameter("description"),
 				request.getParameter("imgUrl"),
 				Integer.parseInt(request.getParameter("categoryId")),
+				Integer.parseInt(request.getParameter("views")),
 				request.getParameter("status"),
 				Integer.parseInt(request.getParameter("price")),
 				request.getParameter("pType"),
 				Integer.parseInt(request.getParameter("writerId")));
 			
-
+		postUserNickName = postManager.getPostUserNickName(Integer.parseInt(request.getParameter("writerId")));
 		log.debug("Update Post : {}", updatePost);
+		postManager.increasePostView(updatePost);
 		postManager.update(updatePost);
 		request.setAttribute("postId", updatePost.getPostId());	
 		request.setAttribute("post", updatePost);	
-        return "/post/postInfo";
+		request.setAttribute("nickname", postUserNickName);
+        return "/post/postInfo.jsp";
 
 	
 	}
