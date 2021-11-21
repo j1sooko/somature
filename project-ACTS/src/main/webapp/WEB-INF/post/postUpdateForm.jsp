@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="model.*"%>
 <% User user = (User)request.getAttribute("user"); %>
+<% Post post = (Post)request.getAttribute("post"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,12 +62,11 @@ function postCreate() {
 </script>
 </head>
 <body>
-<%@include file="/WEB-INF/navbar.jsp" %>
-
 <h1>작성하기</h1>
 
 	<!-- title -->
-	<form name="form" method="POST" action="<c:url value='/post/upload' />">
+	<form name="form" method="POST" action="<c:url value='/post/update' />">
+		<input type="hidden" name="userId" value="${user.userId}"/>
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label">Title</label>
 			<br> <input name="title" class="form-control  input-sm"

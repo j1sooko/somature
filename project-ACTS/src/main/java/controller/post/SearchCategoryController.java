@@ -26,7 +26,7 @@ public class SearchCategoryController implements Controller  {
 			PostManager manager = PostManager.getInstance();
 			List<Post> postList = manager.findPostListUseCategory(categoryName);
 			
-			// postList 객체를 request에 저장하여 게시글 리스트 화면으로 이동(forwarding)
+			// postList 媛앹껜瑜� request�뿉 ���옣�븯�뿬 寃뚯떆湲� 由ъ뒪�듃 �솕硫댁쑝濡� �씠�룞(forwarding)
 			request.setAttribute("postList", postList);
 			return "/comm/main.jsp";
 	}

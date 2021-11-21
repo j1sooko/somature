@@ -19,14 +19,17 @@ public class PostInfoController implements Controller {
 		HttpSession session = request.getSession();
 
     	Post post = null;
+    	String postUserNickName = null;
     	try {
     		post = manager.findPost(Integer.parseInt(request.getParameter("postId")));	// 사용자 정보 검색
+    		postUserNickName = manager.getPostUserNickName(Integer.parseInt(request.getParameter("writerId")));
     		manager.increasePostView(post);
     	} catch (PostNotFoundException e) {				
 	        return "redirect:/post/postList";
 		}	
 		
-    	request.setAttribute("post", post);		// 사용자 정보 저장				
+    	request.setAttribute("post", post);		// 사용자 정보 저장
+    	request.setAttribute("nickname", postUserNickName);
 		return "/post/postInfo.jsp";				// 사용자 보기 화면으로 이동
     }
 
