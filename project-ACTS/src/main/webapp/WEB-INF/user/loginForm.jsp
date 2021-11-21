@@ -70,7 +70,6 @@ body {
 
 a {
 	text-decoration: none;
-	color: black;
 }
 
 .d {
@@ -83,7 +82,8 @@ a {
 
 	<div id="headLine" align="center">
 		<div id="headLineText" align="left">
-			Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
+			<a href="<c:url value='/comm/main'></c:url>"  id="headLineText">
+                Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/></a>
 		</div>
 	</div>
 

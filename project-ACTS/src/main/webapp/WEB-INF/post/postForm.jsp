@@ -61,6 +61,8 @@ function postCreate() {
 </script>
 </head>
 <body>
+<%@include file="/WEB-INF/navbar.jsp" %>
+
 <h1>작성하기</h1>
 
 	<!-- title -->

@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<%@include file="/WEB-INF/navbar.jsp" %>
 	<br>
 	<table style="width: 100%">
 
