@@ -34,7 +34,10 @@
 		<c:forEach var="post" items="${postList}">
 			<tr>
 				<td width="190" align="center" bgcolor="ffffff" height="20">
-					${post.title}
+					<a href="<c:url value='/post/postInfo'>
+					   			<c:param name='postId' value='${post.postId}'/>
+			 		 		 </c:url>">
+			  		${post.title}</a>
 				</td>
 				
 				<td width="200" align="center" bgcolor="ffffff" height="20">
@@ -45,7 +48,7 @@
 					${post.postType}
 				</td>
 				<td width="200" align="center" bgcolor="ffffff" height="20">
-					${user.commName}
+					${post.writerId}
 				</td>
 			</tr>
 		</c:forEach>
