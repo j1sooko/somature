@@ -33,6 +33,7 @@ private JDBCUtil jdbcUtil = null;
 		for (Object p : param) {
 			System.out.println(p);
 		}
+
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil �뿉 insert臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙	
 		try {
 			int result = jdbcUtil.executeUpdate();	// insert 臾� �떎�뻾
@@ -162,25 +163,38 @@ private JDBCUtil jdbcUtil = null;
 		return null;
 	}
 	
-//	/**
-//	 * 二쇱뼱吏� �궗�슜�옄 ID�뿉 �빐�떦�븯�뒗 �궗�슜�옄媛� 議댁옱�븯�뒗吏� 寃��궗 
-//	 */
-//	public boolean existingUser(String accountId) throws SQLException {
-//		String sql = "SELECT count(*) FROM ACCOUNT WHERE accountId=?";      
-//		jdbcUtil.setSqlAndParameters(sql, new Object[] {accountId});	// JDBCUtil�뿉 query臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙
-//
-//		try {
-//			ResultSet rs = jdbcUtil.executeQuery();		// query �떎�뻾
-//			if (rs.next()) {
-//				int count = rs.getInt(1);
-//				return (count == 1 ? true : false);
-//			}
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		} finally {
-//			jdbcUtil.close();		// resource 諛섑솚
-//		}
-//		return false;
-//	}
+	public List<Post> SearchPostList(String title) throws SQLException {
+		String sql = "SELECT postId "
+				+ "FROM POST "
+				+ "WHERE title LIKE '%"
+				+ title
+				+ "%'";
+		jdbcUtil.setSqlAndParameters(sql, null);
+		
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();
+			List<Post> postList = new ArrayList<Post>();
+			
+			while(rs.next()) {
+				Post post = new Post(
+						rs.getInt("postId"),
+						rs.getString("title"),
+						rs.getInt("views"),
+						rs.getString("status"),
+						rs.getInt("price"),
+						rs.getString("postType"),
+						rs.getInt("writerId"));
+				postList.add(post);	
+			
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();
+		}
+		
+		return null;
+	}
 
 }
