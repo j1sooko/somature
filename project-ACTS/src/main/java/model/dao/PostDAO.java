@@ -28,9 +28,9 @@ private JDBCUtil jdbcUtil = null;
 	 */
 	public int create(Post post) throws SQLException {
 
-		String sql = "INSERT INTO POST VALUES (id_seq.nextval, ?, ?, 'imageUrl', DEFAULT, 4, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO POST VALUES (id_seq.nextval, ?, ?, 'imageUrl', DEFAULT, DEFAULT, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] { post.getTitle(), post.getDesc(),
-				0, post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId()};		
+				post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId(), "1"};		
 //		Object[] param = new Object[] { post.getTitle(), post.getDesc(), post.getImgUrl(), post.getCategoryId(), 
 //				post.getViews(), post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId()};		
 		System.out.println("sql: " + sql);
@@ -139,7 +139,7 @@ private JDBCUtil jdbcUtil = null;
 	 * �쟾泥� 寃뚯떆湲� �젙蹂대�� 寃��깋�븯�뿬 List�뿉 ���옣 諛� 諛섑솚
 	 */
 	public List<Post> findPostList() throws SQLException {
-        String sql = "SELECT title, views, status, price, postType, writerId " 
+        String sql = "SELECT postId, title, views, status, price, postType, writerId " 
         		   + "FROM POST "
         		   + "ORDER BY postId";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil�뿉 query臾� �꽕�젙
@@ -236,6 +236,28 @@ private JDBCUtil jdbcUtil = null;
 		}
 		
 		return null;
+	}
+	
+	public void increasePostView(Post post) throws SQLException {
+		String sql = "UPDATE POST "
+				+ "SET views=? "
+				+ "WHERE postId=?";
+	
+		Object[] param = new Object[]  { post.getViews() + 1, post.getPostId() };			
+	
+		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil�뿉 update臾멸낵 留ㅺ컻 蹂��닔 �꽕�젙
+		
+	
+		try {				
+			jdbcUtil.executeUpdate();	// update 臾� �떎�뻾
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();	// resource 諛섑솚
+		}		
+		
 	}
 
 }
