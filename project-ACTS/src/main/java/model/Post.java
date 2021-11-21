@@ -17,6 +17,8 @@ public class Post {
 	private int price;
 	private String pType;
 	private int writerId;
+	private String thumbImg; //썸네일 이미지
+	
 	public Post() {
 	} // 湲곕낯 �깮�꽦�옄
 
@@ -49,13 +51,16 @@ public class Post {
 
 	
 	//post 업로드
-	public Post(String title, String desc, String status, int price, String pType, int writerId) {
+	public Post(String title, String desc, String imgUrl, int categoryId, String status, int price, String pType, int writerId) {
 		this.title = title;
 		this.desc = desc;
+		this.imgUrl = imgUrl;
+		this.categoryId = categoryId;
 		this.status = status;
 		this.price = price;
 		this.pType = pType;
 		this.writerId = writerId;
+		
 	}
 	
 
@@ -160,12 +165,22 @@ public class Post {
 		this.writerId = writerId;
 	}
 
+	public String getThumbImg() {
+		return thumbImg;
+	}
+
+	public void setThumbImg(String thumbImg) {
+		this.thumbImg = thumbImg;
+	}
+
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId + ", title=" + title + ", desc=" + desc + ", imgUrl=" + imgUrl + ", cTime="
 				+ cTime + ", categoryId=" + categoryId + ", views=" + views + ", status=" + status + ", price=" + price
-				+ ", pType=" + pType + ", writerId=" + writerId + "]";
+				+ ", pType=" + pType + ", writerId=" + writerId + ", thumbImg=" + thumbImg + "]";
 	}
+
+
 	
 	
 	
