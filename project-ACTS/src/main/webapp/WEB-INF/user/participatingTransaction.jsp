@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@include file="/WEB-INF/navbar.jsp" %>
 	현재거래내역
 </body>
 </html>

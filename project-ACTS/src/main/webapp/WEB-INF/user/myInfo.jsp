@@ -10,7 +10,7 @@
 <title>내 정보</title>
 </head>
 <body>
-	
+	<%@include file="/WEB-INF/navbar.jsp" %>
 	<table>
 		<tr><td>아이디</td>
 			<td><%= user.getAccountId() %></td></tr>

@@ -85,6 +85,7 @@ table {
 </script>
 </head>
 <body>
+<%@include file="/WEB-INF/navbar.jsp" %>
 <!-- ACTS 누르면 메인으로 이동하는 기능 구현해야함 -->
 	<h1 id="title">
 		Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
