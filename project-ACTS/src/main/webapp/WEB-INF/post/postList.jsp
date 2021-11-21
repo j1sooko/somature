@@ -4,7 +4,6 @@
 <%
 	@SuppressWarnings("unchecked") 
 	List<Post> postList = (List<Post>)request.getAttribute("postList");
-	int curPostId = (int)request.getAttribute("curPostId");
 %>
 <html>
 <head>
@@ -50,6 +49,11 @@
 				</td>
 			</tr>
 		</c:forEach>
+		
+		<%
+	  			}
+			}
+		%>
 	</table>
 </body>
 </html>
