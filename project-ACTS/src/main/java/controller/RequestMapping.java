@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.user.*;
 import controller.post.*;
+import controller.message.*;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -55,6 +56,10 @@ public class RequestMapping {
         mappings.put("/post/upload", new UploadPostController());
         mappings.put("/post/update", new UpdatePostController());
         mappings.put("/post/postInfo", new PostInfoController());
+        
+        // 메세지
+        mappings.put("/message/send/form", new ForwardController("message/messageForm.jsp")); //소비자 와주 입력 양식
+        mappings.put("/message/send", new SendMessageController()); //기본 메세지 입력 폼
         
         logger.info("Initialized Request Mapping!");
     }

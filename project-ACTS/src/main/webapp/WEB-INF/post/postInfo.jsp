@@ -74,9 +74,12 @@
 					
 				</table> <br> 
 				<a href="<c:url value='/post/update'>
-				
 				<c:param name='postId' value='${post.postId}'/>
 				</c:url>">게시글 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				<a href="<c:url value='/message/send/form'>
+				<c:param name='receiverId' value='${post.writerId}'/>
+				</c:url>">쪽지 보내기</a>
 				
 				<!-- 수정 또는 삭제가  실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
         <c:if test="${postUpdateFailed || deleteFailed}">
