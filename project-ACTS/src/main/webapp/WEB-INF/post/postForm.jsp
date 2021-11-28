@@ -66,7 +66,7 @@ function postCreate() {
 <h1>작성하기</h1>
 
 	<!-- title -->
-	<form name="form" method="POST" action="<c:url value='/post/upload' />">
+	<form name="form" method="POST" action="<c:url value='/post/upload' />" enctype="multipart/form-data">
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label">Title</label>
 			<br> <input name="title" class="form-control  input-sm"
@@ -125,7 +125,7 @@ function postCreate() {
 		
 		<!--  이미지 업로드 -->
 	<input type="file" id="image" accept="image/*"
-		onchange="setThumbnail(event);" name="imgUrl" />
+		onchange="setThumbnail(event);" name="image" />
 	<br><%=request.getRealPath("/") %>
 	<div id="image_container"></div>
 	<script>

@@ -72,6 +72,12 @@
 							${post.views}</td>
 					</tr>
 					
+					<tr>
+						<td width="120" align="center" bgcolor="E6ECDE" height="22">이미지</td>
+						<img src="${pageContext.request.contextPath}/upload/${post.imgUrl}">
+					</tr>
+					
+					
 				</table> <br> 
 				<a href="<c:url value='/post/update'>
 				

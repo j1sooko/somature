@@ -38,10 +38,11 @@ public class Post {
 	}
 
 	// List 異쒕젰�쓣 �쐞�븳 �깮�꽦�옄
-	public Post(int postId, String title, int views, String status, int price, String pType, int writerId) {
+	public Post(int postId, String title, String imgUrl, int views, String status, int price, String pType, int writerId) {
 		super();
 		this.postId = postId;
 		this.title = title;
+		this.imgUrl = imgUrl;
 		this.views = views;
 		this.status = status;
 		this.price = price;
@@ -50,7 +51,7 @@ public class Post {
 	}
 
 	
-	//post 업로드
+	//post upload
 	public Post(String title, String desc, String imgUrl, int categoryId, String status, int price, String pType, int writerId) {
 		this.title = title;
 		this.desc = desc;

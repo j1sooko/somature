@@ -32,6 +32,7 @@ public class RequestMapping {
         
         
         mappings.put("/user/list", new ListUserController()); //경원: 유저리스트 보는건 사용자가 아닌 administrator가 보는거라서 뺌
+      
         
         
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
