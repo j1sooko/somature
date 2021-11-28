@@ -44,7 +44,7 @@ public class RequestMapping {
 //        mappings.put("/user/update/form", new ForwardController("/user/updateForm.jsp")); //경원: 자기 자신의 정보를 수정하고자 할 때  
         
         mappings.put("/user/update", new UpdateUserController());
-        mappings.put("/user/myPost", new ForwardController("/user/myPost.jsp"));
+        mappings.put("/user/myPost", new MyPostController());
         mappings.put("/user/participatingTransaction", new ForwardController("/user/participatingTransaction.jsp"));
         mappings.put("/user/followingList", new ForwardController("/user/followingList.jsp"));
         
