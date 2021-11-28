@@ -74,9 +74,9 @@ public class UserDAO {
 	/**
 	 * 占쎄텢占쎌뒠占쎌쁽 ID占쎈퓠 占쎈퉸占쎈뼣占쎈릭占쎈뮉 占쎄텢占쎌뒠占쎌쁽�몴占� 占쎄텣占쎌젫.
 	 */
-	public int remove(String userId) throws SQLException {
-		String sql = "DELETE FROM ACCOUNT WHERE userid=?";		
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil占쎈퓠 delete�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
+	public int remove(String accountId) throws SQLException {
+		String sql = "DELETE FROM ACCOUNT WHERE accountId=?";		
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {accountId});	// JDBCUtil占쎈퓠 delete�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
 
 		try {				
 			int result = jdbcUtil.executeUpdate();	// delete �눧占� 占쎈뼄占쎈뻬
@@ -222,6 +222,25 @@ public class UserDAO {
 			jdbcUtil.close();		// resource 獄쏆꼹�넎
 		}
 		return false;
+	}
+	
+	public String findAccountIdByUserId (String userId) throws SQLException {
+		 String sql = "SELECT accountId "
+     			+ "FROM ACCOUNT "
+     			+ "WHERE userId=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil占쎈퓠 query�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 占쎈뼄占쎈뻬
+			if (rs.next()) {						// 占쎈린占쎄문 占쎌젟癰귨옙 獄쏆뮄猿�
+				return rs.getString("accountId");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 獄쏆꼹�넎
+		}
+		return null;
 	}
 	
 
