@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 
 /**
- * 寃뚯떆湲� 愿�由щ�� �쐞�빐 �븘�슂�븳 �룄硫붿씤 �겢�옒�뒪. POST �뀒�씠釉붽낵 ���쓳�맖
+ * 野껊슣�뻻疫뀐옙 �꽴占썹뵳�됵옙占� 占쎌맄占쎈퉸 占쎈툡占쎌뒄占쎈립 占쎈즲筌롫뗄�뵥 占쎄깻占쎌삋占쎈뮞. POST 占쎈�믭옙�뵠�뇡遺쎈궢 占쏙옙占쎌벓占쎈쭡
  */
 public class Post {
 	private int postId;
@@ -17,10 +17,10 @@ public class Post {
 	private int price;
 	private String pType;
 	private int writerId;
-	private String thumbImg; //썸네일 이미지
+	private String thumbImg; //�뜽�꽕�씪 �씠誘몄�
 	
 	public Post() {
-	} // 湲곕낯 �깮�꽦�옄
+	} // 疫꿸퀡�궚 占쎄문占쎄쉐占쎌쁽
 
 	public Post(int postId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status, int price, String pType, int writerId) {
 		super();
@@ -37,9 +37,9 @@ public class Post {
 		this.writerId = writerId;
 	}
 
+
 	// List 異쒕젰�쓣 �쐞�븳 �깮�꽦�옄
 	public Post(int postId, String title, String imgUrl, int views, String status, int price, String pType, int writerId) {
-		super();
 		this.postId = postId;
 		this.title = title;
 		this.imgUrl = imgUrl;
@@ -50,7 +50,7 @@ public class Post {
 		this.writerId = writerId;
 	}
 
-	
+
 	//post upload
 	public Post(String title, String desc, String imgUrl, int categoryId, String status, int price, String pType, int writerId) {
 		this.title = title;
@@ -64,7 +64,7 @@ public class Post {
 		
 	}
 	
-//	UpdatePostController parameter생성자
+//	UpdatePostController parameter�깮�꽦�옄
 	public Post(int postId, String title, String desc, String imgUrl, int categoryId, int views, String status, int price, String pType, int writerId) {
 		this.postId = postId;
 		this.title = title;

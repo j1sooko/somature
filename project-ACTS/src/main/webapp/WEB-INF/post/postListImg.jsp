@@ -13,6 +13,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />"
    type="text/css">
+<style>
+.listImg {
+  width: 300px;
+  height: 150px;
+  object-fit: cover;
+}
+</style>
 </head>
 <body>
 
@@ -28,7 +35,7 @@
 		<a href="<c:url value='/post/postInfo'>
 					   			<c:param name='postId' value='${post.postId}'/>
 					   			<c:param name='writerId' value ='${post.writerId}' /></c:url>">
-			  		<img src="${pageContext.request.contextPath}/upload/${post.getImgUrl()}"></a>
+			  		<img src="${pageContext.request.contextPath}/upload/${post.getImgUrl()}" class="listImg"></a>
 			
 		</c:forEach>
 		

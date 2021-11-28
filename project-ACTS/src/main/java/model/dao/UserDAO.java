@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Post;
 import model.User;
 import java.sql.Date;
 
@@ -74,9 +76,9 @@ public class UserDAO {
 	/**
 	 * 占쎄텢占쎌뒠占쎌쁽 ID占쎈퓠 占쎈퉸占쎈뼣占쎈릭占쎈뮉 占쎄텢占쎌뒠占쎌쁽�몴占� 占쎄텣占쎌젫.
 	 */
-	public int remove(String userId) throws SQLException {
-		String sql = "DELETE FROM ACCOUNT WHERE userid=?";		
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil占쎈퓠 delete�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
+	public int remove(String accountId) throws SQLException {
+		String sql = "DELETE FROM ACCOUNT WHERE accountId=?";		
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {accountId});	// JDBCUtil占쎈퓠 delete�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
 
 		try {				
 			int result = jdbcUtil.executeUpdate();	// delete �눧占� 占쎈뼄占쎈뻬
@@ -165,37 +167,6 @@ public class UserDAO {
 	 * 占쎌읈筌ｏ옙 占쎄텢占쎌뒠占쎌쁽 占쎌젟癰귣�占쏙옙 野껓옙占쎄퉳占쎈립 占쎌뜎 占쎌겱占쎌삺 占쎈읂占쎌뵠筌욑옙占쏙옙 占쎈읂占쎌뵠筌욑옙占쎈뼣 �빊�뮆�젾占쎈막 占쎄텢占쎌뒠占쎌쁽 占쎈땾�몴占� 占쎌뵠占쎌뒠占쎈릭占쎈연
 	 * 占쎈퉸占쎈뼣占쎈릭占쎈뮉 占쎄텢占쎌뒠占쎌쁽 占쎌젟癰귣�彛뷂옙�뱽 List占쎈퓠 占쏙옙占쎌삢占쎈릭占쎈연 獄쏆꼹�넎.
 	 */
-//	public List<User> findUserList(int currentPage, int countPerPage) throws SQLException {
-//		String sql = "SELECT userId, name, email, NVL(commId, 0), cName " 
-//					+ "FROM USERINFO u LEFT OUTER JOIN Community c ON u.commId = c.cId "
-//					+ "ORDER BY userId";
-//		jdbcUtil.setSqlAndParameters(sql, null,					// JDBCUtil占쎈퓠 query�눧占� 占쎄퐬占쎌젟
-//				ResultSet.TYPE_SCROLL_INSENSITIVE,				// cursor scroll 揶쏉옙占쎈뮟
-//				ResultSet.CONCUR_READ_ONLY);						
-//		
-//		try {
-//			ResultSet rs = jdbcUtil.executeQuery();				// query 占쎈뼄占쎈뻬			
-//			int start = ((currentPage-1) * countPerPage) + 1;	// �빊�뮆�젾占쎌뱽 占쎈뻻占쎌삂占쎈막 占쎈뻬 甕곕뜇�깈 �④쑴沅�
-//			if ((start >= 0) && rs.absolute(start)) {			// �뚣끉苑뚨몴占� 占쎈뻻占쎌삂 占쎈뻬占쎌몵嚥∽옙 占쎌뵠占쎈짗
-//				List<User> userList = new ArrayList<User>();	// User占쎈굶占쎌벥 �뵳�딅뮞占쎈뱜 占쎄문占쎄쉐
-//				do {
-//					User user = new User(			// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎌겱占쎌삺 占쎈뻬占쎌벥 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
-//						rs.getString("userId"),
-//						null,
-//						rs.getString("name"),
-//						rs.getString("email"),
-//						null);
-//					userList.add(user);							// �뵳�딅뮞占쎈뱜占쎈퓠 User 揶쏆빘猿� 占쏙옙占쎌삢
-//				} while ((rs.next()) && (--countPerPage > 0));		
-//				return userList;							
-//			}
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		} finally {
-//			jdbcUtil.close();		// resource 獄쏆꼹�넎
-//		}
-//		return null;
-//	}
 
 	
 	private java.util.Date valueOf(Date date) {
@@ -222,6 +193,59 @@ public class UserDAO {
 			jdbcUtil.close();		// resource 獄쏆꼹�넎
 		}
 		return false;
+	}
+	
+	public String findAccountIdByUserId (String userId) throws SQLException {
+		 String sql = "SELECT accountId "
+     			+ "FROM ACCOUNT "
+     			+ "WHERE userId=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil占쎈퓠 query�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 占쎈뼄占쎈뻬
+			if (rs.next()) {						// 占쎈린占쎄문 占쎌젟癰귨옙 獄쏆뮄猿�
+				return rs.getString("accountId");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 獄쏆꼹�넎
+		}
+		return null;
+	}
+	
+	public List<Post> findMyPostList(int userId) throws SQLException {
+        String sql = "SELECT * " 
+        		   + "FROM POST "
+        		   + "WHERE writerId=? ";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
+					
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();	
+			List<Post> postList = new ArrayList<Post>();
+			while (rs.next()) {
+				Post post = new Post(		// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎈린占쎄문 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
+						rs.getInt("postId"),
+						rs.getString("title"),
+						rs.getString("description"),
+						rs.getString("imageUrl"),
+						rs.getDate("createdTime"),
+						rs.getInt("categoryId"),
+						rs.getInt("views"),
+						rs.getString("status"),
+						rs.getInt("price"),
+						rs.getString("postType"),
+						rs.getInt("writerId"));
+				postList.add(post);				// List占쎈퓠 User 揶쏆빘猿� 占쏙옙占쎌삢
+			}		
+			return postList;					
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 獄쏆꼹�넎
+		}
+		return null;
 	}
 	
 
