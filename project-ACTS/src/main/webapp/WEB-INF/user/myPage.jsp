@@ -31,6 +31,12 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 	<a href="<c:url value='/user/followingList' />">내가 팔로잉하는 계정</a>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	<a
+		href="<c:url value='/user/delete'>
+		<c:param name='accountId' value='${user.accountId}'/></c:url>">
+		회원탈퇴</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 </body>
 </html>
