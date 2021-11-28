@@ -55,6 +55,7 @@ public class RequestMapping {
         mappings.put("/post/upload", new UploadPostController());
         mappings.put("/post/update", new UpdatePostController());
         mappings.put("/post/postInfo", new PostInfoController());
+        mappings.put("/post/delete", new DeletePostController());
         
         logger.info("Initialized Request Mapping!");
     }
