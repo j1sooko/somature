@@ -33,9 +33,11 @@ body {
 	margin-left: 50px;
 	margin-right: 50px;
 }
-
+tr{
+	font-family: "맑은 고딕";
+}
 #headLine {
-	background-color: #b5cda3;
+	background-color: c5e0b4;
 	display: grid;
 	grid-template-columns: 8fr 1fr;
 	margin: 100px, 30px, 500px, 30px;
@@ -58,6 +60,7 @@ body {
 #login {
 	color: black;
 	font-weight: bolder;
+	font-family: "맑은 고딕";
 }
 
 #loginForm {
@@ -68,13 +71,18 @@ body {
 	font-size: 20px;
 }
 
-a {
-	text-decoration: none;
-	color: black;
+a:hover{
+		color:blue;
 }
 
 .d {
 	text-align: center;
+}
+.img-button input{
+	background: url( "/images/login.GIF" );
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
 }
 </style>
 </head>
@@ -83,7 +91,8 @@ a {
 
 	<div id="headLine" align="center">
 		<div id="headLineText" align="left">
-			Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
+			<img src="<c:url value='/images/Logo.png' />" border="0" width="45" height="30"/>
+			
 		</div>
 	</div>
 
@@ -91,7 +100,7 @@ a {
 	<div class="d">
 		<!-- login form  -->
 		<form name="form" method="POST" action="<c:url value='/user/login' />">
-			<table style="width: 100%">
+			<table style='width: 100%' >
 				<tr>
 					<td width="20"></td>
 					<td><br>
@@ -116,13 +125,21 @@ a {
 									<input type="password" style="width: 240" name="password">
 								</td>
 							</tr>
+							<tr >
+								<td width="250" align="center" colspan = "2">
+								<!-- <input type="button" onClick = "login()" class ="img-button" >  -->
+								<img src="<c:url value='/images/login.PNG' />" border="0" width="400" height="30" onClick = "login()"/>
+								&nbsp;
+								</td>
+							</tr>
 						</table> <br>
-						<table style="width: 100%">
+						
+						
+										
+						<table style='width: 100%'>
 							<tr>
-								<td align=left><input type="button" value="로그인"
-									onClick="login()"> &nbsp;
-									<input type="button" value="회원가입"
-									onClick="userCreate('<c:url value='/user/register/form'/>')">
+								<td align=left>
+									아직 ActsOn회원이 아니라면..<a onClick="userCreate('<c:url value='/user/register/form'/>')" >회원가입</a>
 								</td>
 							</tr>
 						</table></td>

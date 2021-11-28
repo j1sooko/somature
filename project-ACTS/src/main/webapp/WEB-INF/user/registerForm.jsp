@@ -9,12 +9,12 @@
 <title>회원가입</title>
 <style type="text/css">
 #title {
-	background-color: #C9E4C5;
+	background-color: #c5e0b4;
 	color: white;
 }
-
 h3, h4 {
-	font-weight: bold;
+	
+	font-family: '맑은 고딕';
 }
 
 #b {
@@ -87,7 +87,7 @@ table {
 <body>
 <!-- ACTS 누르면 메인으로 이동하는 기능 구현해야함 -->
 	<h1 id="title">
-		Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
+		 <img src="<c:url value='/images/Logo.png' />" border="0" width="45" height="30"/>
 			
 	</h1>
 	<div class="d">
