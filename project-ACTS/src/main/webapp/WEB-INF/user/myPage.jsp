@@ -25,8 +25,11 @@
 	<a
 		href="<c:url value='/user/update'><c:param name='accountId' value='<%=user.getAccountId()%>'/></c:url>">회원
 		정보 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<c:url value='/user/myPost' />">내가 쓴 글 관리</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+	<a
+		href="<c:url value='/user/myPost'>
+		<c:param name='userId' value='${user.userId}'/></c:url>">
+		내가 쓴 글 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
 	<a href="<c:url value='/user/participatingTransaction' />">현재거래내역</a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
