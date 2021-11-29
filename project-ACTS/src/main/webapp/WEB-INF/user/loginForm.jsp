@@ -100,7 +100,7 @@ a:hover{
 	<div class="d">
 		<!-- login form  -->
 		<form name="form" method="POST" action="<c:url value='/user/login' />">
-			<table style='width: 100%' >
+			<table style='width: 100%' align = "center" >
 				<tr>
 					<td width="20"></td>
 					<td><br>
@@ -132,17 +132,15 @@ a:hover{
 								&nbsp;
 								</td>
 							</tr>
-						</table> <br>
-						
-						
-										
+						</table> <br>	
 						<table style='width: 100%'>
 							<tr>
 								<td align=left>
 									아직 ActsOn회원이 아니라면..<a onClick="userCreate('<c:url value='/user/register/form'/>')" >회원가입</a>
 								</td>
 							</tr>
-						</table></td>
+						</table>
+						</td>
 				</tr>
 				
 			</table>

@@ -12,7 +12,7 @@
 	background-color: #c5e0b4;
 	color: white;
 }
-h3, h4 {
+h3, p {
 	
 	font-family: '맑은 고딕';
 }
@@ -94,21 +94,21 @@ table {
 		<form name="form" method="POST"
 			action="<c:url value='/user/register' />">
 			<h3>회원가입</h3>
-			<h4>아이디</h4>
+			<p>아이디</p>
 			<input type='text' name="accountId" />
-			<h4>비밀번호</h4>
+			<p>비밀번호</p>
 			<input type='password' name="password" />
-			<h4>비밀번호 확인</h4>
+			<p>비밀번호 확인</p>
 			<input type='password' name="password2" />
-			<h4>이름</h4>
+			<p>이름</p>
 			<input type='text' name="name" />
-			<h4>전화번호</h4>
+			<p>전화번호</p>
 			<input type='text' name="phone" />
-			<h4>이메일</h4>
+			<p>이메일</p>
 			<input type='text' name="email" />
-			<h4>주민등록번호</h4>
+			<p>주민등록번호</p>
 			<input type='text' name="regNum" />
-			<h4>닉네임</h4>
+			<p>닉네임</p>
 			<input type='text' name="nickName" /><br>
 			<br> <input type="button" value="회원 가입" onClick="userCreate()"
 				id="b"> <input type="reset" value="다시 입력" id="b" />
