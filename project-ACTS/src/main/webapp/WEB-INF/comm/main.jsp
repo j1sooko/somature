@@ -94,10 +94,9 @@ a {
 
         <div id="headLine" align="center" >
             <div id="headLineText" align="left">
-                Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
-            </div>
-                
-            <div>
+                <img src="<c:url value='/images/Logo.png' />" border="0" width="45" height="30"/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;
    			<c:if test="${accountId eq null}"><a href="<c:url value='/user/login/form' />" class="btn btn-light" role="button" >로그인</a></c:if>
             <c:if test="${accountId ne null}"><a href="<c:url value='/user/logout' />" class="btn btn-light" role="button">로그아웃</a></c:if>
             <a href="<c:url value='/post/upload/form'></c:url>" class="btn btn-light" role="button" >업로드</a>
