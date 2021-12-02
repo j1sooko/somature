@@ -1,1 +1,1 @@
-<% response.sendRedirect(request.getContextPath() + "/comm/search"); %>
+<% response.sendRedirect(request.getContextPath() + "/comm/main"); %>

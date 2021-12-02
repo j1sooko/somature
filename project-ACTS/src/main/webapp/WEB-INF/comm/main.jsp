@@ -81,6 +81,9 @@ a {
 	text-decoration: none;
 	color: black;
 }
+.white{
+	color: #fff;
+}
 </style>
 </head>
 <body>
@@ -105,7 +108,7 @@ a {
                 <a href="<c:url value='/comm/search' />"><img src="<c:url value='/images/searchIcon.GIF' />"/></a>
                 <!--  즐겨찾기 page 구현 필요  -->
                 <!-- <img src="./image/즐겨찾기.GIF">  -->
-                <a href="<c:url value='/user/myPage' />"><img src="<c:url value='/images/mypageIcon.GIF' />"/></a>
+                <a href="<c:url value='/user/myPage' />"><i class="bi bi-person-circle white"></i></i></a>
                 <!-- 로그인 되어있다면 MyPage로 안되어 있는 경우 NotLogin페이지로 가서 Login Page로 유도(이거도 foward 필요) -->
             </div>
 
