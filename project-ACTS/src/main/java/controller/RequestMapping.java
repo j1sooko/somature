@@ -58,7 +58,7 @@ public class RequestMapping {
         mappings.put("/post/postInfo", new PostInfoController());
         
         // 메세지
-        mappings.put("/message/send/form", new ForwardController("message/messageForm.jsp")); //소비자 와주 입력 양식
+        mappings.put("/message/send/form", new SendMessageFormController()); //소비자 와주 입력 양식
         mappings.put("/message/send", new SendMessageController()); //기본 메세지 입력 폼
         
         logger.info("Initialized Request Mapping!");

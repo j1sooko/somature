@@ -13,7 +13,7 @@ import model.Message;
 
 public class MessageDAO {
 	
-	private static final Logger log = LoggerFactory.getLogger(PostDAO.class);
+	private static final Logger log = LoggerFactory.getLogger(MessageDAO.class);
 	private JDBCUtil jdbcUtil = null;
 		
 		public MessageDAO() {			
@@ -49,9 +49,9 @@ public class MessageDAO {
 		
 		// 메세지 리스트 반환
 		public List<Message> findMessageList() throws SQLException {
-	        String sql = "SELECT createdtime, content, messengerId, receiverId, senderId " 
+	        String sql = "SELECT createdTime, content, messengerId, receiverId, senderId " 
 	        		   + "FROM MESSAGE "
-	        		   + "ORDER BY createdtime";
+	        		   + "ORDER BY createdTime";
 			jdbcUtil.setSqlAndParameters(sql, null);	
 						
 			try {
@@ -59,13 +59,14 @@ public class MessageDAO {
 				List<Message> messageList = new ArrayList<Message>();	
 				while (rs.next()) {
 					Message message = new Message(
-							valueOf(rs.getDate("joinDate")),
+							rs.getTimestamp("createdTime"),
 							rs.getString("content"),
 							rs.getInt("messengerId"),
 							rs.getInt("receiverId"),
 							rs.getInt("senderId"));
+					System.out.println("cTime: " + message.getcTime());
 					messageList.add(message);	
-				}		
+				}
 				return messageList;					
 				
 			} catch (Exception ex) {

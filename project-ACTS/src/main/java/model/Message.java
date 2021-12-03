@@ -24,6 +24,11 @@ public class Message {
 		this.receiverId = receiverId;
 		this.senderId = senderId;
 	}
+	
+	public Message(int receiverId, int senderId) {
+		this.receiverId = receiverId;
+		this.senderId = senderId;
+	}
 
 	public int getMessageId() {
 		return messageId;
@@ -63,6 +68,12 @@ public class Message {
 
 	public void setSenderId(int senderId) {
 		this.senderId = senderId;
+	}
+
+	@Override
+	public String toString() {
+		return "Message [cTime=" + cTime + ", content=" + content + ", messageId=" + messageId + ", receiverId="
+				+ receiverId + ", senderId=" + senderId + "]";
 	}
 	
 	

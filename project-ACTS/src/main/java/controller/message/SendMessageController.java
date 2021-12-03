@@ -30,14 +30,12 @@ public class SendMessageController implements Controller {
     		  Integer.parseInt(request.getParameter("receiverId")),
     		  user.getUserId());
 	      
-	      log.debug("Create ProductForm : {}", message);
-	      
 	      try {
 	    	  MessageManager messageManager = MessageManager.getInstance();
 	    	  messageManager.create(message);
    
 	         log.debug("Create MessageForm : {}", message);
-	           return "redirect:/message/send/form";
+	           return "redirect:/comm/main";
 	      }
 	      catch(Exception e) {
 	         request.setAttribute("uploadFail", true);

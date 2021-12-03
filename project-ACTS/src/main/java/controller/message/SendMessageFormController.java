@@ -1,5 +1,7 @@
 package controller.message;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,39 +12,38 @@ import controller.Controller;
 import controller.post.UploadPostController;
 import controller.user.UserSessionUtils;
 import model.Message;
-import model.User;
 import model.service.MessageManager;
-import model.service.UserManager;
+import model.service.PostManager;
 
 public class SendMessageFormController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(UploadPostController.class);
-	   @Override
-	   public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	      String curUserId = UserSessionUtils.getLoginUserId(request.getSession());
-	      UserManager userManager = UserManager.getInstance();
-	      User user = userManager.findUser(curUserId);
-	      System.out.println("user: " + user);
-	      
-	      Message message = new Message(
- 		  request.getParameter("content"),
- 		  Integer.parseInt(request.getParameter("receiverId")),
- 		  user.getUserId());
-	      
-	      log.debug("Create ProductForm : {}", message);
-	      
-	      try {
-	    	  MessageManager messageManager = MessageManager.getInstance();
-	    	  messageManager.create(message);
 
-	         log.debug("Create MessageForm : {}", message);
-	           return "redirect:/message/send/form";
-	      }
-	      catch(Exception e) {
-	         request.setAttribute("uploadFail", true);
-	         request.setAttribute("exception", e);
-	         request.setAttribute("message", message);
-	         
-	         return "/message/messageForm.jsp";
-	      }
-	   }
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		// 로그인 안 되어있으면 로그인 폼으로 보냄
+		if (!UserSessionUtils.hasLogined(request.getSession())) {
+			return "redirect:/user/login/form";
+		}
+
+		PostManager postManager = PostManager.getInstance();
+
+		// 메세지 attribute 생성 - receiver id
+		int receiverId = Integer.parseInt(request.getParameter("receiverId"));
+		String receiverNick = postManager.getPostUserNickName(receiverId);
+//		
+		// 메세지 리스트
+		MessageManager manager = MessageManager.getInstance();
+		request.setAttribute("messageList", null);
+		List<Message> messageList = manager.findMessageList();
+		
+		System.out.println("messageList: " + messageList);
+		
+//		log.debug("receiver nickName: " + receiverNick);
+//		// forwarding
+		request.setAttribute("receiverId", receiverId);
+		request.setAttribute("receiverNick", receiverNick);
+		request.setAttribute("messageList", messageList);
+		return "/message/messageForm.jsp";
+	}
 }
