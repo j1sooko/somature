@@ -67,7 +67,7 @@ function postCreate() {
 <h1>작성하기</h1>
 
 	<!-- title -->
-	<form name="form" method="POST" action="<c:url value='/post/update' />">
+	<form name="form" method="POST" action="<c:url value='/post/update' />" enctype="multipart/form-data">
 		<input type="hidden" name="postId" value="${post.postId}"/>
 		<input type="hidden" name="writerId" value="${post.writerId}"/>
 		<input type="hidden" name="views" value="${post.views}"/>
@@ -127,9 +127,9 @@ function postCreate() {
 			</div>
 		</div>
 		
-		<!--  이미지 업로드 -->
+			<!--  이미지 업로드 -->
 	<input type="file" id="image" accept="image/*"
-		onchange="setThumbnail(event);" name="imgUrl" />
+		onchange="setThumbnail(event);" name="image" />
 	<br><%=request.getRealPath("/") %>
 	<div id="image_container"></div>
 	<script>
