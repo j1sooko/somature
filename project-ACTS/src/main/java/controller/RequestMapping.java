@@ -59,9 +59,11 @@ public class RequestMapping {
         mappings.put("/post/postInfo", new PostInfoController());
         mappings.put("/post/delete", new DeletePostController());
         
-        // 메세지
+        // 메세지 전송
         mappings.put("/message/send/form", new SendMessageFormController()); //소비자 와주 입력 양식
         mappings.put("/message/send", new SendMessageController()); //기본 메세지 입력 폼
+        // 메세지 룸
+//        mappings.put("/message/room", new MessageRoomController()); //소비자 와주 입력 양식
         
         logger.info("Initialized Request Mapping!");
     }

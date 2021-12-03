@@ -15,7 +15,7 @@
 <title>Acts On</title>
 
 <script>
-function postCreate() {
+function messageCreate() {
 	if (form.content.value == "") {
 		alert("내용을 입력하십시오.");
 		form.content.focus();

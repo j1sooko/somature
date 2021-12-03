@@ -8,22 +8,22 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import model.Message;
+import model.MessageRoom;
 
-public class MessageDAO {
+public class MessageRoomDAO {
 	
 	private static final Logger log = LoggerFactory.getLogger(MessageDAO.class);
 	private JDBCUtil jdbcUtil = null;
-		
-	public MessageDAO() {			
+	
+	public MessageRoomDAO() {			
 		jdbcUtil = new JDBCUtil();
 	}
 	
-	// 메세지 전송 시
-	public int create(Message message) throws SQLException {
+	// 메세지 룸 만들어짐
+	public int create(MessageRoom messageRoom) throws SQLException {
 
-		String sql = "INSERT INTO MESSAGE VALUES (id_seq.nextva, ?, DEFAULT, ?)";
-		Object[] param = new Object[] { message.getContent(),message.getRoomId()};		
+		String sql = "INSERT INTO MESSAGE VALUES (id_seq.nextva, ?, ?)";
+		Object[] param = new Object[] { messageRoom.getSenderId(),messageRoom.getReceiverId()};		
 		
 		System.out.println("sql: " + sql);
 		System.out.println("param: " + param);
@@ -46,26 +46,24 @@ public class MessageDAO {
 		return 0;			
 	}
 	
-	// 메세지 리스트 반환
-	public List<Message> findMessageList() throws SQLException {
-        String sql = "SELECT messengeId, messageContent, createdTime, roomId " 
-        		   + "FROM MESSAGE "
-        		   + "ORDER BY createdTime";
+	// 메세지 룸 리스트 반환
+	public List<MessageRoom> findRoomList() throws SQLException {
+        String sql = "SELECT roomId, senderId, receiverId " 
+        		   + "FROM MessageRoom ";
 		jdbcUtil.setSqlAndParameters(sql, null);	
 					
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();					
-			List<Message> messageList = new ArrayList<Message>();	
+			List<MessageRoom> roomList = new ArrayList<MessageRoom>();	
 			while (rs.next()) {
-				Message message = new Message(
-						rs.getInt("messengeId"),
-						rs.getString("content"),
-						rs.getTimestamp("createdTime"),
-						rs.getInt("messengerId"));
+				MessageRoom messageRoom = new MessageRoom(
+						rs.getInt("roomId"),
+						rs.getInt("senderId"),
+						rs.getInt("receiverId"));
 //					System.out.println("cTime: " + message.getcTime());
-				messageList.add(message);	
+				roomList.add(messageRoom);	
 			}
-			return messageList;					
+			return roomList;					
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -74,6 +72,5 @@ public class MessageDAO {
 		}
 		return null;
 	}
-		
 
 }

@@ -16,7 +16,7 @@
 <style>
 i {
 	font-size: 2rem;
-	color: white;
+	padding-top: 5px;
 }
 #headLineText {
 	padding-left: 20px;
@@ -24,6 +24,7 @@ i {
 	color: white;
 	font-size: 30px;
 	font-weight: bold;
+	text-decoration:none 
 }
 </style>
 
@@ -45,6 +46,10 @@ i {
 					<a href="<c:url value='/user/logout' />" class="btn btn-light"
 						role="button">LOGOUT</a>
 				</c:if>
+				
+				<!-- move to message room  -->
+				<a href="<c:url value='/message/room' />" id="headLineText">
+					<i class="bi bi-chat-dots"></i></a>
 					
 				<a href="<c:url value='/comm/search' />">
 					<img src="<c:url value='/images/searchIcon.GIF' />" /></a>

@@ -3,31 +3,19 @@ package model;
 import java.util.Date;
 
 public class Message {
-	private Date cTime;
-	private String content;
 	private int messageId;
-	private int receiverId;
-	private int senderId;
+	private String content;
+	private Date cTime;
+	private int roomId;
 	
 	public Message() {}
-
-	public Message(Date cTime, String content, int messageId, int receiverId, int senderId) {
-		this.cTime = cTime;
-		this.content = content;
+	
+	public Message(int messageId, String content, Date cTime, int roomId) {
+		super();
 		this.messageId = messageId;
-		this.receiverId = receiverId;
-		this.senderId = senderId;
-	}
-	
-	public Message(String content, int receiverId, int senderId) {
 		this.content = content;
-		this.receiverId = receiverId;
-		this.senderId = senderId;
-	}
-	
-	public Message(int receiverId, int senderId) {
-		this.receiverId = receiverId;
-		this.senderId = senderId;
+		this.cTime = cTime;
+		this.roomId = roomId;
 	}
 
 	public int getMessageId() {
@@ -38,14 +26,6 @@ public class Message {
 		this.messageId = messageId;
 	}
 
-	public Date getcTime() {
-		return cTime;
-	}
-
-	public void setcTime(Date cTime) {
-		this.cTime = cTime;
-	}
-
 	public String getContent() {
 		return content;
 	}
@@ -54,28 +34,27 @@ public class Message {
 		this.content = content;
 	}
 
-	public int getReceiverId() {
-		return receiverId;
+	public Date getcTime() {
+		return cTime;
 	}
 
-	public void setReceiverId(int receiverId) {
-		this.receiverId = receiverId;
+	public void setcTime(Date cTime) {
+		this.cTime = cTime;
 	}
 
-	public int getSenderId() {
-		return senderId;
+	public int getRoomId() {
+		return roomId;
 	}
 
-	public void setSenderId(int senderId) {
-		this.senderId = senderId;
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
 
 	@Override
 	public String toString() {
-		return "Message [cTime=" + cTime + ", content=" + content + ", messageId=" + messageId + ", receiverId="
-				+ receiverId + ", senderId=" + senderId + "]";
+		return "Message [messageId=" + messageId + ", content=" + content + ", cTime=" + cTime + ", roomId=" + roomId
+				+ "]";
 	}
-	
 	
 	
 	
