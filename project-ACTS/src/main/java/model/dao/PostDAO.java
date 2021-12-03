@@ -140,7 +140,7 @@ private JDBCUtil jdbcUtil = null;
 	 * 占쎌읈筌ｏ옙 野껊슣�뻻疫뀐옙 占쎌젟癰귣�占쏙옙 野껓옙占쎄퉳占쎈릭占쎈연 List占쎈퓠 占쏙옙占쎌삢 獄쏉옙 獄쏆꼹�넎
 	 */
 	public List<Post> findPostList() throws SQLException {
-        String sql = "SELECT postId, title, views, status, price, postType, writerId " 
+        String sql = "SELECT postId, title, imageUrl, views, status, price, postType, writerId " 
         		   + "FROM POST "
         		   + "ORDER BY postId";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil占쎈퓠 query�눧占� 占쎄퐬占쎌젟
@@ -152,6 +152,7 @@ private JDBCUtil jdbcUtil = null;
 				Post post = new Post(			// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎌겱占쎌삺 占쎈뻬占쎌벥 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
 						rs.getInt("postId"),
 						rs.getString("title"),
+						rs.getString("imageUrl"),
 						rs.getInt("views"),
 						rs.getString("status"),
 						rs.getInt("price"),
@@ -173,7 +174,7 @@ private JDBCUtil jdbcUtil = null;
 	 * 占쎌읈筌ｏ옙 野껊슣�뻻疫뀐옙 占쎌젟癰귣�占쏙옙 野껓옙占쎄퉳占쎈릭占쎈연 List占쎈퓠 占쏙옙占쎌삢 獄쏉옙 獄쏆꼹�넎
 	 */
 	public List<Post> findPostListUseCategory(String cName) throws SQLException {
-        String sql = "SELECT postId, title, views, status, price, postType, writerId " 
+        String sql = "SELECT postId, title, imageUrl, views, status, price, postType, writerId " 
         		   + "FROM POST p JOIN CATEGORY c ON p.categoryId=c.categoryId "
         		   + "WHERE categoryName=? "
         		   + "ORDER BY postId";
@@ -186,6 +187,7 @@ private JDBCUtil jdbcUtil = null;
 				Post post = new Post(			// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎌겱占쎌삺 占쎈뻬占쎌벥 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
 						rs.getInt("postId"),
 						rs.getString("title"),
+						rs.getString("imageUrl"),
 						rs.getInt("views"),
 						rs.getString("status"),
 						rs.getInt("price"),
@@ -221,6 +223,7 @@ private JDBCUtil jdbcUtil = null;
 				Post post = new Post(
 						rs.getInt("postId"),
 						rs.getString("title"),
+						rs.getString("imageUrl"), //지수가 추가
 						rs.getInt("views"),
 						rs.getString("status"),
 						rs.getInt("price"),

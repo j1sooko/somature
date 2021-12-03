@@ -17,7 +17,7 @@ public class ListPostController implements Controller {
 		request.setAttribute("postList", null);
 		List<Post> postList = manager.findPostList();
 		
-		
+		System.out.println(postList);
 		
 		// List<User> userList = manager.findUserList(currentPage, countPerPage);
 

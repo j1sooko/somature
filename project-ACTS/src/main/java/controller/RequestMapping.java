@@ -33,6 +33,7 @@ public class RequestMapping {
         
         
         mappings.put("/user/list", new ListUserController()); //경원: 유저리스트 보는건 사용자가 아닌 administrator가 보는거라서 뺌
+      
         
         
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
@@ -45,7 +46,7 @@ public class RequestMapping {
 //        mappings.put("/user/update/form", new ForwardController("/user/updateForm.jsp")); //경원: 자기 자신의 정보를 수정하고자 할 때  
         
         mappings.put("/user/update", new UpdateUserController());
-        mappings.put("/user/myPost", new ForwardController("/user/myPost.jsp"));
+        mappings.put("/user/myPost", new MyPostController());
         mappings.put("/user/participatingTransaction", new ForwardController("/user/participatingTransaction.jsp"));
         mappings.put("/user/followingList", new ForwardController("/user/followingList.jsp"));
         
@@ -56,6 +57,7 @@ public class RequestMapping {
         mappings.put("/post/upload", new UploadPostController());
         mappings.put("/post/update", new UpdatePostController());
         mappings.put("/post/postInfo", new PostInfoController());
+        mappings.put("/post/delete", new DeletePostController());
         
         // 메세지
         mappings.put("/message/send/form", new SendMessageFormController()); //소비자 와주 입력 양식

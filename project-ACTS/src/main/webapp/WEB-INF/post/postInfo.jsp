@@ -2,13 +2,8 @@
 <%@page import="model.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-
-
-
 	Post post = (Post)request.getAttribute("post");	
 	String nickName = (String)request.getAttribute("nickname");
-	
-
 %>
 <html>
 <head>
@@ -72,6 +67,12 @@
 							${post.views}</td>
 					</tr>
 					
+					<tr>
+						<td width="120" align="center" bgcolor="E6ECDE" height="22">이미지</td>
+						<img src="${pageContext.request.contextPath}/upload/${post.imgUrl}">
+					</tr>
+					
+					
 				</table> <br> 
 				<a href="<c:url value='/post/update'>
 				<c:param name='postId' value='${post.postId}'/>
@@ -81,10 +82,15 @@
 				<c:param name='receiverId' value='${post.writerId}'/>
 				</c:url>">쪽지 보내기</a>
 				
+				<a href="<c:url value='/post/delete'>
+				<c:param name='postId' value='${post.postId}'/>
+				<c:param name='writerId' value='${post.writerId}'/>
+				</c:url>">게시글 삭제</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 				<!-- 수정 또는 삭제가  실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-        <c:if test="${postUpdateFailed || deleteFailed}">
-	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
-	    </c:if>
+		        <c:if test="${postUpdateFailed || deleteFailed}">
+			      <font color="red"><c:out value="${exception.getMessage()}" /></font>
+			    </c:if>
 				
 			</td>
 		</tr>

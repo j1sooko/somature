@@ -93,6 +93,9 @@ a {
 
 	<jsp:include page="/WEB-INF/post/postList.jsp"></jsp:include>
 	
+	<br>
+	<jsp:include page="/WEB-INF/post/postListImg.jsp"></jsp:include>
+	
 	<div style="position: fixed; bottom: 5px; right: 5px;" id="i-color">
 		<a href="<c:url value='/post/upload/form'></c:url>" class="btn btn-light" role="button" >
 		<i class="bi bi-plus-circle-fill"></i></a>
