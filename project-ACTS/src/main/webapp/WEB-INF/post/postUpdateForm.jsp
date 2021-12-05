@@ -70,8 +70,8 @@
 	<h1>작성하기</h1>
 
 	<!-- title -->
-	<form name="form" method="POST" action="<c:url value='/post/update' />">
-		<!-- 파일 업로드해야할 때 enctype="multipart/form-data"> -->
+	<form name="form" method="POST" action="<c:url value='/post/update' />"
+		 enctype="multipart/form-data">
 		<input type="hidden" name="postId" value="${post.postId}" />
 		<input type="hidden" name="writerId" value="${post.writerId}" />
 		<input type="hidden" name="views" value="${post.views}" />
