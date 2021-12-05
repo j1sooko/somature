@@ -60,7 +60,7 @@ public class UpdatePostController implements Controller{
 			request.setAttribute("post", post);
 		
 //			request.setAttribute("writerId", post.getWriterId());
-			
+			log.debug("Updateform request Post : {}", post);
 			if (writerId == post.getWriterId()) {
 				 
 				// 현재 로그인한 사용자가 수정 대상 사용자인 경우 -> 수정 가능
@@ -81,6 +81,7 @@ public class UpdatePostController implements Controller{
 	
 		
 		// POST request
+		System.out.print("update post id: " + request.getParameter("postId"));
 		Post updatePost = new Post(
 				Integer.parseInt(request.getParameter("postId")),
 				request.getParameter("title"),

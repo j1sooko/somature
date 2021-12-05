@@ -147,7 +147,7 @@ public class UploadPostController implements Controller {
 //            request.getParameter("pType"),
 //            user.getUserId());
 		log.debug("Create title : {}", title);
-		Post prod = new Post(title, description, dir + "/" + filename, Integer.parseInt(categoryId), status,
+		Post prod = new Post(title, description, filename, Integer.parseInt(categoryId), status,
 				Integer.parseInt(price), pType, user.getUserId());
 		request.setAttribute("post", prod);
 
