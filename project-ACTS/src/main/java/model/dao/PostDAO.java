@@ -281,5 +281,37 @@ private JDBCUtil jdbcUtil = null;
 		}
 		return null;
 	}
+	
+	public List<Post> findBuyerPostList() throws SQLException {
+        String sql = "SELECT * " 
+        		   + "FROM POST "
+        		   + "WHERE POSTTYPE='b' "
+        		   + "ORDER BY postId";
+		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil占쎈퓠 query�눧占� 占쎄퐬占쎌젟
+					
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();			// query 占쎈뼄占쎈뻬			
+			List<Post> postList = new ArrayList<Post>();	// User占쎈굶占쎌벥 �뵳�딅뮞占쎈뱜 占쎄문占쎄쉐
+			while (rs.next()) {
+				Post post = new Post(			// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎌겱占쎌삺 占쎈뻬占쎌벥 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
+						rs.getInt("postId"),
+						rs.getString("title"),
+						rs.getString("imageUrl"),
+						rs.getInt("views"),
+						rs.getString("status"),
+						rs.getInt("price"),
+						rs.getString("postType"),
+						rs.getInt("writerId"));
+				postList.add(post);				// List占쎈퓠 User 揶쏆빘猿� 占쏙옙占쎌삢
+			}		
+			return postList;					
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 獄쏆꼹�넎
+		}
+		return null;
+	}
 
 }
