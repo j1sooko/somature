@@ -24,7 +24,7 @@ public class UserDAO {
 	 * 占쎄텢占쎌뒠占쎌쁽 �꽴占썹뵳占� 占쎈�믭옙�뵠�뇡遺용퓠 占쎄퉱嚥≪뮇�뒲 占쎄텢占쎌뒠占쎌쁽 占쎄문占쎄쉐.
 	 */
 	public int create(User user) throws SQLException {
-		String sql = "INSERT INTO ACCOUNT VALUES (id_seq.nextval, ?, ?, ?, ?, ?, DEFAULT, ?, 5, ?)";		
+		String sql = "INSERT INTO ACCOUNT VALUES (id_seq.nextval, ?, ?, ?, ?, ?, DEFAULT, ?, ?)";		
 		Object[] param = new Object[] { user.getPhone(), user.getEmail(), user.getName(), 
 						user.getRegNum(), user.getPassword(), user.getAccountId(), user.getNickName()};		
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 占쎈퓠 insert�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟	
@@ -99,7 +99,7 @@ public class UserDAO {
 	 * 占쏙옙占쎌삢占쎈릭占쎈연 獄쏆꼹�넎.
 	 */
 	public User findUser(String accountId) throws SQLException {
-        String sql = "SELECT userId, phoneNumber, emailAddress, userName, registrationNumber,  password, accountId, joinDate, rating, nickName "
+        String sql = "SELECT userId, phoneNumber, emailAddress, userName, registrationNumber, password, accountId, joinDate, nickName "
         			+ "FROM ACCOUNT "
         			+ "WHERE accountId=? ";              
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {accountId});	// JDBCUtil占쎈퓠 query�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
@@ -116,7 +116,6 @@ public class UserDAO {
 					rs.getString("phoneNumber"),
 					rs.getString("registrationNumber"),
 					rs.getDate("joinDate"),
-					rs.getInt("rating"),
 					rs.getString("nickName"));
 				return user;
 			}
@@ -132,7 +131,7 @@ public class UserDAO {
 	 * 占쎌읈筌ｏ옙 占쎄텢占쎌뒠占쎌쁽 占쎌젟癰귣�占쏙옙 野껓옙占쎄퉳占쎈릭占쎈연 List占쎈퓠 占쏙옙占쎌삢 獄쏉옙 獄쏆꼹�넎
 	 */
 	public List<User> findUserList() throws SQLException {
-        String sql = "SELECT phoneNumber, emailAddress, userName, registrationNumber, joinDate, accountId, rating, nickName " 
+        String sql = "SELECT phoneNumber, emailAddress, userName, registrationNumber, joinDate, accountId, nickName " 
         		   + "FROM ACCOUNT "
         		   + "ORDER BY userId";
 		jdbcUtil.setSqlAndParameters(sql, null);		// JDBCUtil占쎈퓠 query�눧占� 占쎄퐬占쎌젟
@@ -149,7 +148,6 @@ public class UserDAO {
 						rs.getString("phoneNumber"),
 						rs.getString("registrationNumber"),
 						valueOf(rs.getDate("joinDate")),
-						rs.getInt("rating"),
 						rs.getString("nickName"));
 				userList.add(user);				// List占쎈퓠 User 揶쏆빘猿� 占쏙옙占쎌삢
 			}		

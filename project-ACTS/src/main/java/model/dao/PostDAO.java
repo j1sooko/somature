@@ -29,11 +29,9 @@ private JDBCUtil jdbcUtil = null;
 	 */
 	public int create(Post post) throws SQLException {
 
-		String sql = "INSERT INTO POST VALUES (id_seq.nextval, ?, ?, ?, DEFAULT, DEFAULT, ?, ?, ?, ?, ?, null)";
+		String sql = "INSERT INTO POST VALUES (id_seq.nextval, ?, ?, ?, DEFAULT, DEFAULT, ?, ?, ?, ?, ?)";
 		Object[] param = new Object[] { post.getTitle(), post.getDesc(), post.getImgUrl(),
-				post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId(), post.getCategoryId()};		
-//		Object[] param = new Object[] { post.getTitle(), post.getDesc(), post.getImgUrl(), post.getCategoryId(), 
-//				post.getViews(), post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId()};		
+				post.getStatus(), post.getPrice(), post.getpType(), post.getWriterId(), post.getCategoryId()};	
 		System.out.println("sql: " + sql);
 		System.out.println("param: " + param);
 		for (Object p : param) {
