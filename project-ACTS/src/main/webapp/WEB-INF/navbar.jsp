@@ -45,6 +45,8 @@ i {
 					<a href="<c:url value='/user/logout' />" class="btn btn-light"
 						role="button">LOGOUT</a>
 				</c:if>
+				
+				<a href="<c:url value='/comm/buyerPage' />">의뢰게시판</a>
 					
 				<a href="<c:url value='/comm/search' />">
 					<img src="<c:url value='/images/searchIcon.GIF' />" /></a>
