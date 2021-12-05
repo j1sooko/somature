@@ -81,7 +81,7 @@ public class UpdatePostController implements Controller{
 	
 		
 		// POST request
-		System.out.print("update post id: " + request.getParameter("postId"));
+		System.out.print("update post title: " + request.getAttribute("title"));
 		Post updatePost = new Post(
 				Integer.parseInt(request.getParameter("postId")),
 				request.getParameter("title"),
