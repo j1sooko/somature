@@ -29,10 +29,14 @@
 	  			Iterator<Post> postIter = postList.iterator();
 	
 	 			//사용자 리스트를 클라이언트에게 보여주기 위하여 출력.
+	 			int i = 0;
 		%>
 		
 		<c:forEach var="post" items="${postList}">
+		<% if (i % 4 == 0) { %>
+				<br> <% } i++; %>
 		<a href="<c:url value='/post/postInfo'>
+		
 					   			<c:param name='postId' value='${post.postId}'/>
 					   			<c:param name='writerId' value ='${post.writerId}' /></c:url>">
 			  		<img src="${pageContext.request.contextPath}/upload/${post.getImgUrl()}" class="listImg"></a>

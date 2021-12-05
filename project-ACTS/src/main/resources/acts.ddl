@@ -7,18 +7,7 @@ CREATE SEQUENCE id_seq
 
 DROP TABLE PostReveiw CASCADE CONSTRAINTS PURGE;
 
-DROP TABLE Region CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE Dong CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE Gu CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE Si CASCADE CONSTRAINTS PURGE;
-
 DROP TABLE SearchKeyword CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE Message CASCADE CONSTRAINTS PURGE;
-
 
 DROP TABLE Favorite CASCADE CONSTRAINTS PURGE;
 
@@ -28,13 +17,11 @@ DROP TABLE Post CASCADE CONSTRAINTS PURGE;
 
 DROP TABLE Category CASCADE CONSTRAINTS PURGE;
 
-DROP TABLE NotiKeword CASCADE CONSTRAINTS PURGE;
+DROP TABLE Message CASCADE CONSTRAINTS PURGE;
 
-DROP TABLE Notification CASCADE CONSTRAINTS PURGE;
+DROP TABLE MessageRoom CASCADE CONSTRAINTS PURGE;
 
 DROP TABLE Account CASCADE CONSTRAINTS PURGE;
-
-DROP TABLE Post CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE Account
 (
@@ -46,7 +33,6 @@ CREATE TABLE Account
 	password             VARCHAR2(30) NOT NULL ,
 	joinDate             DATE DEFAULT  SYSDATE  NOT NULL ,
 	accountId            VARCHAR2(30) NOT NULL ,
-	rating               INT NOT NULL  CONSTRAINT  rating CHECK (rating BETWEEN 1 AND 5),
 	nickName             VARCHAR2(32) NOT NULL 
 );
 
@@ -81,75 +67,32 @@ CREATE UNIQUE INDEX XPKCategory ON Category
 ALTER TABLE Category
 	ADD CONSTRAINT  XPKCategory PRIMARY KEY (categoryId);
 
-CREATE TABLE Dong
+CREATE TABLE MessageRoom
 (
-	dongId               INT NOT NULL ,
-	name                 VARCHAR2(100) NOT NULL ,
-	guId                 INT NOT NULL 
+	roomId               INT NOT NULL ,
+	senderId             INT NOT NULL ,
+	receiverId           INT NOT NULL 
 );
 
-CREATE UNIQUE INDEX XPKDong ON Dong
-(dongId   ASC);
+CREATE UNIQUE INDEX XPKMessageRoom ON MessageRoom
+(roomId   ASC);
 
-ALTER TABLE Dong
-	ADD CONSTRAINT  XPKDong PRIMARY KEY (dongId);
+ALTER TABLE MessageRoom
+	ADD CONSTRAINT  XPKMessageRoom PRIMARY KEY (roomId);
 
-CREATE TABLE Region
+CREATE TABLE Message
 (
-	regionId             INT NOT NULL ,
-	regionName           VARCHAR2(100) NOT NULL ,
-	location             INT NOT NULL ,
-	dongId               INT NOT NULL ,
-	userId               INT NOT NULL 
+	messageId            INT NOT NULL ,
+	messageContent       VARCHAR2(500) NOT NULL ,
+	createdTime          DATE DEFAULT  SYSDATE  NOT NULL ,
+	roomId               INT NOT NULL 
 );
 
-CREATE UNIQUE INDEX XPKRegion ON Region
-(regionId   ASC);
+CREATE UNIQUE INDEX XPKMessage ON Message
+(messageId   ASC);
 
-ALTER TABLE Region
-	ADD CONSTRAINT  XPKRegion PRIMARY KEY (regionId);
-
-CREATE TABLE Gu
-(
-	guId                 INT NOT NULL ,
-	name                 VARCHAR2(100) NOT NULL ,
-	siId                 INT NOT NULL 
-);
-
-CREATE UNIQUE INDEX XPKGu ON Gu
-(guId   ASC);
-
-ALTER TABLE Gu
-	ADD CONSTRAINT  XPKGu PRIMARY KEY (guId);
-
-CREATE TABLE NotiKeword
-(
-	keywordId            CHAR(18) NOT NULL ,
-	keword               CHAR(18) NOT NULL ,
-	userId               INT NOT NULL 
-);
-
-CREATE UNIQUE INDEX XPKNotiKeword ON NotiKeword
-(keywordId   ASC);
-
-ALTER TABLE NotiKeword
-	ADD CONSTRAINT  XPKNotiKeword PRIMARY KEY (keywordId);
-
-CREATE TABLE Notification
-(
-	content              VARCHAR2(100) NOT NULL ,
-	readOrNot            INT NOT NULL ,
-	type                 VARCHAR2(10) NOT NULL  CONSTRAINT  notiType CHECK (type IN ('trans', 'favor', 'message', 'review')),
-	createdTime          DATE NOT NULL ,
-	notiId               CHAR(18) NOT NULL ,
-	userId               INT NOT NULL 
-);
-
-CREATE UNIQUE INDEX XPKNotification ON Notification
-(notiId   ASC);
-
-ALTER TABLE Notification
-	ADD CONSTRAINT  XPKNotification PRIMARY KEY (notiId);
+ALTER TABLE Message
+	ADD CONSTRAINT  XPKMessage PRIMARY KEY (messageId);
 
 CREATE TABLE Post
 (
@@ -176,7 +119,7 @@ CREATE TABLE PostReveiw
 (
 	reviewId             INT NOT NULL ,
 	createdTime          DATE DEFAULT  SYSDATE  NOT NULL ,
-	content              VARCHAR2(800) NOT NULL ,
+	reviewContent        VARCHAR2(800) NOT NULL ,
 	score                INT NOT NULL  CONSTRAINT  score CHECK (score BETWEEN 1 AND 5),
 	reviewerId           INT NOT NULL ,
 	postId               INT NOT NULL 
@@ -201,18 +144,6 @@ CREATE UNIQUE INDEX XPKFavorite ON Favorite
 ALTER TABLE Favorite
 	ADD CONSTRAINT  XPKFavorite PRIMARY KEY (favorId);
 
-CREATE TABLE Si
-(
-	siId                 INT NOT NULL ,
-	name                 VARCHAR2(100) NOT NULL 
-);
-
-CREATE UNIQUE INDEX XPKSi ON Si
-(siId   ASC);
-
-ALTER TABLE Si
-	ADD CONSTRAINT  XPKSi PRIMARY KEY (siId);
-
 CREATE TABLE Transaction
 (
 	transId              CHAR(18) NOT NULL ,
@@ -227,63 +158,17 @@ CREATE UNIQUE INDEX XPKTransaction ON Transaction
 ALTER TABLE Transaction
 	ADD CONSTRAINT  XPKTransaction PRIMARY KEY (transId);
 
-CREATE TABLE Post
-(
-	postId               INT NOT NULL ,
-	title                VARCHAR2(50) NOT NULL ,
-	description          VARCHAR2(2000) NOT NULL ,
-	imageUrl             VARCHAR2(500) NULL ,
-	createdTime          DATE DEFAULT  SYSDATE  NOT NULL ,
-	categoryId           INT NULL ,
-	views                INT NOT NULL ,
-	status               VARCHAR2(10) NOT NULL  CONSTRAINT  status_1697923632 CHECK (status IN ('available', 'ongoing', 'completed')),
-	price                INT NOT NULL  CONSTRAINT  price_1329695159 CHECK (price >= 0),
-	postType             CHAR(1) NOT NULL  CONSTRAINT  userType_549114587 CHECK (postType IN ('s', 'b')),
-	writerId             INT NULL 
-);
-
-CREATE UNIQUE INDEX XPKPost ON Post
-(postId   ASC);
-
-ALTER TABLE Post
-	ADD CONSTRAINT  XPKPost PRIMARY KEY (postId);
-
-CREATE TABLE Message
-(
-	createdTime          DATE NOT NULL ,
-	content              VARCHAR2(500) NOT NULL ,
-	messengerId          INT NOT NULL ,
-	receiverId           INT NOT NULL ,
-	senderId             INT NOT NULL 
-);
-
-CREATE UNIQUE INDEX XPKMessage ON Message
-(messengerId   ASC);
-
-ALTER TABLE Message
-	ADD CONSTRAINT  XPKMessage PRIMARY KEY (messengerId);
-
 ALTER TABLE SearchKeyword
 	ADD (CONSTRAINT 검색 FOREIGN KEY (userId) REFERENCES Account (userId));
 
+ALTER TABLE MessageRoom
+	ADD (CONSTRAINT R_129 FOREIGN KEY (senderId) REFERENCES Account (userId));
 
-ALTER TABLE Dong
-	ADD (CONSTRAINT R_101 FOREIGN KEY (guId) REFERENCES Gu (guId));
+ALTER TABLE MessageRoom
+	ADD (CONSTRAINT R_130 FOREIGN KEY (receiverId) REFERENCES Account (userId));
 
-ALTER TABLE Region
-	ADD (CONSTRAINT R_16 FOREIGN KEY (dongId) REFERENCES Dong (dongId));
-
-ALTER TABLE Region
-	ADD (CONSTRAINT 활동지역 FOREIGN KEY (userId) REFERENCES Account (userId));
-
-ALTER TABLE Gu
-	ADD (CONSTRAINT R_14 FOREIGN KEY (siId) REFERENCES Si (siId));
-
-ALTER TABLE NotiKeword
-	ADD (CONSTRAINT 알림키워드_가짐 FOREIGN KEY (userId) REFERENCES Account (userId));
-
-ALTER TABLE Notification
-	ADD (CONSTRAINT 알림수신 FOREIGN KEY (userId) REFERENCES Account (userId));
+ALTER TABLE Message
+	ADD (CONSTRAINT R_131 FOREIGN KEY (roomId) REFERENCES MessageRoom (roomId));
 
 ALTER TABLE Post
 	ADD (CONSTRAINT R_123 FOREIGN KEY (writerId) REFERENCES Account (userId));
@@ -308,10 +193,3 @@ ALTER TABLE Transaction
 
 ALTER TABLE Transaction
 	ADD (CONSTRAINT R_125 FOREIGN KEY (postId) REFERENCES Post (postId));
-
-ALTER TABLE Message
-	ADD (CONSTRAINT 수신 FOREIGN KEY (receiverId) REFERENCES Account (userId));
-
-
-ALTER TABLE Message
-	ADD (CONSTRAINT 송신 FOREIGN KEY (senderId) REFERENCES Account (userId));
