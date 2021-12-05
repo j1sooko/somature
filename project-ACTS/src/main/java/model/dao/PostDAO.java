@@ -206,7 +206,7 @@ private JDBCUtil jdbcUtil = null;
 	}
 
 	public List<Post> SearchPostList(String title) throws SQLException {
-		String sql = "SELECT postId "
+		String sql = "SELECT * "
 				+ "FROM POST "
 				+ "WHERE title LIKE '%"
 				+ title
@@ -228,8 +228,9 @@ private JDBCUtil jdbcUtil = null;
 						rs.getString("postType"),
 						rs.getInt("writerId"));
 				postList.add(post);	
-			
 			}
+			
+			return postList;
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
