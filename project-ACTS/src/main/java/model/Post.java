@@ -20,7 +20,7 @@ public class Post {
 	private String thumbImg; //�뜽�꽕�씪 �씠誘몄�
 	
 	public Post() {
-	} // 疫꿸퀡�궚 占쎄문占쎄쉐占쎌쁽
+	} // 기본생성자
 
 	public Post(int postId, String title, String desc, String imgUrl, Date cTime, int categoryId, int views, String status, int price, String pType, int writerId) {
 		super();
@@ -65,13 +65,12 @@ public class Post {
 	}
 	
 //	UpdatePostController parameter�깮�꽦�옄
-	public Post(int postId, String title, String desc, String imgUrl, int categoryId, int views, String status, int price, String pType, int writerId) {
+	public Post(int postId, String title, String desc, String imgUrl, int categoryId, String status, int price, String pType, int writerId) {
 		this.postId = postId;
 		this.title = title;
 		this.desc = desc;
 		this.imgUrl = imgUrl;
 		this.categoryId = categoryId;
-		this.views = views;
 		this.status = status;
 		this.price = price;
 		this.pType = pType;
