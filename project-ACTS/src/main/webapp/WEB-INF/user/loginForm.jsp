@@ -55,6 +55,7 @@ tr{
 	color: white;
 	font-size: 30px;
 	font-weight: bold;
+	font-family : sans-serif;
 }
 
 #login {
@@ -91,9 +92,8 @@ a:hover{
 
 	<div id="headLine" align="center">
 		<div id="headLineText" align="left">
-			<img src="<c:url value='/images/Logo.png' />" border="0" width="45" height="30"/>
-			
-		</div>
+                Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
+        </div>
 	</div>
 
 

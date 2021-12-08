@@ -22,7 +22,22 @@ h3, p {
 	border: 0;
 	outline: 0;
 }
-
+#headLine {
+    background-color: #c5e0b4;
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+    margin: 100px, 30px, 500px, 30px;
+    height: 50px;
+    width: auto;
+}
+#headLineText {
+	padding-left: 20px;
+	padding-top: 5px;
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+	font-family: sans-serif;
+}
 .d {
 	text-align: center;
 }
@@ -86,11 +101,15 @@ table {
 </head>
 <body>
 <!-- ACTS 누르면 메인으로 이동하는 기능 구현해야함 -->
-	<h1 id="title">
-		 <img src="<c:url value='/images/Logo.png' />" border="0" width="45" height="30"/>
-			
-	</h1>
-	<div class="d">
+	
+	
+<div class="d">
+	<div id="headLine" align="center">
+		<div id="headLineText" align="left">
+                Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
+        </div>
+	</div>
+	
 		<form name="form" method="POST"
 			action="<c:url value='/user/register' />">
 			<h3>회원가입</h3>

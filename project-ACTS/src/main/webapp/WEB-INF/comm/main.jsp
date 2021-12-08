@@ -26,6 +26,7 @@
 body {
 	margin-left: 50px;
 	margin-right: 50px;
+	font-family : '맑은 고딕';
 }
 
 #headLine {
@@ -47,6 +48,7 @@ body {
 	color: white;
 	font-size: 30px;
 	font-weight: bold;
+	font-family: sans-serif;
 }
 
 #big {
@@ -84,6 +86,10 @@ a {
 .white{
 	color: #fff;
 }
+img{
+	width: 45px;
+	height: 30px;
+}
 </style>
 </head>
 <body>
@@ -97,18 +103,19 @@ a {
 
         <div id="headLine" align="center" >
             <div id="headLineText" align="left">
-                <img src="<c:url value='/images/Logo.png' />" border="0" width="45" height="30"/>
+                Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            &emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;
    			<c:if test="${accountId eq null}"><a href="<c:url value='/user/login/form' />" class="btn btn-light" role="button" >로그인</a></c:if>
             <c:if test="${accountId ne null}"><a href="<c:url value='/user/logout' />" class="btn btn-light" role="button">로그아웃</a></c:if>
             <a href="<c:url value='/post/upload/form'></c:url>" class="btn btn-light" role="button" >업로드</a>
             
             	<a href="<c:url value='/comm/search' />"><i class="fa fa-search" aria-hidden="true"></i></a>
-                <a href="<c:url value='/comm/search' />"><img src="<c:url value='/images/searchIcon.GIF' />"/></a>
+                <a href="<c:url value='/comm/search' />"><img src="<c:url value='/images/searchLogo.png' />"/></a>
                 <!--  즐겨찾기 page 구현 필요  -->
                 <!-- <img src="./image/즐겨찾기.GIF">  -->
-                <a href="<c:url value='/user/myPage' />"><i class="bi bi-person-circle white"></i></i></a>
+                <a href="<c:url value='/user/myPage' />"><i class="fa fa-person-circle" aria-hidden = "true"></i></a>
+                <a href="<c:url value='/user/myPage' />"><img src="<c:url value='/images/myProfile.png' />"/></a>
                 <!-- 로그인 되어있다면 MyPage로 안되어 있는 경우 NotLogin페이지로 가서 Login Page로 유도(이거도 foward 필요) -->
             </div>
 
