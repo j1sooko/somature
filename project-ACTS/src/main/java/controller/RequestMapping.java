@@ -30,7 +30,7 @@ public class RequestMapping {
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/view", new ViewUserController());
-        
+        mappings.put("/comm/buyerPage", new BuyerPostListController());       
         
         mappings.put("/user/list", new ListUserController()); //경원: 유저리스트 보는건 사용자가 아닌 administrator가 보는거라서 뺌
       
@@ -58,6 +58,7 @@ public class RequestMapping {
         mappings.put("/post/update", new UpdatePostController());
         mappings.put("/post/postInfo", new PostInfoController());
         mappings.put("/post/delete", new DeletePostController());
+        mappings.put("/post/search", new PostSearchController());  
         
         // 메세지 전송
         mappings.put("/message/send/form", new SendMessageFormController());
@@ -66,6 +67,8 @@ public class RequestMapping {
         // 메세지 룸
         mappings.put("/message/room", new MessageRoomListController());
         
+            
+
         logger.info("Initialized Request Mapping!");
     }
 

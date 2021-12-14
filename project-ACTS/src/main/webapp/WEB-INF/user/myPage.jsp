@@ -4,6 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	User user = (User)request.getAttribute("user");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -16,6 +17,11 @@
 	padding-bottom: 20px;
 }
 </style>
+<script>
+function confirm() {
+	confirm('정말 계정을 삭제하시겠습니까?');
+}
+</script>
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
@@ -36,10 +42,11 @@
 	<a href="<c:url value='/user/followingList' />">내가 팔로잉하는 계정</a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	
-	<a
+	<a onclick='confirm()'
 		href="<c:url value='/user/delete'>
-		<c:param name='accountId' value='${user.accountId}'/></c:url>">
-		회원탈퇴</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<c:param name='accountId' value='${user.accountId}'/>
+			  </c:url>">
+	회원탈퇴</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 </body>
 </html>

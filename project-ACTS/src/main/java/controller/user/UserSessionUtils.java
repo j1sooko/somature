@@ -22,6 +22,7 @@ public class UserSessionUtils {
     /* 현재 로그인한 사용자의 ID가 userId인지 검사 */
     public static boolean isLoginUser(String accountId, HttpSession session) {
         String loginUser = getLoginUserId(session);
+        System.out.println(loginUser);
         if (loginUser == null) {
             return false;
         }

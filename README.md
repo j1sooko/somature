@@ -12,3 +12,6 @@ Database Programming Team
   
   [JSTL] session에 접근하는 다양한 방법
   https://mytory.net/archives/323
+
+jsp에서 parameter가 안 넘어갈 때 볼 것
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=kimsu0813&logNo=140201820687

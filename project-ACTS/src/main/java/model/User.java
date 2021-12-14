@@ -14,14 +14,13 @@ public class User {
 	private String phone;
 	private String regNum; // 주민 번호
 	private Date joinDate;
-	private int rating;
 	private String nickName;
 
 	public User() {
 	} // 기본 생성자
 
 	public User(int userId, String accountId, String password, String name, String email, String phone, String regNum,
-			Date joinDate, int rating, String nickName) {
+			Date joinDate, String nickName) {
 		this.userId = userId;
 		this.accountId = accountId;
 		this.password = password;
@@ -30,12 +29,11 @@ public class User {
 		this.phone = phone;
 		this.regNum = regNum;
 		this.joinDate = joinDate;
-		this.rating = rating;
 		this.nickName = nickName;
 	}
 	
 	public User(String accountId, String password, String name, String email, String phone, String regNum,
-			Date joinDate, int rating, String nickName) {
+			Date joinDate, String nickName) {
 		this.accountId = accountId;
 		this.password = password;
 		this.name = name;
@@ -43,24 +41,22 @@ public class User {
 		this.phone = phone;
 		this.regNum = regNum;
 		this.joinDate = joinDate;
-		this.rating = rating;
 		this.nickName = nickName;
 	}
 	
 	// password 뺀 버전 (findUser에 이용)
 	public User(String accountId, String name, String email, String phone, String regNum,
-			Date joinDate, int rating, String nickName) {
+			Date joinDate, String nickName) {
 		this.accountId = accountId;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.regNum = regNum;
 		this.joinDate = joinDate;
-		this.rating = rating;
 		this.nickName = nickName;
 	}
 
-	// joinDate, rating 없는 생성자(회원가입용)
+	// joinDate없는 생성자(회원가입용)
 	public User(String accountId, String password, String name, String email, String phone, String regNum,
 			String nickName) {
 		this.accountId = accountId;
@@ -166,14 +162,6 @@ public class User {
 		this.joinDate = joinDate;
 	}
 
-	public int getRating() {
-		return rating;
-	}
-
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
-
 	public String getNickName() {
 		return nickName;
 	}
@@ -197,7 +185,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + "accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email
-				+ ", phone=" + phone + ", regNum=" + regNum + ", joinDate=" + joinDate + ", rating=" + rating
+				+ ", phone=" + phone + ", regNum=" + regNum + ", joinDate=" + joinDate
 				+ ", nickName=" + nickName + "]";
 	}
 }

@@ -51,6 +51,9 @@ i {
 				<a href="<c:url value='/message/room' />" id="headLineText">
 					<i class="bi bi-chat-dots"></i></a>
 					
+				<a href="<c:url value='/comm/buyerPage' />">의뢰게시판</a>
+
+					
 				<a href="<c:url value='/comm/search' />">
 					<img src="<c:url value='/images/searchIcon.GIF' />" /></a>
 				

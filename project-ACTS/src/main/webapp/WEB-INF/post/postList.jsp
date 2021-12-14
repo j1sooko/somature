@@ -18,6 +18,13 @@
 
 	<table style="background-color: YellowGreen">
 		<tr>
+			<td>
+				<form name="searchKeywordForm" method="POST" action="<c:url value='/post/search' />">
+					검색: <input type="text" size=40 name="searchKeyword" placeholder="찾고싶은 게시물의 키워드를 검색하세요"><input type="submit" value="확인"> 
+				</form>
+			</td>
+		</tr>
+		<tr>
 			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
 			<td width="200" align="center" bgcolor="E6ECDE">가격</td>
 			<td width="200" align="center" bgcolor="E6ECDE">구매자/판매자</td>
