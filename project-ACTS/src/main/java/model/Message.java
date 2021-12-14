@@ -11,11 +11,14 @@ public class Message {
 	public Message() {}
 	
 	public Message(int messageId, String content, Date cTime, int roomId) {
-		super();
 		this.messageId = messageId;
 		this.content = content;
 		this.cTime = cTime;
 		this.roomId = roomId;
+	}
+	
+	public Message(String content) {
+		this.content = content;
 	}
 
 	public int getMessageId() {

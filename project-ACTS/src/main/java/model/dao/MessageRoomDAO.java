@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import model.MessageRoom;
+import model.User;
 
 public class MessageRoomDAO {
 	
@@ -47,10 +48,14 @@ public class MessageRoomDAO {
 	}
 	
 	// 메세지 룸 리스트 반환
-	public List<MessageRoom> findRoomList() throws SQLException {
+	public List<MessageRoom> findRoomList(User user) throws SQLException {
         String sql = "SELECT roomId, senderId, receiverId " 
-        		   + "FROM MessageRoom ";
-		jdbcUtil.setSqlAndParameters(sql, null);	
+        		   + "FROM MessageRoom "
+        		   + "WHERE receiverId=?";
+		jdbcUtil.setSqlAndParameters(sql, null);
+		
+		Object[] param = new Object[] { user.getUserId() };
+		jdbcUtil.setSqlAndParameters(sql, param);
 					
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();					

@@ -26,9 +26,7 @@ public class SendMessageController implements Controller {
 	      System.out.println("user: " + user);
 	      
 	      Message message = new Message(
-    		  request.getParameter("content"),
-    		  Integer.parseInt(request.getParameter("receiverId")),
-    		  user.getUserId());
+    		  request.getParameter("content"));
 	      
 	      try {
 	    	  MessageManager messageManager = MessageManager.getInstance();
