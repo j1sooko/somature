@@ -10,7 +10,6 @@
 <title>내 정보</title>
 </head>
 <body>
-	<%@include file="/WEB-INF/navbar.jsp" %>
 	<table>
 		<tr><td>아이디</td>
 			<td><%= user.getAccountId() %></td></tr>
@@ -24,8 +23,7 @@
 			<td><%= user.getEmail() %></td></tr>
 		<tr><td>가입일</td>
 			<td><%= user.getJoinDate() %></td></tr>
-		<tr><td>클래스</td>
-			<td><%= user.getRating() %></td></tr>
+		
 	</table>
 </body>
 </html>
