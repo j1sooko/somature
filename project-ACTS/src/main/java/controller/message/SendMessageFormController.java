@@ -31,7 +31,7 @@ public class SendMessageFormController implements Controller {
 		// 메세지 attribute 생성 - receiver id
 		int receiverId = Integer.parseInt(request.getParameter("receiverId"));
 		String receiverNick = postManager.getPostUserNickName(receiverId);
-//		
+		
 		// 메세지 리스트
 		MessageManager manager = MessageManager.getInstance();
 		request.setAttribute("messageList", null);
@@ -39,11 +39,13 @@ public class SendMessageFormController implements Controller {
 		
 		System.out.println("messageList: " + messageList);
 		
-//		log.debug("receiver nickName: " + receiverNick);
-//		// forwarding
+		log.debug("receiver nickName: " + receiverNick);
+		
+		// forwarding
 		request.setAttribute("receiverId", receiverId);
 		request.setAttribute("receiverNick", receiverNick);
 		request.setAttribute("messageList", messageList);
+		
 		return "/message/messageForm.jsp";
 	}
 }

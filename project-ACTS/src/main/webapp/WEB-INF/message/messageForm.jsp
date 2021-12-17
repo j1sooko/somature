@@ -30,7 +30,6 @@ function messageCreate() {
 <body>
 	<div>
 		<!-- Message receiver check -->
-	
 		<!-- Message List  -->
 		<table>
 		<c:forEach var="message" items="${messageList}">

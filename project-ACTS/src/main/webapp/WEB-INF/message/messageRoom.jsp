@@ -16,22 +16,23 @@
 
 <body>
 	<%@include file="/WEB-INF/navbar.jsp" %>
-	<div>
+	<div class="row">
 		<!-- Message Room List  -->
+		<div class="left">
 		<table>
 		<c:forEach var="room" items="${roomList}">
 			<tr>
 				<td width="200" align="right" bgcolor="ffffff" height="20">
 					${roomList.receiverId}
 				</td>
-			</tr>
-			<tr>
-				<td width="400" align="left" bgcolor="ffffff" height="20">
-					최근 메세지 들어가야 함
-				</td>
-			</tr>
+			</tr>>
 		</c:forEach>
 		</table>
+		</div>
+		
+		<div class="right">
+			<%@include file="/WEB-INF/message/messageForm.jsp" %>
+		</div>
 	</div>
 </body>
 </html>

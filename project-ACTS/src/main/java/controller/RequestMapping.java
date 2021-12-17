@@ -68,7 +68,6 @@ public class RequestMapping {
         mappings.put("/message/room", new MessageRoomListController());
         
             
-
         logger.info("Initialized Request Mapping!");
     }
 
