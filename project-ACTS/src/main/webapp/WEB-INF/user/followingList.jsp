@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<%@include file="/WEB-INF/navbar.jsp" %>
 <body>
 	팔로잉리스트
+	<br><br>
 </body>
 </html>

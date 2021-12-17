@@ -31,5 +31,6 @@ body{
 			<td><%= user.getJoinDate() %></td></tr>
 
 	</table>
+	<!-- <input type="button" value="이전으로 돌아가기" onClick="history.go(-1)"> -->
 </body>
 </html>

@@ -52,6 +52,7 @@ function userList(targetUri) {
 }
 </script>
 </head>
+<%@include file="/WEB-INF/navbar.jsp" %>
 <body>
 	<br>
 	<!-- Update Form  -->

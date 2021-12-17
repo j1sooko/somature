@@ -14,6 +14,7 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />"
    type="text/css">
 </head>
+<%@include file="/WEB-INF/navbar.jsp" %>
 <body>
 
 	<table style="background-color: YellowGreen">
