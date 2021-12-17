@@ -8,8 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>내 정보</title>
+<style>
+body{
+	font-family :"맑은 고딕";
+}
+</style>
 </head>
 <body>
+<h3 align = "left">내 정보</h1>
 	<table>
 		<tr><td>아이디</td>
 			<td><%= user.getAccountId() %></td></tr>
