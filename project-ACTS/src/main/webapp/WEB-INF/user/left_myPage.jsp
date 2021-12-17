@@ -15,6 +15,9 @@
 #left{
 	backgroud-color: light-grey;
 }
+a:link{
+	color: #E2F0D9;
+}
 </style>
 </head>
 <body id="left">

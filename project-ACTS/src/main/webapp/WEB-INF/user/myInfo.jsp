@@ -23,7 +23,7 @@
 			<td><%= user.getEmail() %></td></tr>
 		<tr><td>가입일</td>
 			<td><%= user.getJoinDate() %></td></tr>
-		
+
 	</table>
 </body>
 </html>
