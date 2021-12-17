@@ -24,8 +24,6 @@
 			<td><%= user.getEmail() %></td></tr>
 		<tr><td>가입일</td>
 			<td><%= user.getJoinDate() %></td></tr>
-		<tr><td>클래스</td>
-			<td><%= user.getRating() %></td></tr>
 	</table>
 </body>
 </html>
