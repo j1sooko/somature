@@ -16,6 +16,7 @@
             body {
                 margin-left: 50px;
                 margin-right: 50px;
+                font-family: sans-serif;
             }
 
             #headLine {
@@ -100,7 +101,7 @@
         <div id="mainContents" class="row">
                 
             <div style="width: 800px; padding-left: 80px;">
-                <h4 style="font-weight: bold;">카테고리</h4>
+                <h2 style="font-weight: bold;">카테고리</h2>
                 <br>
                 <div id="icon">
                 <h3>&emsp;ART &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; IT &emsp;&emsp;&emsp;&emsp;&emsp; DOCUMENT &emsp;&emsp;&emsp; ETC</h3>
