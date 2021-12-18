@@ -15,6 +15,13 @@
    type="text/css">
 </head>
 <%@include file="/WEB-INF/navbar.jsp" %>
+<%
+    String pagefile=request.getParameter("page");
+    //처음 보여주는 페이지는 내가 쓴글리스트
+    if(pagefile==null){
+            pagefile="myPost";
+        }
+%>
 <body>
 
 	<table style="background-color: YellowGreen">

@@ -68,8 +68,8 @@ function confirm() {
 <div id="wrap">
         <aside>
             <!-- 채워주세요 -->
-           <jsp:include page = "left_myPage.jsp" /> 
- 
+           <jsp:include page = "left_myPage.jsp" />
+           
         </aside>
         <section>
             <!-- 채워주세요 -->
