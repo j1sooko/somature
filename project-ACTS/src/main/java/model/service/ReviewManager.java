@@ -12,11 +12,11 @@ public class ReviewManager {
 	private static ReviewManager reviewMan = new ReviewManager();
 	private ReviewDAO reviewDAO;
 	private UserDAO userDAO;
-	private PostDAO postDAO;
 
 	private ReviewManager() {
 		try {
 			reviewDAO = new ReviewDAO();
+			userDAO = new UserDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			
@@ -41,14 +41,12 @@ public class ReviewManager {
 	public List<Review> findReviewList(int postId) throws SQLException {
 		List<Review> reviewList = reviewDAO.findReviewList(postId);
 		
-//		for (Review reviewer : reviewList) {
-//			postDAO.findUserNickNameByUserId(reviewer.getReviewerId());
-//			reviewer.setUser(user);
-//			
-//			
-//		}
+		for (Review review : reviewList) {
+			User user = userDAO.findUserByPrimaryKey(review.getReviewerId());
+			review.setUser(user);
+		}
 		
 		return reviewList;
-}
+	}
 
 }

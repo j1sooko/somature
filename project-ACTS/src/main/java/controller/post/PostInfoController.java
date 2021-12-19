@@ -56,7 +56,6 @@ public class PostInfoController implements Controller {
 	        return "redirect:/post/postList";
 		}	
 		
-//    	
 //    	request.setAttribute("user", user);	
     	request.setAttribute("post", post);		// ����� ���� ����
     	request.setAttribute("nickname", postUserNickName);

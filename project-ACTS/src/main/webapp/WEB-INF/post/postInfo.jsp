@@ -94,30 +94,33 @@
 					<c:param name='postId' value='${post.postId}'/>
 				</c:url>">후기 작성</a>
 				
-				<c:forEach var="review" items="${reviewList}">
-					<tr>
-						<td width="190" align="center" bgcolor="ffffff" height="20">
-							<a href="<c:url value='/post/postInfo'>
-							   			<c:param name='postId' value='${post.postId}'/>
-					 		 		 </c:url>">
-					  		${review.reviewerId}</a>
-						</td>
-						
-						<td width="200" align="center" bgcolor="ffffff" height="20">
-							${review.price}
-						</td>
-						
-						<td width="200" align="center" bgcolor="ffffff" height="20">
-							${post.pType}
-						</td>
-						<td width="200" align="center" bgcolor="ffffff" height="20">
-							${post.writerId}
-						</td>
-					</tr>
-				</c:forEach>
-				
 			</td>
 		</tr>
+	</table>
+	
+	<br><br>
+	<h2>댓글 리스트</h2>
+	<table>
+		<!-- 댓글 리스트 -->
+		<c:forEach var="review" items="${reviewList}">
+			<tr>
+				<td width="100" bgcolor="ffffff" height="20">
+			  		${review.user.nickName}
+				</td>
+				
+				<td width="100" bgcolor="ffffff" height="20">
+					<c:if test="${review.score eq '1'}"> ★ </c:if>
+					<c:if test="${review.score eq '2'}"> ★★ </c:if>
+					<c:if test="${review.score eq '3'}"> ★★★ </c:if>
+					<c:if test="${review.score eq '4'}"> ★★★★ </c:if>
+					<c:if test="${review.score eq '5'}"> ★★★★★ </c:if>
+				</td>
+				
+				<td width="300" bgcolor="ffffff" height="20">
+					${review.content}
+				</td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

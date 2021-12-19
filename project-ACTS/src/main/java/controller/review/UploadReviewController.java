@@ -1,5 +1,7 @@
 package controller.review;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -46,9 +48,13 @@ public class UploadReviewController implements Controller {
 		ReviewManager manager = ReviewManager.getInstance();
 		manager.create(review);
 		
+		ReviewManager reviewManager = ReviewManager.getInstance();
+		List<Review> reviewList = reviewManager.findReviewList(post.getPostId());
+		
 		request.setAttribute("postId", postId);	
 		request.setAttribute("post", post);
 		request.setAttribute("nickname", postManager.getPostUserNickName(post.getWriterId()));
+		request.setAttribute("reviewList", reviewList);
         return "/post/postInfo.jsp";	// Move to post info
 		
 //		try {
