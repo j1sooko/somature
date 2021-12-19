@@ -9,22 +9,22 @@ import controller.Controller;
 import model.Post;
 import model.User;
 import model.dao.UserDAO;
+import model.service.UserManager;
 
 public class MyPostController implements Controller {
 
 	@Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {		
     	
 		int userId = Integer.parseInt(request.getParameter("userId"));
-		UserDAO userDao = new UserDAO();
-		List<Post> postList;
+		
+		UserManager userManager = UserManager.getInstance();
+
+		List<Post> postList = userManager.findMyPostList(userId);	// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½	
 		
     	
-    	postList = userDao.findMyPostList(userId);	// ·Î±×ÀÎ »ç¿ëÀÚ Á¤º¸ °Ë»ö	
-		
-    	
-    	request.setAttribute("postList", postList);		// »ç¿ëÀÚ Á¤º¸ ÀúÀå				
-		return "/user/myPost.jsp";				// »ç¿ëÀÚ º¸±â È­¸éÀ¸·Î ÀÌµ¿
+    	request.setAttribute("postList", postList);		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½				
+		return "/user/myPost.jsp";				// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     }
 
 }
