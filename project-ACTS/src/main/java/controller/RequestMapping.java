@@ -47,7 +47,7 @@ public class RequestMapping {
         mappings.put("/user/update", new UpdateUserController());
         mappings.put("/user/myPost", new MyPostController());
         
-        //mappings.put("/user/myTransactionList", new ForwardController("/user/myTransactionList.jsp"));
+  
         mappings.put("/user/myPage/myBuyerTransaction", new MyBuyerTransactionListController());
         mappings.put("/user/myPage/mySellerTransaction", new MySellerTransactionListController());
 
