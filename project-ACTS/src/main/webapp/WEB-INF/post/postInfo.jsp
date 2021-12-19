@@ -7,6 +7,7 @@
 	String nickName = (String)request.getAttribute("nickname");
 	String writerId = (String)request.getParameter("writerId");
 	String setting = (String)request.getAttribute("setting");
+	List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
 %>
 <html>
 <head>
@@ -62,8 +63,8 @@
 						<td width="120" align="center" bgcolor="E6ECDE" height="22">이미지</td>
 						<img src="${pageContext.request.contextPath}/upload/${post.imgUrl}">
 					</tr>
-				</table> <br> 
-				
+				</table> <br>
+
 				<a href="<c:url value='/post/update'>
 				<c:param name='postId' value='${post.postId}'/>
 				</c:url>">게시글 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -110,12 +111,42 @@
 				
 				
 				<!-- 수정 또는 삭제가  실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-        <c:if test="${postUpdateFailed || deleteFailed}">
-	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
-	    </c:if>
+		        <c:if test="${postUpdateFailed || deleteFailed}">
+			      <font color="red"><c:out value="${exception.getMessage()}" /></font>
+			    </c:if>
+			    
+			    <br><br>
+			    <a href="<c:url value='/review/upload/form'>
+					<c:param name='postId' value='${post.postId}'/>
+				</c:url>">후기 작성</a>
 				
 			</td>
 		</tr>
+	</table>
+	
+	<br><br>
+	<h2>댓글 리스트</h2>
+	<table>
+		<!-- 댓글 리스트 -->
+		<c:forEach var="review" items="${reviewList}">
+			<tr>
+				<td width="100" bgcolor="ffffff" height="20">
+			  		${review.user.nickName}
+				</td>
+				
+				<td width="100" bgcolor="ffffff" height="20">
+					<c:if test="${review.score eq '1'}"> ★ </c:if>
+					<c:if test="${review.score eq '2'}"> ★★ </c:if>
+					<c:if test="${review.score eq '3'}"> ★★★ </c:if>
+					<c:if test="${review.score eq '4'}"> ★★★★ </c:if>
+					<c:if test="${review.score eq '5'}"> ★★★★★ </c:if>
+				</td>
+				
+				<td width="300" bgcolor="ffffff" height="20">
+					${review.content}
+				</td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

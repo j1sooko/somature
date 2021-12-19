@@ -1,5 +1,7 @@
 package controller.post;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,9 +14,11 @@ import controller.user.UserSessionUtils;
 import model.service.FavoriteManager;
 import model.service.PostManager;
 import model.service.PostNotFoundException;
+import model.service.ReviewManager;
 import model.service.UserManager;
 import model.Favorite;
 import model.Post;
+import model.Review;
 import model.User;
 
 public class PostInfoController implements Controller {
@@ -25,10 +29,13 @@ public class PostInfoController implements Controller {
 
 		UserManager manager = UserManager.getInstance();
 		PostManager postManager = PostManager.getInstance();
+		ReviewManager reviewManager = ReviewManager.getInstance();
+		
 		HttpSession session = request.getSession();
 		FavoriteManager fm = FavoriteManager.getInstance();
 		Post post = null;
 		User user = null;
+		List<Review> reviewList = null;
 		int fOrNot;
 		int setting = Integer.parseInt(request.getParameter("setting"));
 		int postId = -1;
@@ -42,16 +49,18 @@ public class PostInfoController implements Controller {
 		}
 
 		String postUserNickName = null;
+		
 		try {
 
 			post = postManager.findPost(Integer.parseInt(request.getParameter("postId"))); // 게시물 정보 검색
 			postId = post.getPostId();
 			System.out.println(post);
 			log.debug("PostInfo Request : {}", post.getPostId());
-			postUserNickName = postManager.getPostUserNickName(Integer.parseInt(request.getParameter("writerId")));
-
+			postUserNickName = postManager.getPostUserNickName(post.getWriterId());
 			System.out.println("닉네임" + postUserNickName);
 			postManager.increasePostView(post);
+    		reviewList = reviewManager.findReviewList(post.getPostId());
+    		
 		} catch (PostNotFoundException e) {
 			System.out.println("포스트를 찾지 못함");
 			return "redirect:/post/postList";
@@ -73,17 +82,11 @@ public class PostInfoController implements Controller {
 			setting = -1;
 		}
 
-		System.out.println("절취선 ------------------------------");
-		System.out.println(fm.findFavoriteByPostIdAndUserId(postId, userId));
-		System.out.println("postId: " + postId);
-		System.out.println("userId: " + userId);
-		System.out.println("setting: " + setting);
-		System.out.println("fOrNot: " + fOrNot);
-
 		request.setAttribute("fOrNot", fOrNot);
 		request.setAttribute("user", user);
 		request.setAttribute("post", post);
 		request.setAttribute("nickname", postUserNickName);
+		request.setAttribute("reviewList", reviewList);
 
 		return "/post/postInfo.jsp";
 	}

@@ -70,4 +70,12 @@ public class PostManager {
 		
 		return postDAO.findUserNickNameByUserId(userId);
 	}
+	
+	public String getImgUrl(int postId) throws SQLException {
+		Post post = postDAO.findPost(postId);
+
+		return post.getImgUrl();
+	}
+
+	
 }
