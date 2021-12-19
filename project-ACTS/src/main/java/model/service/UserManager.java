@@ -3,6 +3,7 @@ package model.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import model.Post;
 import model.User;
 import model.dao.UserDAO;
 
@@ -75,5 +76,9 @@ public class UserManager {
 
 	public UserDAO getUserDAO() {
 		return this.userDAO;
+	}
+	
+	public List<Post> findMyPostList(int userId) throws SQLException {
+		return userDAO.findMyPostList(userId);
 	}
 }
