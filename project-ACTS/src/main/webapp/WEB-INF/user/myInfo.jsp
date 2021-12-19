@@ -8,9 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>내 정보</title>
+<style>
+body{
+	font-family :"맑은 고딕";
+}
+</style>
 </head>
 <body>
-	<%@include file="/WEB-INF/navbar.jsp" %>
+<h3 align = "left">내 정보</h1>
 	<table>
 		<tr><td>아이디</td>
 			<td><%= user.getAccountId() %></td></tr>
@@ -24,8 +29,8 @@
 			<td><%= user.getEmail() %></td></tr>
 		<tr><td>가입일</td>
 			<td><%= user.getJoinDate() %></td></tr>
-		<tr><td>클래스</td>
-			<td><%= user.getRating() %></td></tr>
+
 	</table>
+	<!-- <input type="button" value="이전으로 돌아가기" onClick="history.go(-1)"> -->
 </body>
 </html>
