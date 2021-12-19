@@ -36,8 +36,10 @@ function confirm() {
 		<c:param name='userId' value='${user.userId}'/></c:url>">
 		내가 쓴 글 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		
-	<a href="<c:url value='/user/participatingTransaction' />">현재거래내역</a>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a
+		href="<c:url value='/user/myTransactionList'>
+		<c:param name='userId' value='${user.userId}'/></c:url>">
+		거래 내역 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 	<a href="<c:url value='/user/followingList' />">내가 팔로잉하는 계정</a>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
