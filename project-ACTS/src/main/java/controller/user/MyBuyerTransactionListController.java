@@ -11,7 +11,7 @@ import model.Transaction;
 import model.dao.UserDAO;
 import model.service.TransactionManager;
 
-public class MyTransactionListController implements Controller{
+public class MyBuyerTransactionListController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	
 		int userId = Integer.parseInt(request.getParameter("userId"));
@@ -22,7 +22,8 @@ public class MyTransactionListController implements Controller{
 		transactionList = transactionMan.findMyTransactionList(userId);
 		
     	
+		request.setAttribute("userId", userId);
     	request.setAttribute("transactionList", transactionList);			
-		return "/user/myTransactionList.jsp";
+		return "/user/myBuyerTransaction.jsp";
     }
 }

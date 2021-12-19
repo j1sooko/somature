@@ -23,23 +23,48 @@ public class CreateTransactionController implements Controller {
 		// TODO Auto-generated method stub
 		String curUserId = UserSessionUtils.getLoginUserId(request.getSession());
 		UserManager userManager = UserManager.getInstance();
-		User user = userManager.findUser(curUserId);
+
+		
+		String postUserNickName = null;
 		
 		PostManager postManager = PostManager.getInstance();
 		Post post = null;
+		User user = null;
 		
-		//나중에 구현: 내가 쓴 글이면 주문 못하도록
+		
 		
 		// 로그인 여부 확인
     	if (!UserSessionUtils.hasLogined(request.getSession())) {
             return "redirect:/user/login/form";		// login form 요청으로 redirect
         }
     	
+   
+    	
     	if (request.getMethod().equals("GET")) {	
     		int postId = Integer.parseInt(request.getParameter("postId"));
-    		log.debug("PostUpdateForm Request : {}", postId);
-    		
+    		user = userManager.findUser(curUserId);
     		post = postManager.findPost(postId);
+    		postUserNickName = postManager.getPostUserNickName(Integer.parseInt(request.getParameter("writerId")));
+    		
+    		request.setAttribute("user", user);
+    		request.setAttribute("post", post);
+    		request.setAttribute("nickname", postUserNickName);
+    		
+    		//나중에 구현: 내가 쓴 글이면 주문 못하도록
+    		int iwriterId = user.getUserId();
+        	if (iwriterId == post.getWriterId()) {
+        		
+        		
+        		
+    			request.setAttribute("trasactionCreateFailed", true);
+    			request.setAttribute("exception", 
+    					new IllegalStateException("본인의 글은 주문할 수 없습니다."));  
+    			
+    			// 현재 로그인한 사용자가 게시글 작성자 본인인 경우 주문할 수 없음, 사용자 보기 화면으로 오류 메세지를 전달
+    			return "/post/sellerPostInfo.jsp";   // 검색한 게시글 정보를 post update form으로 전송     
+    		
+    		}    
+     
     		
     	}
     	
@@ -48,7 +73,7 @@ public class CreateTransactionController implements Controller {
     	Transaction transaction = new Transaction(user, post);
     	transactionManager.create(transaction);
     	
-		return "redirect:/comm/main";
+		return "/post/sellerPostInfo.jsp";
 	}
 
 }

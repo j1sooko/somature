@@ -7,6 +7,8 @@
 	@SuppressWarnings("unchecked") 
 	List<Transaction> transactionList = (List<Transaction>)request.getAttribute("transactionList");
 
+	int userId = (int) request.getAttribute("userId");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -16,6 +18,18 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/navbar.jsp" %>
+	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	    <div class="navbar-nav">
+	      <a class="nav-item nav-link active" href="<c:url value='/user/myPage/myBuyerTransaction'>
+			<c:param name='userId' value='${userId}'/></c:url>"><span class="sr-only">의뢰건</span></a>
+	       <a class="nav-item nav-link" href="<c:url value='/user/myPage/mySellerTransaction'>
+			<c:param name='userId' value='${userId}'/></c:url>">접수건</a>
+	    </div>
+	  </div>
+	</nav>
+	
 	현재거래내역(의뢰한 글)
 	
 	<table style="background-color: YellowGreen">

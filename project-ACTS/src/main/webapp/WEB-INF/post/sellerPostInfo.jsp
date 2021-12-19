@@ -14,6 +14,12 @@
 
 </head>
 <body>
+	<script>
+		function transactionSuccess(trasactionCreateFailed) {
+			if (!trasactionCreateFailed)
+				alert("주문이 완료되었습니다.");
+		}
+	</script>
 <%@include file="/WEB-INF/navbar.jsp" %>
 	<br>
 	<table style="width: 100%">
@@ -73,11 +79,8 @@
 					</tr> 	
 				</table> <br> 
 				
-				<a href="<c:url value='/post/transaction'>
-				<c:param name='postId' value='${post.postId}'/>
-				</c:url>">주문하기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
-				<a href="<c:url value='/post/update'>
+				<a href="<c:url value='/post/sellerPostUpdate'>
 				<c:param name='postId' value='${post.postId}'/>
 				</c:url>">게시글 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
@@ -86,8 +89,19 @@
 				<c:param name='writerId' value='${post.writerId}'/>
 				</c:url>">게시글 삭제</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
+				
+				<a href="<c:url value='/post/transaction'>
+					<c:param name='postId' value='${post.postId}'/>
+					<c:param name='writerId' value='${post.writerId}'/>
+				</c:url>" onClick="transactionSuccess(${trasactionCreateFailed})" >주문하기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+				
 				<!-- 수정 또는 삭제가  실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
         <c:if test="${postUpdateFailed || deleteFailed}">
+	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
+	    </c:if>
+	    
+	    <c:if test="${trasactionCreateFailed}">
 	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
 	    </c:if>
 				

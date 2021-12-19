@@ -69,4 +69,32 @@ public class TransactionDAO {
 			return null;
 		}
 		
+		public List<Transaction> findMySellerTransactionList(int userId) throws SQLException {
+			String sql = "SELECT t.transId, t.transDate, t.userId, t.postId " 
+	        		   + "FROM TRANSACTION t, POST p "
+	        		   + "WHERE t.postId = p.postId AND p.writerId=? ";
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
+						
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();	
+				List<Transaction> transactionList = new ArrayList<Transaction>();
+				while (rs.next()) {
+					Transaction transaction = new Transaction(		
+							rs.getInt("transId"),
+							rs.getDate("transDate"),
+							rs.getInt("userId"),
+							rs.getInt("postId"));
+					transactionList.add(transaction);				
+				}
+				System.out.println("transactionList: " + transactionList);
+				return transactionList;					
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();
+			}
+			return null;
+		}
+		
 }
