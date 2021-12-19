@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="java.util.*, model.*" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+
+	@SuppressWarnings("unchecked") 
+	List<Transaction> transactionList = (List<Transaction>)request.getAttribute("transactionList");
+
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%@include file="/WEB-INF/navbar.jsp" %>
+	현재거래내역(의뢰한 글)
+	
+	<table style="background-color: YellowGreen">
+		<tr>
+			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
+			<td width="200" align="center" bgcolor="E6ECDE">가격</td>
+			<td width="200" align="center" bgcolor="E6ECDE">주문 날짜</td>
+			<td width="200" align="center" bgcolor="E6ECDE">작성자</td>
+		</tr>
+		
+		<%
+			if (transactionList != null) {	
+	  			Iterator<Transaction> transactionIter = transactionList.iterator();
+	
+	 			//사용자 리스트를 클라이언트에게 보여주기 위하여 출력.
+		%>
+		
+		<c:forEach var="transaction" items="${transactionList}">
+			<tr>
+				<td width="190" align="center" bgcolor="ffffff" height="20">
+					<a href="<c:url value='/post/postInfo'>
+					   			<c:param name='postId' value='${transaction.post.postId}'/>
+					   			<c:param name='writerId' value ='${transaction.post.writerId}' />
+			 		 		 </c:url>">
+			  		${transaction.post.title}</a>
+				</td>
+				
+				<td width="200" align="center" bgcolor="ffffff" height="20">
+					${transaction.post.price}
+				</td>
+				
+				<td width="200" align="center" bgcolor="ffffff" height="20">
+					${transaction.transDate}
+				</td>
+				<td width="200" align="center" bgcolor="ffffff" height="20">
+					${transaction.user.nickName}
+				</td>
+			</tr>
+		</c:forEach>
+		
+		<%
+			}
+		%>
+	</table>
+</body>
+</html>
