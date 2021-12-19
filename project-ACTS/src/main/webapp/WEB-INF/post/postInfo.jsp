@@ -94,6 +94,27 @@
 					<c:param name='postId' value='${post.postId}'/>
 				</c:url>">후기 작성</a>
 				
+				<c:forEach var="review" items="${reviewList}">
+					<tr>
+						<td width="190" align="center" bgcolor="ffffff" height="20">
+							<a href="<c:url value='/post/postInfo'>
+							   			<c:param name='postId' value='${post.postId}'/>
+					 		 		 </c:url>">
+					  		${review.reviewerId}</a>
+						</td>
+						
+						<td width="200" align="center" bgcolor="ffffff" height="20">
+							${review.price}
+						</td>
+						
+						<td width="200" align="center" bgcolor="ffffff" height="20">
+							${post.pType}
+						</td>
+						<td width="200" align="center" bgcolor="ffffff" height="20">
+							${post.writerId}
+						</td>
+					</tr>
+				</c:forEach>
 				
 			</td>
 		</tr>

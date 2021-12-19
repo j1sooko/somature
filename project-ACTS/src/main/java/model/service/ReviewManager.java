@@ -11,6 +11,7 @@ public class ReviewManager {
 	
 	private static ReviewManager reviewMan = new ReviewManager();
 	private ReviewDAO reviewDAO;
+	private UserDAO userDAO;
 	private PostDAO postDAO;
 
 	private ReviewManager() {
@@ -40,12 +41,12 @@ public class ReviewManager {
 	public List<Review> findReviewList(int postId) throws SQLException {
 		List<Review> reviewList = reviewDAO.findReviewList(postId);
 		
-		for (Review reviewer : reviewList) {
-			postDAO.findUserNickNameByUserId(reviewer.getReviewerId());
-			
-			
-			
-		}
+//		for (Review reviewer : reviewList) {
+//			postDAO.findUserNickNameByUserId(reviewer.getReviewerId());
+//			reviewer.setUser(user);
+//			
+//			
+//		}
 		
 		return reviewList;
 }
