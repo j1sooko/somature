@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 
 import controller.user.*;
 import controller.post.*;
+import controller.review.UploadReviewController;
+import controller.review.UploadReviewFormController;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -61,6 +63,10 @@ public class RequestMapping {
         mappings.put("/post/search", new PostSearchController());
         mappings.put("/post/transaction", new CreateTransactionController());
         logger.info("Initialized Request Mapping!");
+        
+        // ´ñ±Û °ü¸®
+        mappings.put("/review/upload/form", new UploadReviewFormController());
+        mappings.put("/review/upload", new UploadReviewController());  
     }
 
     public Controller findController(String uri) {	

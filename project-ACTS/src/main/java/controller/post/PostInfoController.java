@@ -1,5 +1,7 @@
 package controller.post;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,8 +13,10 @@ import controller.Controller;
 import controller.user.UserSessionUtils;
 import model.service.PostManager;
 import model.service.PostNotFoundException;
+import model.service.ReviewManager;
 import model.service.UserManager;
 import model.Post;
+import model.Review;
 import model.User;
 
 public class PostInfoController implements Controller {
@@ -23,9 +27,12 @@ public class PostInfoController implements Controller {
     	
 		UserManager manager = UserManager.getInstance();
 		PostManager postManager = PostManager.getInstance();
+		ReviewManager reviewManager = ReviewManager.getInstance();
+		
 		HttpSession session = request.getSession();
     	Post post = null;
     	User user = null;
+    	List<Review> reviewList = null;
     	
     	String loginAccountId = UserSessionUtils.getLoginUserId(session);
     	if (loginAccountId != null)
@@ -34,23 +41,26 @@ public class PostInfoController implements Controller {
     	String postUserNickName = null;
     	try {
     		
-    		post = postManager.findPost(Integer.parseInt(request.getParameter("postId")));	// °Ô½Ã¹° Á¤º¸ °Ë»ö
+    		post = postManager.findPost(Integer.parseInt(request.getParameter("postId")));	// ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
     		System.out.println(post);
     		log.debug("PostInfo Request : {}", post.getPostId());
-    		postUserNickName = postManager.getPostUserNickName(Integer.parseInt(request.getParameter("writerId")));
     		
-    		System.out.println("´Ð³×ÀÓ" + postUserNickName);
+    		postUserNickName = postManager.getPostUserNickName(post.getWriterId());
+    		
+    		reviewList = reviewManager.findReviewList(post.getPostId());
+    		
+    		System.out.println("ï¿½Ð³ï¿½ï¿½ï¿½" + postUserNickName);
     		postManager.increasePostView(post);
     	} catch (PostNotFoundException e) {				
-    		System.out.println("Æ÷½ºÆ®¸¦ Ã£Áö ¸øÇÔ");
+    		System.out.println("ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 	        return "redirect:/post/postList";
 		}	
 		
-    	
-    	request.setAttribute("user", user);	
-    	request.setAttribute("post", post);		// »ç¿ëÀÚ Á¤º¸ ÀúÀå
+//    	request.setAttribute("user", user);	
+    	request.setAttribute("post", post);		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     	request.setAttribute("nickname", postUserNickName);
-		return "/post/postInfo.jsp";				// »ç¿ëÀÚ º¸±â È­¸éÀ¸·Î ÀÌµ¿
+    	request.setAttribute("reviewList", reviewList);
+		return "/post/postInfo.jsp";				// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
     }
 
 }

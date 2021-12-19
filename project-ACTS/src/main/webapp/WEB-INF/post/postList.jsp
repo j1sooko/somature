@@ -43,7 +43,6 @@
 				<td width="190" align="center" bgcolor="ffffff" height="20">
 					<a href="<c:url value='/post/postInfo'>
 					   			<c:param name='postId' value='${post.postId}'/>
-					   			<c:param name='writerId' value ='${post.writerId}' />
 			 		 		 </c:url>">
 			  		${post.title}</a>
 				</td>
