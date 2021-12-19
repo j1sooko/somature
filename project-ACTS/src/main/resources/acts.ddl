@@ -115,7 +115,7 @@ CREATE UNIQUE INDEX XPKPost ON Post
 ALTER TABLE Post
 	ADD CONSTRAINT  XPKPost PRIMARY KEY (postId);
 
-CREATE TABLE PostReveiw
+CREATE TABLE PostReview
 (
 	reviewId             INT NOT NULL ,
 	createdTime          DATE DEFAULT  SYSDATE  NOT NULL ,
@@ -125,15 +125,15 @@ CREATE TABLE PostReveiw
 	postId               INT NOT NULL 
 );
 
-CREATE UNIQUE INDEX XPKPostReveiw ON PostReveiw
+CREATE UNIQUE INDEX XPKPostReview ON PostReview
 (reviewId   ASC);
 
-ALTER TABLE PostReveiw
-	ADD CONSTRAINT  XPKPostReveiw PRIMARY KEY (reviewId);
+ALTER TABLE PostReview
+	ADD CONSTRAINT  XPKPostReview PRIMARY KEY (reviewId);
 
 CREATE TABLE Favorite
 (
-	favorId              CHAR(18) NOT NULL ,
+	favorId              INT NOT NULL ,
 	userId               INT NOT NULL ,
 	postId               INT NOT NULL 
 );
@@ -146,7 +146,7 @@ ALTER TABLE Favorite
 
 CREATE TABLE Transaction
 (
-	transId              CHAR(18) NOT NULL ,
+	transId              INT NOT NULL ,
 	transDate            DATE DEFAULT  SYSDATE  NOT NULL ,
 	userId               INT NOT NULL ,
 	postId               INT NOT NULL 
