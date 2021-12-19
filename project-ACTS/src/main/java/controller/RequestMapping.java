@@ -47,7 +47,7 @@ public class RequestMapping {
         mappings.put("/user/update", new UpdateUserController());
         mappings.put("/user/myPost", new MyPostController());
         mappings.put("/user/participatingTransaction", new ForwardController("/user/participatingTransaction.jsp"));
-        mappings.put("/user/followingList", new ForwardController("/user/followingList.jsp"));
+        mappings.put("/user/followingList", new FavoriteListController());
         
         mappings.put("/user/delete", new DeleteUserController());
         
@@ -57,7 +57,8 @@ public class RequestMapping {
         mappings.put("/post/update", new UpdatePostController());
         mappings.put("/post/postInfo", new PostInfoController());
         mappings.put("/post/delete", new DeletePostController());
-        mappings.put("/post/search", new PostSearchController());       
+        mappings.put("/post/search", new PostSearchController());
+        
         logger.info("Initialized Request Mapping!");
     }
 

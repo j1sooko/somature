@@ -44,6 +44,7 @@
 					<a href="<c:url value='/post/postInfo'>
 					   			<c:param name='postId' value='${post.postId}'/>
 					   			<c:param name='writerId' value ='${post.writerId}' />
+			 		 		 	<c:param name='setting' value='-1' />
 			 		 		 </c:url>">
 			  		${post.title}</a>
 				</td>
