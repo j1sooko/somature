@@ -51,16 +51,17 @@ public class UploadReviewController implements Controller {
 		ReviewManager reviewManager = ReviewManager.getInstance();
 		List<Review> reviewList = reviewManager.findReviewList(post.getPostId());
 		
-		request.setAttribute("postId", postId);	
-		request.setAttribute("post", post);
-		request.setAttribute("nickname", postManager.getPostUserNickName(post.getWriterId()));
-		request.setAttribute("reviewList", reviewList);
-        return "/post/postInfo.jsp";	// Move to post info
+//		request.setAttribute("postId", postId);	
+//		request.setAttribute("post", post);
+//		request.setAttribute("nickname", postManager.getPostUserNickName(post.getWriterId()));
+//		request.setAttribute("reviewList", reviewList);
+		
+        return "redirect:/comm/main";	// Move to post info
 		
 //		try {
 //			
 //	        
-//		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
+//		} catch (ExistingUserException e) {	// �삁�쇅 諛쒖깮 �떆 �쉶�썝媛��엯 form�쑝濡� forwarding
 //            request.setAttribute("registerFailed", true);
 //			request.setAttribute("exception", e);
 //			request.setAttribute("user", user);
