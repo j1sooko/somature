@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Transaction;
-import model.User;
 import model.dao.PostDAO;
 import model.dao.TransactionDAO;
 import model.dao.UserDAO;
@@ -39,14 +38,33 @@ public class TransactionManager {
 		List<Transaction> transactionListById = transactionDAO.findMyTransactionList(userId);
 		List<Transaction> transactionList = new ArrayList<Transaction>();
 		for (int i = 0; i < transactionListById.size(); i++) {
-			System.out.println(userDAO.findUserByPrimaryKey(userId));
+
+			int postId = transactionListById.get(i).getPostId();
 			Transaction transaction = new Transaction(
 					transactionListById.get(i).getTransId(),
 					transactionListById.get(i).getTransDate(),
-					userDAO.findUserByPrimaryKey(userId),
-					postDAO.findPost(transactionListById.get(i).getPostId())
+					userDAO.findUserByPrimaryKey(postDAO.findPost(postId).getWriterId()),
+					postDAO.findPost(postId)
 					);
 
+			transactionList.add(transaction);
+		}
+		
+		return transactionList;
+	}
+	
+	public List<Transaction> findMySellerTransactionList(int userId) throws SQLException {
+		List<Transaction> transactionListById = transactionDAO.findMySellerTransactionList(userId);
+		List<Transaction> transactionList = new ArrayList<Transaction>();
+		for (int i = 0; i < transactionListById.size(); i++) {
+			
+			Transaction transaction = new Transaction(
+					transactionListById.get(i).getTransId(),
+					transactionListById.get(i).getTransDate(),
+					userDAO.findUserByPrimaryKey(transactionListById.get(i).getUserId()),
+					postDAO.findPost(transactionListById.get(i).getPostId())
+					);
+			
 			transactionList.add(transaction);
 		}
 		

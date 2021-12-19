@@ -13,52 +13,62 @@ import controller.review.UploadReviewFormController;
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
     
-    // °¢ ¿äÃ» uri¿¡ ´ëÇÑ controller °´Ã¼¸¦ ÀúÀåÇÒ HashMap »ı¼º
+    // ê° ìš”ì²­ uriì— ëŒ€í•œ controller ê°ì²´ë¥¼ ì €ì¥í•  HashMap ìƒì„±
     private Map<String, Controller> mappings = new HashMap<String, Controller>();
 
     public void initMapping() {
-    	// °¢ uri¿¡ ´ëÀÀµÇ´Â controller °´Ã¼¸¦ »ı¼º ¹× ÀúÀå
+    	// ê° uriì— ëŒ€ì‘ë˜ëŠ” controller ê°ì²´ë¥¼ ìƒì„± ë° ì €ì¥
     	
-    	//ÃÊ±âÈ­¸é ¹× ·Î±×ÀÎ°ú ·Î±×¾Æ¿ô
-        mappings.put("/", new ForwardController("index.jsp")); //°æ¿ø: ÃÊ±âÈ­¸éÀº index.jsp·Î ÀÌµ¿ÇÏ°Ô
-        //ÃÊ±â-¸ŞÀÎÈ­¸é
+    	//ì´ˆê¸°í™”ë©´ ë° ë¡œê·¸ì¸ê³¼ ë¡œê·¸ì•„ì›ƒ
+        mappings.put("/", new ForwardController("index.jsp")); //ê²½ì›: ì´ˆê¸°í™”ë©´ì€ index.jspë¡œ ì´ë™í•˜ê²Œ
+        //ì´ˆê¸°-ë©”ì¸í™”ë©´
         mappings.put("/comm/main", new ListPostController());
         mappings.put("/comm/search", new ForwardController("/comm/search.jsp"));
         mappings.put("/comm/search/searchForm", new ForwardController("/comm/searchForm.jsp"));
         mappings.put("/comm/search/list", new SearchCategoryController());
         mappings.put("/user/myPage", new MyPageController());
-        mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp")); //°æ¿ø: ·Î±×ÀÎ ¹öÆ°À» ´©¸£¸é /user/loginForm.jsp·Î ÀÌµ¿ÇÏ°Ô
+        mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp")); //ê²½ì›: ë¡œê·¸ì¸ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ /user/loginForm.jspë¡œ ì´ë™í•˜ê²Œ
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/view", new ViewUserController());
         mappings.put("/comm/buyerPage", new BuyerPostListController());       
         
-        mappings.put("/user/list", new ListUserController()); //°æ¿ø: À¯Àú¸®½ºÆ® º¸´Â°Ç »ç¿ëÀÚ°¡ ¾Æ´Ñ administrator°¡ º¸´Â°Å¶ó¼­ »­
+        mappings.put("/user/list", new ListUserController()); //ê²½ì›: ìœ ì €ë¦¬ìŠ¤íŠ¸ ë³´ëŠ”ê±´ ì‚¬ìš©ìê°€ ì•„ë‹Œ administratorê°€ ë³´ëŠ”ê±°ë¼ì„œ ëºŒ
       
         
         
-        // È¸¿ø °¡ÀÔ Æû ¿äÃ»°ú °¡ÀÔ ¿äÃ» Ã³¸® º´ÇÕ (Æû¿¡ Ä¿¹Â´ÏÆ¼ ¼±ÅÃ ¸Ş´º Ãß°¡¸¦ À§ÇÔ)
+        // íšŒì› ê°€ì… í¼ ìš”ì²­ê³¼ ê°€ì… ìš”ì²­ ì²˜ë¦¬ ë³‘í•© (í¼ì— ì»¤ë®¤ë‹ˆí‹° ì„ íƒ ë©”ë‰´ ì¶”ê°€ë¥¼ ìœ„í•¨)
         mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
         mappings.put("/user/register", new RegisterUserController());
         
-        //¸¶ÀÌÆäÀÌÁö °ü¸®
-        mappings.put("/user/myInfo", new MyInfoController()); //°æ¿ø: ³»Á¤º¸·Î °¡´Â ÄÁÆ®·Ñ·¯
-        //ÀÚ½ÅÀÇ Á¤º¸¸¦ ¾÷µ¥ÀÌÆ®ÇÏ°í µî·ÏÇÏ´Â°Í.
-//        mappings.put("/user/update/form", new ForwardController("/user/updateForm.jsp")); //°æ¿ø: ÀÚ±â ÀÚ½ÅÀÇ Á¤º¸¸¦ ¼öÁ¤ÇÏ°íÀÚ ÇÒ ¶§  
+        //ë§ˆì´í˜ì´ì§€ ê´€ë¦¬
+        mappings.put("/user/myInfo", new MyInfoController()); //ê²½ì›: ë‚´ì •ë³´ë¡œ ê°€ëŠ” ì»¨íŠ¸ë¡¤ëŸ¬
+        //ìì‹ ì˜ ì •ë³´ë¥¼ ì—…ë°ì´íŠ¸í•˜ê³  ë“±ë¡í•˜ëŠ”ê²ƒ.
+//        mappings.put("/user/update/form", new ForwardController("/user/updateForm.jsp")); //ê²½ì›: ìê¸° ìì‹ ì˜ ì •ë³´ë¥¼ ìˆ˜ì •í•˜ê³ ì í•  ë•Œ  
         
         mappings.put("/user/update", new UpdateUserController());
         mappings.put("/user/myPost", new MyPostController());
-        mappings.put("/user/participatingTransaction", new ForwardController("/user/participatingTransaction.jsp"));
+
+        
+  
+        mappings.put("/user/myPage/myBuyerTransaction", new MyBuyerTransactionListController());
+        mappings.put("/user/myPage/mySellerTransaction", new MySellerTransactionListController());
+
+      
+
+    
         mappings.put("/user/followingList", new FavoriteListController());
-        mappings.put("/user/myTransactionList", new MyTransactionListController());
+
+
         
         mappings.put("/user/delete", new DeleteUserController());
         
-        // °Ô½Ã±Û °ü¸®
-        mappings.put("/post/upload/form", new UploadPostFormController()); //°Ô½Ã±Û ÀÛ¼º Æû ¿äÃ»(·Î±×ÀÎ ¾ÆÀÌµğ Á¤º¸ ³Ñ±è->writerId·Î ¾²±âÀ§ÇÔ)
+        // ê²Œì‹œê¸€ ê´€ë¦¬
+        mappings.put("/post/upload/form", new UploadPostFormController()); //ê²Œì‹œê¸€ ì‘ì„± í¼ ìš”ì²­(ë¡œê·¸ì¸ ì•„ì´ë”” ì •ë³´ ë„˜ê¹€->writerIdë¡œ ì“°ê¸°ìœ„í•¨)
         mappings.put("/post/upload", new UploadPostController());
         mappings.put("/post/update", new UpdatePostController());
         mappings.put("/post/postInfo", new PostInfoController());
+        mappings.put("/post/sellerPostUpdate", new SellerUpdatePostController());
         mappings.put("/post/sellerPostInfo", new SellerPostInfoController());
         mappings.put("/post/delete", new DeletePostController());
         mappings.put("/post/search", new PostSearchController());
@@ -66,13 +76,13 @@ public class RequestMapping {
         mappings.put("/post/transaction", new CreateTransactionController());
         logger.info("Initialized Request Mapping!");
         
-        // ´ñ±Û °ü¸®
+        // ëŒ“ê¸€ ê´€ë¦¬
         mappings.put("/review/upload/form", new UploadReviewFormController());
         mappings.put("/review/upload", new UploadReviewController());  
     }
 
     public Controller findController(String uri) {	
-    	// ÁÖ¾îÁø uri¿¡ ´ëÀÀµÇ´Â controller °´Ã¼¸¦ Ã£¾Æ ¹İÈ¯
+    	// ì£¼ì–´ì§„ uriì— ëŒ€ì‘ë˜ëŠ” controller ê°ì²´ë¥¼ ì°¾ì•„ ë°˜í™˜
         return mappings.get(uri);
     }
 }
