@@ -53,14 +53,6 @@
 			return false;
 		}
 
-		//editor = CKEDITOR.instances.content_textarea;
-		//var mytext = editor.getData();
-		//if (mytext == "") {
-		//alert("내용을 입력하십시오.");
-		//form.description.focus();
-		//return false;
-		//}
-
 		form.submit();
 	}
 </script>
