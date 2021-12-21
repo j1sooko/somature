@@ -77,8 +77,4 @@ public class UserManager {
 	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}
-	
-	public List<Post> findMyPostList(int userId) throws SQLException {
-		return userDAO.findMyPostList(userId);
-	}
 }
