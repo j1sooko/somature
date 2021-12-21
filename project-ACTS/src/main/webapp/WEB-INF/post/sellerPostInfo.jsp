@@ -56,6 +56,9 @@ List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
 					<tr>
 						<td>가격: <%=post.getPrice()%>원</td>
 					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
 				</table>
 
 				<table>
