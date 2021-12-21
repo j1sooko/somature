@@ -76,6 +76,10 @@ public class PostManager {
 
 		return post.getImgUrl();
 	}
+	
+	public List<Post> findMyPostList(int userId) throws SQLException {
+		return postDAO.findMyPostList(userId);
+	}
 
 	
 }
