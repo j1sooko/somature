@@ -55,7 +55,7 @@ section {
 	padding-bottom: 20px;
 }
 </style>
-<script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
 function confirm() {
 	confirm('정말 계정을 삭제하시겠습니까?');
 }
