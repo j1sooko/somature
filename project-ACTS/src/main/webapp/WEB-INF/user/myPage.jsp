@@ -3,62 +3,86 @@
 <%@page import="model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	User user = (User)request.getAttribute("user");
+   User user = (User)request.getAttribute("user");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
 <style>
-
-.tab {
-  width: 100%;
-  height: 50px;
+body {
+    text-align: center;margin: 0 auto;width: 100%;
+    background-color : white;
 }
-
-.tablinks {
-  float: left;
-  width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #a6a6a6;
+nav > a {
+    float: right;
+    margin: auto;
+    text-decoration: none;
 }
-
-.tablinks.active {
-  color: #000;
-  background-color: #fff;
+nav div{
+    text-align:right;
+}
+nav div > a{
+    text-decoration: none;
+    color:black;
+}
+nav div > a:last-child{
+    padding-left:10px;
+}
+aside >  a{
+    text-decoration: none; color:black;
+}
+#wrap > section > ul > li{
+    list-style-type:none;
+}
+aside {
+    width: 30%; float: left;
+} 
+section {
+    float: left;width: 70%
+}
+#wrap{
+    border:1px solid gray; height:50%;
+}
+.div {
+   padding-top: 20px;
+   padding-bottom: 20px;
 }
 </style>
 <script>
 function confirm() {
-	confirm('정말 계정을 삭제하시겠습니까?');
+   confirm('정말 계정을 삭제하시겠습니까?');
 }
-
-
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
 </script>
 </head>
 <%@include file="/WEB-INF/navbar.jsp" %>
+
+   <h1>내정보</h1>
+   <a href="<c:url value='/user/myInfo' />">내 정보 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+   <a
+      href="<c:url value='/user/update'><c:param name='accountId' value='<%=user.getAccountId()%>'/></c:url>">회원
+      정보 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <a
+      href="<c:url value='/user/myPost'>
+      <c:param name='userId' value='${user.userId}'/></c:url>">
+      내가 쓴 글 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+   <a
+      href="<c:url value='/user/myPage/myBuyerTransaction'>
+      <c:param name='userId' value='${user.userId}'/></c:url>">
+      거래 내역 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+   <a href="<c:url value='/user/followingList' />">내가 팔로잉하는 계정</a>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+   <a onclick='confirm()'
+      href="<c:url value='/user/delete'>
+            <c:param name='accountId' value='${user.accountId}'/>
+           </c:url>">
+   회원탈퇴</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 <%
     String pagefile=request.getParameter("page");
     //처음 보여주는 페이지는 내가 쓴글리스트
@@ -67,6 +91,7 @@ function openTab(evt, tabName) {
         }
 %>
 <body>
+
 <div class="row">
 	<div class="col-4">
     <div  class="list-group" id="myList" role="tablist">
@@ -89,6 +114,7 @@ function openTab(evt, tabName) {
     </div>
   
 </div>
+
 
 </body>
 </html>
