@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Post;
+import model.Transaction;
 import model.User;
 import java.sql.Date;
 
@@ -110,6 +111,35 @@ public class UserDAO {
 				User user = new User(		// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎈린占쎄문 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
 					rs.getInt("userId"),
 						accountId,
+					rs.getString("password"),
+					rs.getString("userName"),
+					rs.getString("emailAddress"),
+					rs.getString("phoneNumber"),
+					rs.getString("registrationNumber"),
+					rs.getDate("joinDate"),
+					rs.getString("nickName"));
+				return user;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.close();		// resource 獄쏆꼹�넎
+		}
+		return null;
+	}
+	
+	public User findUserByPrimaryKey(int userId) throws SQLException {
+        String sql = "SELECT phoneNumber, emailAddress, userName, registrationNumber, password, joinDate, accountId, nickName "
+        			+ "FROM ACCOUNT "
+        			+ "WHERE userId=? ";              
+		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});	// JDBCUtil占쎈퓠 query�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
+
+		try {
+			ResultSet rs = jdbcUtil.executeQuery();		// query 占쎈뼄占쎈뻬
+			if (rs.next()) {						// 占쎈린占쎄문 占쎌젟癰귨옙 獄쏆뮄猿�
+				User user = new User(		// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎈린占쎄문 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
+					userId,
+					rs.getString("accountId"),
 					rs.getString("password"),
 					rs.getString("userName"),
 					rs.getString("emailAddress"),
@@ -246,5 +276,6 @@ public class UserDAO {
 		return null;
 	}
 	
+
 
 }
