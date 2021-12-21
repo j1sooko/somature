@@ -31,6 +31,7 @@ public class TransactionDAO {
 			}
 
 			jdbcUtil.setSqlAndParameters(sql, param);
+
 			try {
 				int result = jdbcUtil.executeUpdate();
 				return result;

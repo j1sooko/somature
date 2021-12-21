@@ -25,7 +25,7 @@ public class UserDAO {
 	 * 占쎄텢占쎌뒠占쎌쁽 �꽴占썹뵳占� 占쎈�믭옙�뵠�뇡遺용퓠 占쎄퉱嚥≪뮇�뒲 占쎄텢占쎌뒠占쎌쁽 占쎄문占쎄쉐.
 	 */
 	public int create(User user) throws SQLException {
-		String sql = "INSERT INTO ACCOUNT VALUES (id_seq.nextval, ?, ?, ?, ?, ?, DEFAULT, ?, ?)";		
+		String sql = "INSERT INTO ACCOUNT VALUES (user_id_seq.nextval, ?, ?, ?, ?, ?, DEFAULT, ?, ?)";		
 		Object[] param = new Object[] { user.getPhone(), user.getEmail(), user.getName(), 
 						user.getRegNum(), user.getPassword(), user.getAccountId(), user.getNickName()};		
 		jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 占쎈퓠 insert�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟	

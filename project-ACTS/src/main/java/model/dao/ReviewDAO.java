@@ -16,7 +16,7 @@ private JDBCUtil jdbcUtil = null;
 	}
 	
 	public int create(Review review) throws SQLException {
-		String sql = "INSERT INTO POSTREVIEW VALUES (id_seq.nextval, DEFAULT, ?, ?, ?, ?)";
+		String sql = "INSERT INTO POSTREVIEW VALUES (review_id_seq.nextval, DEFAULT, ?, ?, ?, ?)";
 		Object[] param = new Object[] { review.getContent(), review.getScore(), review.getReviewerId(), review.getPostId()};	
 		System.out.println("sql: " + sql);
 		System.out.println("param: " + param);
