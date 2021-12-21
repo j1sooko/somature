@@ -8,6 +8,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import model.Post;
 import model.Transaction;
 
 public class TransactionDAO {
@@ -20,15 +21,16 @@ public class TransactionDAO {
 
 		public int create(Transaction transaction) throws SQLException {
 
-			String sql = "INSERT INTO TRANSACTION VALUES (id_seq.nextval, DEFAULT, ?, ?)";
-			Object[] param = new Object[] { transaction.getUser().getUserId(), transaction.getPost().getPostId()};	
+			String sql = "INSERT INTO TRANSACTION VALUES (trans_id_seq.nextval, ?, ?, DEFAULT, ?, ?)";
+			Object[] param = new Object[] { transaction.getUser().getUserId(), transaction.getPost().getPostId(),
+					transaction.getTransTitle(), transaction.getTransContents() };	
 			System.out.println("sql: " + sql);
 			System.out.println("param: " + param);
 			for (Object p : param) {
 				System.out.println(p);
 			}
 
-			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 占쎈퓠 insert�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟	
+			jdbcUtil.setSqlAndParameters(sql, param);
 			try {
 				int result = jdbcUtil.executeUpdate();
 				return result;
@@ -42,6 +44,29 @@ public class TransactionDAO {
 			return 0;			
 		}
 
+		public Transaction findTransaction(int transId) throws SQLException {
+	        String sql = "SELECT transTitle, transContents "
+	        			+ "FROM TRANSACTION "
+	        			+ "WHERE transId=? ";              
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {transId});	
+
+			try {
+				ResultSet rs = jdbcUtil.executeQuery();		
+				if (rs.next()) {						
+					Transaction transaction = new Transaction(
+						transId,
+						rs.getString("transTitle"),
+						rs.getString("transContents"));
+					return transaction;
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			} finally {
+				jdbcUtil.close();
+			}
+			return null;
+		}
+		
 		public List<Transaction> findMyTransactionList(int userId) throws SQLException {
 	        String sql = "SELECT * " 
 	        		   + "FROM TRANSACTION "
@@ -56,7 +81,9 @@ public class TransactionDAO {
 							rs.getInt("transId"),
 							rs.getDate("transDate"),
 							userId,
-							rs.getInt("postId"));
+							rs.getInt("postId"),
+							rs.getString("transTitle"),
+							rs.getNString("transContents"));
 					transactionList.add(transaction);				
 				}		
 				return transactionList;					
@@ -83,7 +110,9 @@ public class TransactionDAO {
 							rs.getInt("transId"),
 							rs.getDate("transDate"),
 							rs.getInt("userId"),
-							rs.getInt("postId"));
+							rs.getInt("postId"),
+							rs.getString("transTitle"),
+							rs.getNString("transContents"));
 					transactionList.add(transaction);				
 				}
 				System.out.println("transactionList: " + transactionList);
