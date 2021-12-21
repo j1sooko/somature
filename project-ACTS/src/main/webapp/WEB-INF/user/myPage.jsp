@@ -14,63 +14,48 @@
 
 <style>
 
-body {
-    text-align: center;margin: 0 auto;width: 100%;
-    background-color : white;
+.tab {
+  width: 100%;
+  height: 50px;
 }
-nav > a {
-    float: right;
-    margin: auto;
-    text-decoration: none;
+
+.tablinks {
+  float: left;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #a6a6a6;
 }
-nav div{
-    text-align:right;
-}
-nav div > a{
-    text-decoration: none;
-    color:black;
-}
-nav div > a:last-child{
-    padding-left:10px;
-}
-aside >  a{
-    text-decoration: none; color:black;
-}
-#wrap > section > ul > li{
-    list-style-type:none;
-}
-aside {
-    width: 30%; float: left;
-} 
-section {
-    float: left;width: 70%
-}
-#wrap{
-    border:1px solid gray; height:50%;
-}
-.div {
-	padding-top: 20px;
-	padding-bottom: 20px;
+
+.tablinks.active {
+  color: #000;
+  background-color: #fff;
 }
 </style>
 <script>
 function confirm() {
 	confirm('정말 계정을 삭제하시겠습니까?');
 }
-var triggerTabList = [].slice.call(document.querySelectorAll('#list-tab a'))
-triggerTabList.forEach(function (triggerEl) {
-  var tabTrigger = new bootstrap.Tab(triggerEl)
 
-  triggerEl.addEventListener('click', function (event) {
-    event.preventDefault()
-    tabTrigger.show()
-  })
-})
-$('a[href="#list-myInfo"]').tab('show');
-$('a[href="#list-updateInfo"]').tab('show');
-$('a[href="#list-postList"]').tab('show');
-$('a[href="#list-participatingTransaction"]').tab('show');
-$('a[href="#list-favoriteList"]').tab('show');
+
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
 </script>
 </head>
 <%@include file="/WEB-INF/navbar.jsp" %>
@@ -85,20 +70,21 @@ $('a[href="#list-favoriteList"]').tab('show');
 <div class="row">
 	<div class="col-4">
     <div  class="list-group" id="myList" role="tablist">
-      <a class="list-group-item list-group-item-action" id="list-myInfo-list" data-bs-toggle="list" href="#list-myInfo" role="tab" >내 정보 보기</a>
-      <a class="list-group-item list-group-item-action" id="list-updateInfo-list" data-bs-toggle="list" href="#list-updateInfo" role="tab" >회원 정보 수정</a>
-      <a class="list-group-item list-group-item-action" id="list-postList-list" data-bs-toggle="list" href="#list-postList" role="tab" >내가 쓴 글 보기</a>
-      <a class="list-group-item list-group-item-action" id="list-participatingTransaction-list" data-bs-toggle="list" href="#list-participatingTransaction" role="tab" >현재 거래 내역</a>
-      <a class="list-group-item list-group-item-action" id="list-favoriteList-list" data-bs-toggle="list" href="#list-favoriteList" role="tab">팔로잉 리스트</a>
+    	<button class="tablinks active" onclick="openTab(event, 'list-myInfo')">내 정보 보기</button>
+    	<button class="tablinks" onclick="openTab(event, 'list-updateInfo')">내 정보 수정</button>
+    	<button class="tablinks" onclick="openTab(event, 'list-postList')">내 게시글 보기</button>
+    	<button class="tablinks" onclick="openTab(event, 'list-participatingTransaction')">내 거래내역</button>
+    	<button class="tablinks" onclick="openTab(event, 'list-favoriteList')">팔로잉리스트</button>
+
     </div>
   	</div>
   	<div class="col-8">
     <div class="tab-content">
-      <div class="tab-pane fade show active" id="list-myInfo" role="tabpanel"><jsp:include page="myInfo.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="list-updateInfo" role="tabpanel"><jsp:include page="updateForm.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="list-postList" role="tabpanel" ><jsp:include page="myPost.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="list-participatingTransaction" role="tabpanel"><jsp:include page="participatingTransaction.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="list-favoriteList" role="tabpanel"><jsp:include page="favoriteList.jsp"></jsp:include></div>
+      <div class="tabcontent" id="list-myInfo" role="tabpanel" style="display: block;"><jsp:include page="myInfo.jsp" ></jsp:include></div>
+      <div class="tabcontent" id="list-updateInfo" role="tabpanel" style="display: none;"><jsp:include page="updateForm.jsp" ></jsp:include></div>
+      <div class="tabcontent" id="list-postList" role="tabpanel"  style="display: none;"><jsp:include page="myPost.jsp"  ></jsp:include></div>
+      <div class="tabcontent" id="list-participatingTransaction" role="tabpanel"  style="display: none;"><jsp:include page="participatingTransaction.jsp" ></jsp:include></div>
+      <div class="tabcontent" id="list-favoriteList" role="tabpanel"  style="display: none;"><jsp:include page="favoriteList.jsp"></jsp:include></div>
     </div>
     </div>
   
