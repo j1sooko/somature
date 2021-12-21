@@ -12,8 +12,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <style>
 
 body {
@@ -55,39 +53,42 @@ section {
 	padding-bottom: 20px;
 }
 </style>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+<script src="js/bootstarp.js"></script>
+<script src="js/jquery-3.6.0.js"></script>
+<script src = "js/bootstrap.min.js"></script>
+<script>
 function confirm() {
 	confirm('정말 계정을 삭제하시겠습니까?');
+}
+var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+triggerTabList.forEach(function (triggerEl) {
+  var tabTrigger = new bootstrap.Tab(triggerEl)
+
+  triggerEl.addEventListener('click', function (event) {
+    event.preventDefault()
+    tabTrigger.show()
+  })
+})
+var triggerEl = document.querySelector('#myTab a[href="#profile"]')
+bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+
+var triggerFirstTabEl = document.querySelector('#myTab li:first-child a')
+bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
+var firstTabEl = document.querySelector('#myTab a:last-child')
+var firstTab = new bootstrap.Tab(firstTabEl)
+
+firstTab.show()
+
+var tabElms = document.querySelectorAll('a[data-bs-toggle="list"]')
+tabElms.forEach(function(tabElm) {
+  tabElm.addEventListener('shown.bs.tab', function (event) {
+    event.target // newly activated tab
+    event.relatedTarget // previous active tab
+  }))
 }
 </script>
 </head>
 <%@include file="/WEB-INF/navbar.jsp" %>
-
-	<h1>내정보</h1>
-	<a href="<c:url value='/user/myInfo' />">내 정보 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-	<a
-		href="<c:url value='/user/update'><c:param name='accountId' value='<%=user.getAccountId()%>'/></c:url>">회원
-		정보 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a
-		href="<c:url value='/user/myPost'>
-		<c:param name='userId' value='${user.userId}'/></c:url>">
-		내가 쓴 글 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		
-	<a
-		href="<c:url value='/user/myPage/myBuyerTransaction'>
-		<c:param name='userId' value='${user.userId}'/></c:url>">
-		거래 내역 보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-	<a href="<c:url value='/user/followingList' />">내가 팔로잉하는 계정</a>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	
-	<a onclick='confirm()'
-		href="<c:url value='/user/delete'>
-				<c:param name='accountId' value='${user.accountId}'/>
-			  </c:url>">
-	회원탈퇴</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 <%
     String pagefile=request.getParameter("page");
     //처음 보여주는 페이지는 내가 쓴글리스트
@@ -99,20 +100,20 @@ function confirm() {
 <div class="row">
   <div class="col-4">
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action" id="list-myInfo-list" data-toggle="list" href="#list-myInfo" role="tab" aria-controls="myInfo">내 정보 보기</a>
-      <a class="list-group-item list-group-item-action" id="list-updateInfo-list" data-toggle="list" href="#list-updateInfo" role="tab" aria-controls="updateInfo">회원 정보 수정</a>
-      <a class="list-group-item list-group-item-action" id="list-postList-list" data-toggle="list" href="#list-postList" role="tab" aria-controls="postList">내가 쓴 글 보기</a>
-      <a class="list-group-item list-group-item-action" id="list-participatingTransaction-list" data-toggle="list" href="#list-participatingTransaction" role="tab" aria-controls="participatingTransaction">현재 거래 내역</a>
-      <a class="list-group-item list-group-item-action" id="list-followingList-list" data-toggle="list" href="#list-followingList" role="tab" aria-controls="followingList">팔로잉 리스트</a>
+      <a class="list-group-item list-group-item-action" id="list-myInfo-list" data-toggle="list" href="#list-myInfo" role="tab" aria-controls="myInfo" role="tab">내 정보 보기</a>
+      <a class="list-group-item list-group-item-action" id="list-updateInfo-list" data-toggle="list" href="#list-updateInfo" role="tab" aria-controls="updateInfo" role="tab">회원 정보 수정</a>
+      <a class="list-group-item list-group-item-action" id="list-postList-list" data-toggle="list" href="#list-postList" role="tab" aria-controls="postList" role="tab">내가 쓴 글 보기</a>
+      <a class="list-group-item list-group-item-action" id="list-participatingTransaction-list" data-toggle="list" href="#list-participatingTransaction" role="tab" aria-controls="participatingTransaction" role="tab">현재 거래 내역</a>
+      <a class="list-group-item list-group-item-action" id="list-favoriteList-list" data-toggle="list" href="#list-favoriteList" role="tab" aria-controls="favoriteList" role="tab">팔로잉 리스트</a>
     </div>
   </div>
   <div class="col-8">
     <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-myInfo" role="tabpanel" aria-labelledby="list-myInfo-list"><jsp:include page="myInfo.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="list-updateInfo" role="tabpanel" aria-labelledby="list-updateInfo-list"><jsp:include page="updateForm.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="list-postList" role="tabpanel" aria-labelledby="list-postList-list"><jsp:include page="myPost.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="list-participatingTransaction" role="tabpanel" aria-labelledby="list-participatingTransaction-list"><jsp:include page="participatingTransaction.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="list-followingList" role="tabpanel" aria-labelledby="list-followingList-list"><jsp:include page="favoriteList.jsp"></jsp:include></div>
+      <div class="tab-pane fade show active" id="#list-myInfo" role="tabpanel" aria-labelledby="list-myInfo-list"><jsp:include page="myInfo.jsp"></jsp:include></div>
+      <div class="tab-pane fade" id="#list-updateInfo" role="tabpanel" aria-labelledby="list-updateInfo-list"><jsp:include page="updateForm.jsp"></jsp:include></div>
+      <div class="tab-pane fade" id="#list-postList" role="tabpanel" aria-labelledby="list-postList-list"><jsp:include page="myPost.jsp"></jsp:include></div>
+      <div class="tab-pane fade" id="#list-participatingTransaction" role="tabpanel" aria-labelledby="list-participatingTransaction-list"><jsp:include page="participatingTransaction.jsp"></jsp:include></div>
+      <div class="tab-pane fade" id="#list-favoriteList" role="tabpanel" aria-labelledby="list-favoriteList-list"><jsp:include page="favoriteList.jsp"></jsp:include></div>
     </div>
   </div>
 </div>
