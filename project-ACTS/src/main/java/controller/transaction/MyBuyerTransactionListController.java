@@ -1,4 +1,4 @@
-package controller.user;
+package controller.transaction;
 
 import java.util.List;
 
@@ -6,10 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
+import model.Post;
 import model.Transaction;
+import model.dao.UserDAO;
 import model.service.TransactionManager;
 
-public class MySellerTransactionListController implements Controller{
+public class MyBuyerTransactionListController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	
 		int userId = Integer.parseInt(request.getParameter("userId"));
@@ -17,10 +19,11 @@ public class MySellerTransactionListController implements Controller{
 		TransactionManager transactionMan =  TransactionManager.getInstance();
 		List<Transaction> transactionList;
 	
-		transactionList = transactionMan.findMySellerTransactionList(userId);
+		transactionList = transactionMan.findMyTransactionList(userId);
 		
+    	
 		request.setAttribute("userId", userId);
     	request.setAttribute("transactionList", transactionList);			
-		return "/user/mySellerTransaction.jsp";
+		return "/user/myBuyerTransaction.jsp";
     }
 }

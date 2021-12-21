@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Transaction;
+import model.User;
 import model.dao.PostDAO;
 import model.dao.TransactionDAO;
 import model.dao.UserDAO;
@@ -34,6 +35,15 @@ public class TransactionManager {
 		return transactionDAO.create(transaction);
 	}
 	
+	
+	public Transaction findTransaction(int transId)
+			throws SQLException, UserNotFoundException {
+			Transaction transaction = transactionDAO.findTransaction(transId);
+			return transaction;
+		}
+	
+	//거래 삭제 구현 필요
+	
 	public List<Transaction> findMyTransactionList(int userId) throws SQLException {
 		List<Transaction> transactionListById = transactionDAO.findMyTransactionList(userId);
 		List<Transaction> transactionList = new ArrayList<Transaction>();
@@ -44,7 +54,9 @@ public class TransactionManager {
 					transactionListById.get(i).getTransId(),
 					transactionListById.get(i).getTransDate(),
 					userDAO.findUserByPrimaryKey(postDAO.findPost(postId).getWriterId()),
-					postDAO.findPost(postId)
+					postDAO.findPost(postId),
+					transactionListById.get(i).getTransTitle(),
+					transactionListById.get(i).getTransContents()
 					);
 
 			transactionList.add(transaction);
@@ -62,7 +74,9 @@ public class TransactionManager {
 					transactionListById.get(i).getTransId(),
 					transactionListById.get(i).getTransDate(),
 					userDAO.findUserByPrimaryKey(transactionListById.get(i).getUserId()),
-					postDAO.findPost(transactionListById.get(i).getPostId())
+					postDAO.findPost(transactionListById.get(i).getPostId()),
+					transactionListById.get(i).getTransTitle(),
+					transactionListById.get(i).getTransContents()
 					);
 			
 			transactionList.add(transaction);
