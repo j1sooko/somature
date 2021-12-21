@@ -50,7 +50,6 @@ function transactionCreate() {
 	    	<script>
 				alert("내가 작성한 글은 주문할 수 없습니다.");
 			</script>
-	      <font color="red"><c:out value="${exception.getMessage()}" /></font>
  </c:if>
 </body>
 </html>

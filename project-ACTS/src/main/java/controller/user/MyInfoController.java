@@ -14,12 +14,13 @@ public class MyInfoController implements Controller {
 	@Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
     	
-    	
+
 		UserManager manager = UserManager.getInstance();
 		HttpSession session = request.getSession();
 		String loginAccountId = UserSessionUtils.getLoginUserId(session);
-
-    	User user = null;
+		User user = null;	
+		
+    
     	try {
 			user = manager.findUser(loginAccountId);	// 사용자 정보 검색
 		} catch (UserNotFoundException e) {				
