@@ -20,7 +20,7 @@ public class TransactionDAO {
 
 		public int create(Transaction transaction) throws SQLException {
 
-			String sql = "INSERT INTO TRANSACTION VALUES (id_seq.nextval, DEFAULT, ?, ?)";
+			String sql = "INSERT INTO TRANSACTION VALUES (trans_id_seq.nextval, DEFAULT, ?, ?)";
 			Object[] param = new Object[] { transaction.getUser().getUserId(), transaction.getPost().getPostId()};	
 			System.out.println("sql: " + sql);
 			System.out.println("param: " + param);
@@ -28,7 +28,7 @@ public class TransactionDAO {
 				System.out.println(p);
 			}
 
-			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil 占쎈퓠 insert�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟	
+			jdbcUtil.setSqlAndParameters(sql, param);	// JDBCUtil �뜝�럥�뱺 insert占쎈닱筌롫챶沅� 嶺뚮씞�걝�뚳옙 �솻洹⑥삕�뜝�럥�빢 �뜝�럡�맟�뜝�럩�젧	
 			try {
 				int result = jdbcUtil.executeUpdate();
 				return result;

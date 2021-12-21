@@ -88,12 +88,7 @@ a {
 <body>
 
 	<%@include file="/WEB-INF/navbar.jsp" %>
-	
-	<br>
-
-	<jsp:include page="/WEB-INF/post/postList.jsp"></jsp:include>
-	
-	<br>
+	<!--<jsp:include page="/WEB-INF/post/postList.jsp"></jsp:include>-->
 	<jsp:include page="/WEB-INF/post/postListImg.jsp"></jsp:include>
 	
 	<div style="position: fixed; bottom: 5px; right: 5px;" id="i-color">
