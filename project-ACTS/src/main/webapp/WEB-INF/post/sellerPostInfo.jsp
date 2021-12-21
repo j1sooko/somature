@@ -2,6 +2,7 @@
 <%@page import="model.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+
 Post post = (Post) request.getAttribute("post");
 String nickName = (String) request.getAttribute("nickname");
 
@@ -9,6 +10,7 @@ User user = (User) request.getAttribute("user");
 String writerId = (String) request.getParameter("writerId");
 String setting = (String) request.getAttribute("setting");
 List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
+
 %>
 <html>
 <head>
@@ -27,6 +29,7 @@ List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
 
 </head>
 <body>
+
 	<script>
 		function transactionSuccess(trasactionCreateFailed) {
 			if (!trasactionCreateFailed)
@@ -35,6 +38,7 @@ List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
 	</script>
 
 	<%@include file="/WEB-INF/navbar.jsp"%>
+
 	<br>
 	<table style="width: 100%">
 		<tr>
