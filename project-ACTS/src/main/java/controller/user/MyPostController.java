@@ -19,14 +19,15 @@ public class MyPostController implements Controller {
     	
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		
+		System.out.println("userId:" + userId);
 		UserManager userManager = UserManager.getInstance();
 		PostManager postManager = PostManager.getInstance();
 
-		List<Post> postList = postManager.findMyPostList(userId);	// 占싸깍옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占싯삼옙	
+		List<Post> postList = postManager.findMyPostList(userId);
 		
     	
-    	request.setAttribute("postList", postList);		// 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙占쏙옙				
-		return "/user/myPost.jsp";				// 占쏙옙占쏙옙占� 占쏙옙占쏙옙 화占쏙옙占쏙옙占쏙옙 占싱듸옙
+    	request.setAttribute("postList", postList);			
+		return "/user/myPost.jsp";				
     }
 
 }

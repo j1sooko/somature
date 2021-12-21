@@ -2,7 +2,7 @@
 <%@page import="java.util.*, model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-
+	//User user = (User)request.getAttribute("user");
 	@SuppressWarnings("unchecked") 
 	List<Post> postList = (List<Post>)request.getAttribute("postList");
 
@@ -60,6 +60,7 @@
 				</td>
 			</tr>
 		</c:forEach>
+		<form><input type="hidden" name="userId" value="${param.userId}"></form>
 		
 		<%
 			}

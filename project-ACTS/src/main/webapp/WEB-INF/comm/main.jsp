@@ -179,6 +179,7 @@
 	<!-- banner bg main end -->
 	
 	<!-- image post list start-->
+
 	<jsp:include page="/WEB-INF/post/postListImg.jsp"></jsp:include>
 	
 	<!-- image post list end-->

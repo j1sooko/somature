@@ -3,7 +3,6 @@
 <%@page import="java.util.*, model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-
 	@SuppressWarnings("unchecked") 
 	List<Transaction> transactionList = (List<Transaction>)request.getAttribute("transactionList");
 
@@ -17,8 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/WEB-INF/navbar.jsp" %>
-	
+<%@include file="/WEB-INF/navbar.jsp" %>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	    <div class="navbar-nav">
@@ -38,6 +36,7 @@
 			<td width="200" align="center" bgcolor="E6ECDE">가격</td>
 			<td width="200" align="center" bgcolor="E6ECDE">주문 날짜</td>
 			<td width="200" align="center" bgcolor="E6ECDE">작성자</td>
+			<td width="200" align="center" bgcolor="E6ECDE">의뢰 내용</td>
 		</tr>
 		
 		<%
@@ -50,7 +49,7 @@
 		<c:forEach var="transaction" items="${transactionList}">
 			<tr>
 				<td width="190" align="center" bgcolor="ffffff" height="20">
-					<a href="<c:url value='/post/postInfo'>
+					<a href="<c:url value='/post/sellerPostInfo'>
 					   			<c:param name='postId' value='${transaction.post.postId}'/>
 					   			<c:param name='writerId' value ='${transaction.post.writerId}' />
 			 		 		 </c:url>">
@@ -66,6 +65,12 @@
 				</td>
 				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${transaction.user.nickName}
+				</td>
+				<td width="190" align="center" bgcolor="ffffff" height="20">
+					<a href="<c:url value='/user/transactionInfo'>
+					   			<c:param name='transId' value='${transaction.transId}'/>
+			 		 		 </c:url>">
+			  		${transaction.transTitle}</a>
 				</td>
 			</tr>
 		</c:forEach>
