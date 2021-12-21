@@ -38,6 +38,7 @@
 			<td width="200" align="center" bgcolor="E6ECDE">가격</td>
 			<td width="200" align="center" bgcolor="E6ECDE">주문 날짜</td>
 			<td width="200" align="center" bgcolor="E6ECDE">작성자</td>
+			<td width="200" align="center" bgcolor="E6ECDE">의뢰 내용</td>
 		</tr>
 		
 		<%
@@ -66,6 +67,12 @@
 				</td>
 				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${transaction.user.nickName}
+				</td>
+				<td width="190" align="center" bgcolor="ffffff" height="20">
+					<a href="<c:url value='/user/transactionInfo'>
+					   			<c:param name='transId' value='${transaction.transId}'/>
+			 		 		 </c:url>">
+			  		${transaction.transTitle}</a>
 				</td>
 			</tr>
 		</c:forEach>

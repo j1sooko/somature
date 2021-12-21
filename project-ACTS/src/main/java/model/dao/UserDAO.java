@@ -241,41 +241,6 @@ public class UserDAO {
 		}
 		return null;
 	}
-	
-	public List<Post> findMyPostList(int userId) throws SQLException {
-        String sql = "SELECT * " 
-        		   + "FROM POST "
-        		   + "WHERE writerId=? ";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});
-					
-		try {
-			ResultSet rs = jdbcUtil.executeQuery();	
-			List<Post> postList = new ArrayList<Post>();
-			while (rs.next()) {
-				Post post = new Post(		// User 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐占쎈릭占쎈연 占쎈린占쎄문 占쎌젟癰귣�占쏙옙 占쏙옙占쎌삢
-						rs.getInt("postId"),
-						rs.getString("title"),
-						rs.getString("description"),
-						rs.getString("imageUrl"),
-						rs.getDate("createdTime"),
-						rs.getInt("categoryId"),
-						rs.getInt("views"),
-						rs.getString("status"),
-						rs.getInt("price"),
-						rs.getString("postType"),
-						rs.getInt("writerId"));
-				postList.add(post);				// List占쎈퓠 User 揶쏆빘猿� 占쏙옙占쎌삢
-			}		
-			return postList;					
-			
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			jdbcUtil.close();		// resource 獄쏆꼹�넎
-		}
-		return null;
-	}
-	
 
 
 }
