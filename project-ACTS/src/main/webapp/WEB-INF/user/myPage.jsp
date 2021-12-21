@@ -73,7 +73,7 @@ function openTab(evt, tabName) {
     	<button class="tablinks active" onclick="openTab(event, 'list-myInfo')">내 정보 보기</button>
     	<button class="tablinks" onclick="openTab(event, 'list-updateInfo')">내 정보 수정</button>
     	<button class="tablinks" onclick="openTab(event, 'list-postList')">내 게시글 보기</button>
-    	<button class="tablinks" onclick="openTab(event, 'list-participatingTransaction')">내 거래내역</button>
+    	<button class="tablinks" onclick="openTab(event, 'list-mySellerTransaction')">내 거래내역</button>
     	<button class="tablinks" onclick="openTab(event, 'list-favoriteList')">팔로잉리스트</button>
 
     </div>
@@ -83,7 +83,7 @@ function openTab(evt, tabName) {
       <div class="tabcontent" id="list-myInfo" role="tabpanel" style="display: block;"><jsp:include page="myInfo.jsp" ></jsp:include></div>
       <div class="tabcontent" id="list-updateInfo" role="tabpanel" style="display: none;"><jsp:include page="updateForm.jsp" ></jsp:include></div>
       <div class="tabcontent" id="list-postList" role="tabpanel"  style="display: none;"><jsp:include page="myPost.jsp"  ></jsp:include></div>
-      <div class="tabcontent" id="list-participatingTransaction" role="tabpanel"  style="display: none;"><jsp:include page="participatingTransaction.jsp" ></jsp:include></div>
+      <div class="tabcontent" id="list-mySellerTransaction" role="tabpanel"  style="display: none;"><jsp:include page="mySellerTransaction.jsp" ></jsp:include></div>
       <div class="tabcontent" id="list-favoriteList" role="tabpanel"  style="display: none;"><jsp:include page="favoriteList.jsp"></jsp:include></div>
     </div>
     </div>
