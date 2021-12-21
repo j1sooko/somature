@@ -9,6 +9,7 @@ import controller.Controller;
 import model.Post;
 import model.User;
 import model.dao.UserDAO;
+import model.service.PostManager;
 import model.service.UserManager;
 
 public class MyPostController implements Controller {
@@ -19,12 +20,13 @@ public class MyPostController implements Controller {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		
 		UserManager userManager = UserManager.getInstance();
+		PostManager postManager = PostManager.getInstance();
 
-		List<Post> postList = userManager.findMyPostList(userId);	// �α��� ����� ���� �˻�	
+		List<Post> postList = postManager.findMyPostList(userId);	// 占싸깍옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占싯삼옙	
 		
     	
-    	request.setAttribute("postList", postList);		// ����� ���� ����				
-		return "/user/myPost.jsp";				// ����� ���� ȭ������ �̵�
+    	request.setAttribute("postList", postList);		// 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙占쏙옙				
+		return "/user/myPost.jsp";				// 占쏙옙占쏙옙占� 占쏙옙占쏙옙 화占쏙옙占쏙옙占쏙옙 占싱듸옙
     }
 
 }
