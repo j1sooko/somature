@@ -36,10 +36,17 @@
 		<% if (i % 4 == 0) { %>
 				<br> <% } i++; %>
 		<a href="<c:url value='/post/sellerPostInfo'>
-		
-					   			<c:param name='postId' value='${post.postId}'/>
-					   			<c:param name='writerId' value ='${post.writerId}' /></c:url>">
-			  		<img src="${pageContext.request.contextPath}/upload/${post.getImgUrl()}" class="listImg"></a>
+						<c:param name='postId' value='${post.postId}'/>
+					   	<c:param name='writerId' value ='${post.writerId}' />
+					   	<c:param name='setting' value = '-1' /> 
+				 </c:url>">
+						<c:if test="${empty post.getImgUrl()}">
+							<img src="<c:url value='/images/noImage.png' />" class="listImg">
+						</c:if>
+						<c:if test="${not empty post.getImgUrl()}">
+							<img src="${pageContext.request.contextPath}/upload/${post.getImgUrl()}" class="listImg">
+						</c:if>
+		</a>
 			
 		</c:forEach>
 		
