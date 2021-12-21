@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Transaction transaction = (Transaction)request.getAttribute("transaction");
+	List<TransComment> commentList = (List<TransComment>)request.getAttribute("commentList");
 	
 %>
 <!DOCTYPE html>
@@ -27,6 +28,15 @@
 						<td width="470" bgcolor="ffffff" style="padding-left: 10">
 							${transaction.transContents}</td>
 					</tr>
+	</table>
+	<table>
+		<c:forEach var="comment" items="${commentList}">
+			<tr>
+				<td>${comment.commenterId}</td>
+				<td>${comment.commentContent}</td>
+				<td>${comment.createTime}
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>
