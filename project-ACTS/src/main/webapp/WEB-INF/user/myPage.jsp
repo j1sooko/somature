@@ -11,7 +11,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <style>
 
@@ -58,7 +57,7 @@ section {
 function confirm() {
 	confirm('정말 계정을 삭제하시겠습니까?');
 }
-var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+var triggerTabList = [].slice.call(document.querySelectorAll('#list-tab a'))
 triggerTabList.forEach(function (triggerEl) {
   var tabTrigger = new bootstrap.Tab(triggerEl)
 
@@ -67,23 +66,11 @@ triggerTabList.forEach(function (triggerEl) {
     tabTrigger.show()
   })
 })
-var triggerEl = document.querySelector('#myTab a[href="#profile"]')
-bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
-
-var triggerFirstTabEl = document.querySelector('#myTab li:first-child a')
-bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
-var firstTabEl = document.querySelector('#myTab a:last-child')
-var firstTab = new bootstrap.Tab(firstTabEl)
-
-firstTab.show()
-
-var tabElms = document.querySelectorAll('a[data-bs-toggle="list"]')
-tabElms.forEach(function(tabElm) {
-  tabElm.addEventListener('shown.bs.tab', function (event) {
-    event.target // newly activated tab
-    event.relatedTarget // previous active tab
-  })
-}
+$('a[href="#list-myInfo"]').tab('show');
+$('a[href="#list-updateInfo"]').tab('show');
+$('a[href="#list-postList"]').tab('show');
+$('a[href="#list-participatingTransaction"]').tab('show');
+$('a[href="#list-favoriteList"]').tab('show');
 </script>
 </head>
 <%@include file="/WEB-INF/navbar.jsp" %>
@@ -96,24 +83,25 @@ tabElms.forEach(function(tabElm) {
 %>
 <body>
 <div class="row">
-  <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action" id="list-myInfo-list" data-toggle="list" href="#list-myInfo" role="tab" aria-controls="myInfo" role="tab">내 정보 보기</a>
-      <a class="list-group-item list-group-item-action" id="list-updateInfo-list" data-toggle="list" href="#list-updateInfo" role="tab" aria-controls="updateInfo" role="tab">회원 정보 수정</a>
-      <a class="list-group-item list-group-item-action" id="list-postList-list" data-toggle="list" href="#list-postList" role="tab" aria-controls="postList" role="tab">내가 쓴 글 보기</a>
-      <a class="list-group-item list-group-item-action" id="list-participatingTransaction-list" data-toggle="list" href="#list-participatingTransaction" role="tab" aria-controls="participatingTransaction" role="tab">현재 거래 내역</a>
-      <a class="list-group-item list-group-item-action" id="list-favoriteList-list" data-toggle="list" href="#list-favoriteList" role="tab" aria-controls="favoriteList" role="tab">팔로잉 리스트</a>
+	<div class="col-4">
+    <div  class="list-group" id="myList" role="tablist">
+      <a class="list-group-item list-group-item-action" id="list-myInfo-list" data-bs-toggle="list" href="#list-myInfo" role="tab" >내 정보 보기</a>
+      <a class="list-group-item list-group-item-action" id="list-updateInfo-list" data-bs-toggle="list" href="#list-updateInfo" role="tab" >회원 정보 수정</a>
+      <a class="list-group-item list-group-item-action" id="list-postList-list" data-bs-toggle="list" href="#list-postList" role="tab" >내가 쓴 글 보기</a>
+      <a class="list-group-item list-group-item-action" id="list-participatingTransaction-list" data-bs-toggle="list" href="#list-participatingTransaction" role="tab" >현재 거래 내역</a>
+      <a class="list-group-item list-group-item-action" id="list-favoriteList-list" data-bs-toggle="list" href="#list-favoriteList" role="tab">팔로잉 리스트</a>
     </div>
-  </div>
-  <div class="col-8">
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="#list-myInfo" role="tabpanel" aria-labelledby="list-myInfo-list"><jsp:include page="myInfo.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="#list-updateInfo" role="tabpanel" aria-labelledby="list-updateInfo-list"><jsp:include page="updateForm.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="#list-postList" role="tabpanel" aria-labelledby="list-postList-list"><jsp:include page="myPost.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="#list-participatingTransaction" role="tabpanel" aria-labelledby="list-participatingTransaction-list"><jsp:include page="participatingTransaction.jsp"></jsp:include></div>
-      <div class="tab-pane fade" id="#list-favoriteList" role="tabpanel" aria-labelledby="list-favoriteList-list"><jsp:include page="favoriteList.jsp"></jsp:include></div>
+  	</div>
+  	<div class="col-8">
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="list-myInfo" role="tabpanel"><jsp:include page="myInfo.jsp"></jsp:include></div>
+      <div class="tab-pane fade" id="list-updateInfo" role="tabpanel"><jsp:include page="updateForm.jsp"></jsp:include></div>
+      <div class="tab-pane fade" id="list-postList" role="tabpanel" ><jsp:include page="myPost.jsp"></jsp:include></div>
+      <div class="tab-pane fade" id="list-participatingTransaction" role="tabpanel"><jsp:include page="participatingTransaction.jsp"></jsp:include></div>
+      <div class="tab-pane fade" id="list-favoriteList" role="tabpanel"><jsp:include page="favoriteList.jsp"></jsp:include></div>
     </div>
-  </div>
+    </div>
+  
 </div>
 
 </body>
