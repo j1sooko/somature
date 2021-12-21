@@ -14,10 +14,16 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />"
    type="text/css">
 </head>
-<%@include file="/WEB-INF/navbar.jsp" %>
 <body>
 
 	<table style="background-color: YellowGreen">
+		<tr>
+			<td>
+				<form name="searchKeywordForm" method="POST" action="<c:url value='/post/search' />">
+					검색: <input type="text" size=40 name="searchKeyword" placeholder="찾고싶은 게시물의 키워드를 검색하세요"><input type="submit" value="확인"> 
+				</form>
+			</td>
+		</tr>
 		<tr>
 			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
 			<td width="200" align="center" bgcolor="E6ECDE">가격</td>
@@ -38,6 +44,7 @@
 					<a href="<c:url value='/post/postInfo'>
 					   			<c:param name='postId' value='${post.postId}'/>
 					   			<c:param name='writerId' value ='${post.writerId}' />
+			 		 		 	<c:param name='setting' value='-1' />
 			 		 		 </c:url>">
 			  		${post.title}</a>
 				</td>

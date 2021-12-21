@@ -16,6 +16,7 @@
             body {
                 margin-left: 50px;
                 margin-right: 50px;
+                font-family: sans-serif;
             }
 
             #headLine {
@@ -67,9 +68,10 @@
             
             a {
 				text-decoration: none;
+				width: 100%;
+ 	 			vertical-align: middle;
 			}
             
-
         </style>
     </head>
 
@@ -99,27 +101,32 @@
         <div id="mainContents" class="row">
                 
             <div style="width: 800px; padding-left: 80px;">
-                <h4 style="font-weight: bold;">카테고리</h4>
+                <h2 style="font-weight: bold;">카테고리</h2>
                 <br>
                 <div id="icon">
+                <h3>&emsp;ART &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; IT &emsp;&emsp;&emsp;&emsp;&emsp; DOCUMENT &emsp;&emsp;&emsp; ETC</h3>
                 	<!-- 1: art -->
 	                <a href="<c:url value='/comm/search/list'>
 		                <c:param name='categoryName' value='디자인'/></c:url>">
+		             
 		                <i class="bi bi-easel2"></i></a>
 		            
 		            <!-- 2: IT -->
 	                <a href="<c:url value='/comm/search/list'>
 		                <c:param name='categoryName' value='IT'/></c:url>">
+		                
 		                <i class="bi bi-laptop"></i></a>
 		                
 		            <!-- 3: Text -->
 	                <a href="<c:url value='/comm/search/list'>
 		                <c:param name='categoryName' value='문서'/></c:url>">
+		                
 		                <i class="bi bi-file-text"></i></a>
 		                
 		            <!-- 4: ETC -->
 	                <a href="<c:url value='/comm/search/list'>
 		                <c:param name='categoryName' value='기타'/></c:url>">
+		                
 		                <i class="bi bi-archive"></i></a>
 		               
                 	

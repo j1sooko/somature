@@ -35,7 +35,7 @@
 		<c:forEach var="post" items="${postList}">
 		<% if (i % 4 == 0) { %>
 				<br> <% } i++; %>
-		<a href="<c:url value='/post/postInfo'>
+		<a href="<c:url value='/post/sellerPostInfo'>
 		
 					   			<c:param name='postId' value='${post.postId}'/>
 					   			<c:param name='writerId' value ='${post.writerId}' /></c:url>">

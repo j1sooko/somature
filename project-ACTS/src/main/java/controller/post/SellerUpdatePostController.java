@@ -22,7 +22,7 @@ import model.service.PostManager;
 import model.Post;
 import model.User;
 
-public class UpdatePostController implements Controller{
+public class SellerUpdatePostController implements Controller{
 	private static final Logger log = LoggerFactory.getLogger(UpdatePostController.class);
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -88,7 +88,7 @@ public class UpdatePostController implements Controller{
 			request.setAttribute("exception", 
 					new IllegalStateException("타인의 게시글은 수정할 수 없습니다."));      
 		
-			return "/post/postInfo.jsp";
+			return "/post/sellerPostInfo.jsp";
 		}
 	
 		
@@ -203,7 +203,7 @@ public class UpdatePostController implements Controller{
 			request.setAttribute("postId", updatePost.getPostId());
 			request.setAttribute("post", updatePost);
 			request.setAttribute("nickname", postUserNickName);
-			return "/post/postInfo.jsp";
+			return "/post/sellerPostInfo.jsp";
 
 		}
 	}
