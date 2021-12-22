@@ -5,8 +5,10 @@
 <head>
 <title>Acts On</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<!-- <link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> -->
-<!-- <link rel="stylesheet" href="./css/bootstrap.css"> -->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
    function login() {
       if (form.accountId.value == "") {
@@ -29,11 +31,6 @@
    }
    </script>
 <style>
-body {
-	margin-left: 50px;
-	margin-right: 50px;
-}
-
 #headLine {
 	background-color: #b5cda3;
 	display: grid;
@@ -41,10 +38,6 @@ body {
 	margin: 100px, 30px, 500px, 30px;
 	height: 50px;
 	width: auto;
-}
-
-#small {
-	height: 40px;
 }
 
 #headLineText {
@@ -55,26 +48,6 @@ body {
 	font-weight: bold;
 }
 
-#login {
-	color: black;
-	font-weight: bolder;
-}
-
-#loginForm {
-	font-weight: bold;
-}
-
-#loginForm input {
-	font-size: 20px;
-}
-
-a {
-	text-decoration: none;
-}
-
-.d {
-	text-align: center;
-}
 </style>
 </head>
 <body>
@@ -88,48 +61,38 @@ a {
 	</div>
 
 
-	<div class="d">
-		<!-- login form  -->
-		<form name="form" method="POST" action="<c:url value='/user/login' />">
-			<table style="width: 100%">
-				<tr>
-					<td width="20"></td>
-					<td><br>
-					<br>
-						<table>
-						</table> <!-- 로그인이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 --> <c:if
-							test="${loginFailed}">
-							<br>
-							<font color="red"><c:out value="${exception.getMessage()}" /></font>
-							<br>
-						</c:if> <br>
-						<table>
-							<tr height="40">
-								<td width="150" align="center">사용자 ID</td>
-								<td width="250" bgcolor="ffffff" style="padding-left: 10">
-									<input type="text" style="width: 240" name="accountId">
-								</td>
-							</tr>
-							<tr height="40">
-								<td width="150" align="center">비밀번호</td>
-								<td width="250" bgcolor="ffffff" style="padding-left: 10">
-									<input type="password" style="width: 240" name="password">
-								</td>
-							</tr>
-						</table> <br>
-						<table style="width: 100%">
-							<tr>
-								<td align=left><input type="button" value="로그인"
-									onClick="login()"> &nbsp;
-									<input type="button" value="회원가입"
-									onClick="userCreate('<c:url value='/user/register/form'/>')">
-								</td>
-							</tr>
-						</table></td>
-				</tr>
-				
-			</table>
-		</form>
-	</div>
+<div id="login">
+        <h3 class="text-center text-white pt-5">Login form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="form" class="form" action="<c:url value='/user/login' />" method="post">
+                            <h3 class="text-center text-info">Login</h3>
+		   <c:if test="${loginFailed}">
+			<font color="red"><c:out value="${exception.getMessage()}" /></font>
+		   </c:if>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label><br>
+                                <input type="text" name="accountId" id="accountId" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label><br>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="login" class="btn btn-info btn-md" value="submit" onClick="login()">
+                                <input type="button" name="join" class="btn btn-info btn-md" value="join" onClick="userCreate('<c:url value='/user/register/form' /> ')">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
+
+
 </html>

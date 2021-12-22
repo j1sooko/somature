@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Controller;
 import model.Post;
@@ -17,11 +18,12 @@ public class MyPostController implements Controller {
 	@Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {		
     	
-		int userId = Integer.parseInt(request.getParameter("userId"));
-		
-		System.out.println("userId:" + userId);
 		UserManager userManager = UserManager.getInstance();
 		PostManager postManager = PostManager.getInstance();
+		HttpSession session = request.getSession();
+		
+		String userId1 = UserSessionUtils.getLoginUserId(session);
+		int userId = userManager.findUser(userId1).getUserId();
 
 		List<Post> postList = postManager.findMyPostList(userId);
 		

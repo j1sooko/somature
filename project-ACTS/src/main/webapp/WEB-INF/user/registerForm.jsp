@@ -31,6 +31,12 @@ table {
     margin-right:auto;
 }
 </style>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
+
 <script>
 	function userCreate() {
 		if (form.accountId.value == "") {
@@ -84,13 +90,9 @@ table {
 	}
 </script>
 </head>
+
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<!-- ACTS 누르면 메인으로 이동하는 기능 구현해야함 -->
-	<h1 id="title">
-		Acts <img src="<c:url value='/images/sprout2.png' />" border="0" width="45" height="30"/>
-			
-	</h1>
 	<div class="d">
 		<form name="form" method="POST"
 			action="<c:url value='/user/register' />">
