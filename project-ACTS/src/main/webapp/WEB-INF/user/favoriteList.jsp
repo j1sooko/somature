@@ -15,7 +15,8 @@
    type="text/css">
 </head>
 <body>
-
+<%@include file="/WEB-INF/navbar.jsp" %>
+<%@include file="/WEB-INF/myPageNav.jsp" %>
 	<table style="background-color: YellowGreen">
 		<tr>
 			<td>

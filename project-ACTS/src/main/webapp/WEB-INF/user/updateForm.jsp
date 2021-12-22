@@ -53,6 +53,8 @@ function userList(targetUri) {
 </script>
 </head>
 <body>
+<%@include file="/WEB-INF/navbar.jsp" %>
+<%@include file="/WEB-INF/myPageNav.jsp" %>
 	<br>
 	<!-- Update Form  -->
 	<form name="form" method="POST" action="<c:url value='/user/update' />">
