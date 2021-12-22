@@ -37,5 +37,9 @@ public class TransCommentManager {
 		
 		return commentList;
 	}
+	
+	public TransComment findComment(int commentId) throws SQLException {
+		return tcDAO.findComment(commentId);
+	}
 
 }

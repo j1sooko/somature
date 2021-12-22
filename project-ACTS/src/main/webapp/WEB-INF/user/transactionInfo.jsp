@@ -3,8 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Transaction transaction = (Transaction)request.getAttribute("transaction");
-	//List<TransComment> commentList = (List<TransComment>)request.getAttribute("commentList");
+	List<TransComment> commentList = (List<TransComment>)request.getAttribute("commentList");
 	
+	out.print(transaction.getTransId());
 %>
 <!DOCTYPE html>
 <html>
@@ -48,7 +49,26 @@
 		
 		</form>
 	</div>
-	</div>
+</div>
+
+
+	<form method="POST" action="<c:url value='/user/transactionInfo' />">
+		<input type="text" name="comment"/>
+		<input type="hidden" name="transId" value="${transaction.transId}" />
+		<input type="hidden" name="commenterId" value="${transaction.user.userId}" />
+		<input type="hidden" name="postId" value="${transaction.post.postId }" />
+		<input type="submit" name="submit" value="submit" />
+	</form>
+
+	<table>
+		<c:forEach var="comment" items="${commentList}">
+			<tr>
+				<td width="100">${comment.commenterId}</td>
+				<td width="100"> ${comment.createTime} </td>
+				<td width="300">${comment.commentContent}</td>
+			</tr>
+		</c:forEach>
+	</table>
 
 </body>
 </html>
