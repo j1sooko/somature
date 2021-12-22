@@ -77,4 +77,8 @@ public class UserManager {
 	public UserDAO getUserDAO() {
 		return this.userDAO;
 	}
+	
+	public String findAccountIdByUserId (String userId) throws SQLException {
+		return userDAO.findAccountIdByUserId(userId);
+	}
 }

@@ -30,13 +30,6 @@ List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
 </head>
 <body>
 
-	<script>
-		function transactionSuccess(trasactionCreateFailed) {
-			if (!trasactionCreateFailed)
-				alert("주문이 완료되었습니다.");
-		}
-	</script>
-
 	<%@include file="/WEB-INF/navbar.jsp"%>
 
 	<br>
@@ -111,19 +104,25 @@ List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
 				<c:param name='writerId' value='${post.writerId}'/>
 			 </c:url>">게시글 삭제</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-	<a href="<c:url value='/post/transaction'>
+	<a href="<c:url value='/post/transactionForm'>
 				<c:param name='postId' value='${post.postId}'/>
 				<c:param name='writerId' value='${post.writerId}'/>
-			 </c:url>"
-		onClick="transactionSuccess(${trasactionCreateFailed})">주문하기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 </c:url>">주문하기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 	<c:if test="${postUpdateFailed || deleteFailed}">
 		<font color="red"><c:out value="${exception.getMessage()}" /></font>
 	</c:if>
 
-	<c:if test="${trasactionCreateFailed}">
-		<font color="red"><c:out value="${exception.getMessage()}" /></font>
-	</c:if>
+	<c:if test="${trasactionCreateSuccess}">
+	    	<script>
+				alert("주문이 완료되었습니다.");
+			</script>
+	   </c:if>
+	   <c:if test="${trasactionCreateFailed}">
+	    	<script>
+				alert("본인이 작성한 글입니다.");
+			</script>
+	   </c:if>
 
 	<a href="<c:url value='/review/upload/form'>
 							<c:param name='postId' value='${post.postId}'/>
@@ -136,7 +135,7 @@ List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
 	</c:if>
 
 	<c:if test="${fOrNot eq 0 and not empty user.userId}">
-		<form method="POST" action="<c:url value='/post/postInfo' />">
+		<form method="POST" action="<c:url value='/post/sellerPostInfo' />">
 			<input type="hidden" name="postId" value='${post.postId}'> <input
 				type="hidden" name="userId" value='${user.userId}'> <input
 				type="hidden" name="setting" value='1'> <input type="hidden"
@@ -147,7 +146,7 @@ List<Review> reviewList = (List<Review>) request.getAttribute("reviewList");
 	</c:if>
 
 	<c:if test="${fOrNot eq 1}">
-		<form method="POST" action="<c:url value='/post/postInfo' />">
+		<form method="POST" action="<c:url value='/post/sellerPostInfo' />">
 			<input type="hidden" name="postId" value='${post.postId}'> <input
 				type="hidden" name="userId" value='${user.userId}'> <input
 				type="hidden" name="setting" value='0'> <input type="hidden"

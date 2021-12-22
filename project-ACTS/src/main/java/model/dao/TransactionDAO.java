@@ -116,7 +116,7 @@ public class TransactionDAO {
 		}
 		
 		public List<Transaction> findMySellerTransactionList(int userId) throws SQLException {
-			String sql = "SELECT t.transId, t.transDate, t.userId, t.postId " 
+			String sql = "SELECT t.transId, t.transDate, t.userId, t.postId, t.transTitle, t.transContents " 
 	        		   + "FROM TRANSACTION t, POST p "
 	        		   + "WHERE t.postId = p.postId AND p.writerId=? ";
 			jdbcUtil.setSqlAndParameters(sql, new Object[] {userId});

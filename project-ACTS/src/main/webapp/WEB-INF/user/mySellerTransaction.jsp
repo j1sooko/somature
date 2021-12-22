@@ -68,7 +68,7 @@
 				</td>
 				<td width="190" align="center" bgcolor="ffffff" height="20">
 					<a href="<c:url value='/user/transactionInfo'>
-					   			<c:param name='transId' value='${transaction.transId}'/></c:url>">${transaction.title}</a>
+					   			<c:param name='transId' value='${transaction.transId}'/></c:url>">${transaction.transTitle}</a>
 				</td>
 			</tr>
 		</c:forEach>
