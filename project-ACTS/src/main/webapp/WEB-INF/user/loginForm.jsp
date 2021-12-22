@@ -81,7 +81,7 @@
                                 <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="login" class="btn btn-info btn-md" value="submit" onClick="login()">
+                                <input type="submit" name="login" class="btn btn-info btn-md" value="login" onClick="login()">
                                 <input type="button" name="join" class="btn btn-info btn-md" value="join" onClick="userCreate('<c:url value='/user/register/form' /> ')">
                             </div>
                         </form>
