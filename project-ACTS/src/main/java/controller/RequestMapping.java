@@ -52,13 +52,8 @@ public class RequestMapping {
 
         mappings.put("/user/myPage/myBuyerTransaction", new MyBuyerTransactionListController());
         mappings.put("/user/myPage/mySellerTransaction", new MySellerTransactionListController());
-
-      
-
     
         mappings.put("/user/followingList", new FavoriteListController());
-
-
         
         mappings.put("/user/delete", new DeleteUserController());
         
