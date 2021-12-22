@@ -11,6 +11,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+.tab {
+  width: 100%;
+  height: 50px;
 body {
     text-align: center;margin: 0 auto;width: 100%;
     background-color : white;

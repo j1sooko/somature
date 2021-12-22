@@ -15,15 +15,11 @@
    type="text/css">
 </head>
 <body>
-
-	<table style="background-color: YellowGreen">
-		<tr>
-			<td>
-				<form name="searchKeywordForm" method="POST" action="<c:url value='/post/search' />">
-					검색: <input type="text" size=40 name="searchKeyword" placeholder="찾고싶은 게시물의 키워드를 검색하세요"><input type="submit" value="확인"> 
-				</form>
-			</td>
-		</tr>
+	<form name="searchKeywordForm" method="POST" action="<c:url value='/post/search' />" align = "center">
+					검색:&nbsp;&nbsp;&nbsp; <input type="text" size=40 name="searchKeyword" placeholder="찾고싶은 게시물의 키워드를 검색하세요">
+					&nbsp;&nbsp;&nbsp;<input type="submit" value="확인"> 
+				
+	<table class = "table table-striped" align = "center" style="background-color: YellowGreen;" >
 		<tr>
 			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
 			<td width="200" align="center" bgcolor="E6ECDE">가격</td>
@@ -65,5 +61,6 @@
 			}
 		%>
 	</table>
+	</form>
 </body>
 </html>

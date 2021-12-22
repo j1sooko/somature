@@ -12,7 +12,7 @@
 <script
 	src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<title>게시글 등록</title>
+<title>등록</title>
 
 <!-- 넓이 높이 조절 -->
 <style>
@@ -23,6 +23,14 @@
 .ck-editor__editable {
 	min-height: 300px;
 }
+body {
+
+  padding-top: 70px;
+
+  padding-bottom: 30px;
+
+}
+
 </style>
 <script>
 function postCreate() {
@@ -62,7 +70,8 @@ function postCreate() {
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-
+<div class="container">
+  <!-- Content here -->
 <h1>작성하기</h1>
 
 	<!-- title -->
@@ -147,7 +156,7 @@ function postCreate() {
 			class="btn btn-primary">
 			</form>
 			
-			
+</div>		
 </body>
 </html>
 
