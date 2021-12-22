@@ -14,21 +14,14 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />"
    type="text/css">
 </head>
-<%
-    String pagefile=request.getParameter("page");
-    //처음 보여주는 페이지는 내가 쓴글리스트
-    if(pagefile==null){
-            pagefile="myPost";
-        }
-%>
 <body>
 
-	<table style="background-color: YellowGreen">
+	<table class = "table table-striped">
 		<tr>
-			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
-			<td width="200" align="center" bgcolor="E6ECDE">가격</td>
-			<td width="200" align="center" bgcolor="E6ECDE">구매자/판매자</td>
-			<td width="200" align="center" bgcolor="E6ECDE">작성자</td>
+			<td width="100" align="center" bgcolor="E6ECDE" height="22">제목</td>
+			<td width="100" align="center" bgcolor="E6ECDE">가격</td>
+			<td width="100" align="center" bgcolor="E6ECDE">구매자/판매자</td>
+			<td width="100" align="center" bgcolor="E6ECDE">작성자</td>
 		</tr>
 		
 		<%
@@ -40,7 +33,7 @@
 		
 		<c:forEach var="post" items="${postList}">
 			<tr>
-				<td width="190" align="center" bgcolor="ffffff" height="20">
+				<td width="100" align="center" bgcolor="ffffff" height="20">
 					<a href="<c:url value='/post/postInfo'>
 					   			<c:param name='postId' value='${post.postId}'/>
 					   			<c:param name='writerId' value ='${post.writerId}' />
@@ -48,14 +41,14 @@
 			  		${post.title}</a>
 				</td>
 				
-				<td width="200" align="center" bgcolor="ffffff" height="20">
+				<td width="100" align="center" bgcolor="ffffff" height="20">
 					${post.price}
 				</td>
 				
-				<td width="200" align="center" bgcolor="ffffff" height="20">
+				<td width="100" align="center" bgcolor="ffffff" height="20">
 					${post.pType}
 				</td>
-				<td width="200" align="center" bgcolor="ffffff" height="20">
+				<td width="100" align="center" bgcolor="ffffff" height="20">
 					${post.writerId}
 				</td>
 			</tr>
