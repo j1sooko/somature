@@ -22,7 +22,8 @@
         }
 %>
 <body>
-
+<%@include file="/WEB-INF/navbar.jsp" %>
+<%@include file="/WEB-INF/myPageNav.jsp" %>
 	<table style="background-color: YellowGreen">
 		<tr>
 			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
@@ -60,7 +61,7 @@
 				</td>
 			</tr>
 		</c:forEach>
-		<form><input type="hidden" name="userId" value="${param.userId}"></form>
+		<form><input type="hidden" name="userId" value="${userId}"></form>
 		
 		<%
 			}

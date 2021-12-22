@@ -44,9 +44,7 @@ public class RequestMapping {
         
         //留덉씠�럹�씠吏� 愿�由�
         mappings.put("/user/myInfo", new MyInfoController()); //寃쎌썝: �궡�젙蹂대줈 媛��뒗 而⑦듃濡ㅻ윭
-        //�옄�떊�쓽 �젙蹂대�� �뾽�뜲�씠�듃�븯怨� �벑濡앺븯�뒗寃�.
-//        mappings.put("/user/update/form", new ForwardController("/user/updateForm.jsp")); //寃쎌썝: �옄湲� �옄�떊�쓽 �젙蹂대�� �닔�젙�븯怨좎옄 �븷 �븣  
-        
+      
         mappings.put("/user/update", new UpdateUserController());
         mappings.put("/user/myPost", new MyPostController());
 
