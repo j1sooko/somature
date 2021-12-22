@@ -15,8 +15,9 @@
    type="text/css">
 </head>
 <body>
-
-	<table class="table table-striped">
+<%@include file="/WEB-INF/navbar.jsp" %>
+<%@include file="/WEB-INF/myPageNav.jsp" %>
+	<table style="background-color: YellowGreen">
 		<tr>
 			<td>
 				<form name="searchKeywordForm" method="POST" action="<c:url value='/post/search' />">

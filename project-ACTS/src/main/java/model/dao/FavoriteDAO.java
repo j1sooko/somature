@@ -11,12 +11,12 @@ public class FavoriteDAO {
 private JDBCUtil jdbcUtil = null;
 	
 	public FavoriteDAO() {			
-		jdbcUtil = new JDBCUtil();	// JDBCUtil 揶쏆빘猿� 占쎄문占쎄쉐
+		jdbcUtil = new JDBCUtil();	// JDBCUtil �뤆�룇鍮섊뙼占� �뜝�럡臾멨뜝�럡�뎽
 	}
 		
 	public int create(Favorite favorite) throws SQLException {
 
-		String sql = "INSERT INTO FAVORITE VALUES (id_seq.nextval, ?, ?)";
+		String sql = "INSERT INTO FAVORITE VALUES (favorite_id_seq.nextval, ?, ?)";
 		Object[] param = new Object[] { favorite.getUserId(), favorite.getPostId() };	
 		System.out.println("sql: " + sql);
 		System.out.println("param: " + param);

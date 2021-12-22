@@ -2,7 +2,7 @@
 <%@page import="java.util.*, model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-
+	//User user = (User)request.getAttribute("user");
 	@SuppressWarnings("unchecked") 
 	List<Post> postList = (List<Post>)request.getAttribute("postList");
 
@@ -14,14 +14,22 @@
 <link rel=stylesheet href="<c:url value='/css/user.css' />"
    type="text/css">
 </head>
+<%
+    String pagefile=request.getParameter("page");
+    //처음 보여주는 페이지는 내가 쓴글리스트
+    if(pagefile==null){
+            pagefile="myPost";
+        }
+%>
 <body>
-
-	<table class = "table table-striped">
+<%@include file="/WEB-INF/navbar.jsp" %>
+<%@include file="/WEB-INF/myPageNav.jsp" %>
+	<table style="background-color: YellowGreen">
 		<tr>
-			<td width="100" align="center" bgcolor="E6ECDE" height="22">제목</td>
-			<td width="100" align="center" bgcolor="E6ECDE">가격</td>
-			<td width="100" align="center" bgcolor="E6ECDE">구매자/판매자</td>
-			<td width="100" align="center" bgcolor="E6ECDE">작성자</td>
+			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
+			<td width="200" align="center" bgcolor="E6ECDE">가격</td>
+			<td width="200" align="center" bgcolor="E6ECDE">구매자/판매자</td>
+			<td width="200" align="center" bgcolor="E6ECDE">작성자</td>
 		</tr>
 		
 		<%
@@ -41,11 +49,11 @@
 			  		${post.title}</a>
 				</td>
 				
-				<td width="100" align="center" bgcolor="ffffff" height="20">
+				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${post.price}
 				</td>
 				
-				<td width="100" align="center" bgcolor="ffffff" height="20">
+				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${post.pType}
 				</td>
 				<td width="100" align="center" bgcolor="ffffff" height="20">
@@ -53,6 +61,7 @@
 				</td>
 			</tr>
 		</c:forEach>
+		<form><input type="hidden" name="userId" value="${userId}"></form>
 		
 		<%
 			}
