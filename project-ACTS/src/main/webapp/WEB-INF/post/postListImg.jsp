@@ -11,8 +11,10 @@
 <head>
 <title>게시물 관리</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />"
-   type="text/css">
+<!-- Bootstrap icons-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+
+
 <style>
 .listImg {
   width: 300px;

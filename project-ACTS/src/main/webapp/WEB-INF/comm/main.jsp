@@ -200,8 +200,7 @@
 	<div class="copyright_section">
 		<div class="container">
 			<p class="copyright_text">
-				© 2020 All Rights Reserved. Design by <a href="https://html.design">Free
-					html Templates</a>
+				Copyright © Your Website 2021</a>
 			</p>
 		</div>
 	</div>

@@ -14,38 +14,38 @@ import controller.transaction.*;
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
     
-    // 媛� �슂泥� uri�뿉 ���븳 controller 媛앹껜瑜� ���옣�븷 HashMap �깮�꽦
+    // 揶쏉옙 占쎌뒄筌ｏ옙 uri占쎈퓠 占쏙옙占쎈립 controller 揶쏆빘猿쒐몴占� 占쏙옙占쎌삢占쎈막 HashMap 占쎄문占쎄쉐
     private Map<String, Controller> mappings = new HashMap<String, Controller>();
 
     public void initMapping() {
-    	// 媛� uri�뿉 ���쓳�릺�뒗 controller 媛앹껜瑜� �깮�꽦 諛� ���옣
+    	// 揶쏉옙 uri占쎈퓠 占쏙옙占쎌벓占쎈┷占쎈뮉 controller 揶쏆빘猿쒐몴占� 占쎄문占쎄쉐 獄쏉옙 占쏙옙占쎌삢
     	
-    	//珥덇린�솕硫� 諛� 濡쒓렇�씤怨� 濡쒓렇�븘�썐
-        mappings.put("/", new ForwardController("index.jsp")); //寃쎌썝: 珥덇린�솕硫댁� index.jsp濡� �씠�룞�븯寃�
-        //珥덇린-硫붿씤�솕硫�
+    	//�룯�뜃由곤옙�넅筌롳옙 獄쏉옙 嚥≪뮄�젃占쎌뵥�⑨옙 嚥≪뮄�젃占쎈툡占쎌뜍
+        mappings.put("/", new ForwardController("index.jsp")); //野껋럩�뜚: �룯�뜃由곤옙�넅筌롫똻占� index.jsp嚥∽옙 占쎌뵠占쎈짗占쎈릭野껓옙
+        //�룯�뜃由�-筌롫뗄�뵥占쎌넅筌롳옙
         mappings.put("/comm/main", new ListPostController());
-        mappings.put("/comm/search", new ForwardController("/comm/search.jsp"));
-        mappings.put("/comm/search/searchForm", new ForwardController("/comm/searchForm.jsp"));
+//        mappings.put("/comm/search", new ForwardController("/comm/search.jsp"));
+//        mappings.put("/comm/search/searchForm", new ForwardController("/comm/searchForm.jsp"));
         mappings.put("/comm/search/list", new SearchCategoryController());
         mappings.put("/user/myPage", new MyPageController());
-        mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp")); //寃쎌썝: 濡쒓렇�씤 踰꾪듉�쓣 �늻瑜대㈃ /user/loginForm.jsp濡� �씠�룞�븯寃�
+        mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp")); //野껋럩�뜚: 嚥≪뮄�젃占쎌뵥 甕곌쑵�뱣占쎌뱽 占쎈듇�몴���늺 /user/loginForm.jsp嚥∽옙 占쎌뵠占쎈짗占쎈릭野껓옙
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
         mappings.put("/user/view", new ViewUserController());
         mappings.put("/comm/buyerPage", new BuyerPostListController());       
         
-        mappings.put("/user/list", new ListUserController()); //寃쎌썝: �쑀��由ъ뒪�듃 蹂대뒗嫄� �궗�슜�옄媛� �븘�땶 administrator媛� 蹂대뒗嫄곕씪�꽌 類�
+        mappings.put("/user/list", new ListUserController()); //野껋럩�뜚: 占쎌�占쏙옙�뵳�딅뮞占쎈뱜 癰귣��뮉椰꾬옙 占쎄텢占쎌뒠占쎌쁽揶쏉옙 占쎈툡占쎈빒 administrator揶쏉옙 癰귣��뮉椰꾧퀡�뵬占쎄퐣 筌먲옙
       
         
         
-        // �쉶�썝 媛��엯 �뤌 �슂泥�怨� 媛��엯 �슂泥� 泥섎━ 蹂묓빀 (�뤌�뿉 而ㅻ�ㅻ땲�떚 �꽑�깮 硫붾돱 異붽�瑜� �쐞�븿)
+        // 占쎌돳占쎌뜚 揶쏉옙占쎌뿯 占쎈쨲 占쎌뒄筌ｏ옙�⑨옙 揶쏉옙占쎌뿯 占쎌뒄筌ｏ옙 筌ｌ꼶�봺 癰귣쵑鍮� (占쎈쨲占쎈퓠 �뚣끇占썬끇�빍占쎈뼒 占쎄퐨占쎄문 筌롫뗀�뤀 �빊遺쏙옙�몴占� 占쎌맄占쎈맙)
         mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
         mappings.put("/user/register", new RegisterUserController());
         
-        //留덉씠�럹�씠吏� 愿�由�
-        mappings.put("/user/myInfo", new MyInfoController()); //寃쎌썝: �궡�젙蹂대줈 媛��뒗 而⑦듃濡ㅻ윭
-        //�옄�떊�쓽 �젙蹂대�� �뾽�뜲�씠�듃�븯怨� �벑濡앺븯�뒗寃�.
-//        mappings.put("/user/update/form", new ForwardController("/user/updateForm.jsp")); //寃쎌썝: �옄湲� �옄�떊�쓽 �젙蹂대�� �닔�젙�븯怨좎옄 �븷 �븣  
+        //筌띾뜆�뵠占쎈읂占쎌뵠筌욑옙 �꽴占썹뵳占�
+        mappings.put("/user/myInfo", new MyInfoController()); //野껋럩�뜚: 占쎄땀占쎌젟癰귣�以� 揶쏉옙占쎈뮉 �뚢뫂�뱜嚥▲끇�쑎
+        //占쎌쁽占쎈뻿占쎌벥 占쎌젟癰귣�占쏙옙 占쎈씜占쎈쑓占쎌뵠占쎈뱜占쎈릭�⑨옙 占쎈쾻嚥≪빜釉�占쎈뮉野껓옙.
+//        mappings.put("/user/update/form", new ForwardController("/user/updateForm.jsp")); //野껋럩�뜚: 占쎌쁽疫뀐옙 占쎌쁽占쎈뻿占쎌벥 占쎌젟癰귣�占쏙옙 占쎈땾占쎌젟占쎈릭�⑥쥙�쁽 占쎈막 占쎈르  
         
         mappings.put("/user/update", new UpdateUserController());
         mappings.put("/user/myPost", new MyPostController());
@@ -62,8 +62,8 @@ public class RequestMapping {
         
         mappings.put("/user/delete", new DeleteUserController());
         
-        // 寃뚯떆湲� 愿�由�
-        mappings.put("/post/upload/form", new UploadPostFormController()); //寃뚯떆湲� �옉�꽦 �뤌 �슂泥�(濡쒓렇�씤 �븘�씠�뵒 �젙蹂� �꽆源�->writerId濡� �벐湲곗쐞�븿)
+        // 野껊슣�뻻疫뀐옙 �꽴占썹뵳占�
+        mappings.put("/post/upload/form", new UploadPostFormController()); //野껊슣�뻻疫뀐옙 占쎌삂占쎄쉐 占쎈쨲 占쎌뒄筌ｏ옙(嚥≪뮄�젃占쎌뵥 占쎈툡占쎌뵠占쎈탵 占쎌젟癰귨옙 占쎄퐜繹먲옙->writerId嚥∽옙 占쎈쾺疫꿸퀣�맄占쎈맙)
         mappings.put("/post/upload", new UploadPostController());
         mappings.put("/post/update", new UpdatePostController());
         mappings.put("/post/postInfo", new PostInfoController());
@@ -78,13 +78,13 @@ public class RequestMapping {
         mappings.put("/user/transactionDelete", new DeleteTransactionController());
         logger.info("Initialized Request Mapping!");
         
-        // �뙎湲� 愿�由�
+        // 占쎈솊疫뀐옙 �꽴占썹뵳占�
         mappings.put("/review/upload/form", new UploadReviewFormController());
         mappings.put("/review/upload", new UploadReviewController());  
     }
 
     public Controller findController(String uri) {	
-    	// 二쇱뼱吏� uri�뿉 ���쓳�릺�뒗 controller 媛앹껜瑜� 李얠븘 諛섑솚
+    	// 雅뚯눘堉깍쭪占� uri占쎈퓠 占쏙옙占쎌벓占쎈┷占쎈뮉 controller 揶쏆빘猿쒐몴占� 筌≪뼚釉� 獄쏆꼹�넎
         return mappings.get(uri);
     }
 }
