@@ -15,24 +15,13 @@
 <%@include file="/WEB-INF/navbar.jsp" %>
 <div class="container">
   <!-- Content here -->
-
-<div class="card text-center">
-  <div class="card-header">
-   ${transaction.transTitle}
-  </div>
-  <div class="card-body">
-    <p class="card-text">${transaction.transTitle}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
 <div class="container my-1">
 	<div class="row">
 	<form method="POST" action="<c:url value='/user/transactionDelete' />">
 		<table class="table">
 			<thead>
 				<tr class="table-active">
-					<th scope="col" style="width: 60%">${transaction.transTitle}<br>
+					<th scope="col" style="width: 60%">주문 내용<br>${transaction.transTitle}
 						</th>
 				
 				</tr>
@@ -40,17 +29,12 @@
 			<tbody>
 				<tr>
 					<td><pre>
-					<div class="card text-center">
-					  <div class="card-header">
-					   ${transaction.transTitle}
-					  </div>
-					  <div class="card-body">
-					    <p class="card-text">${transaction.transTitle}</p>
-					    <a href="#" class="btn btn-primary">Go somewhere</a>
-					  </div>
-					</div>
-					
-					
+						<div class="card text-center">
+						 
+						  <div class="card-body">
+						    <p class="card-text">${transaction.transContents}</p>
+						  </div>
+						</div>
 					</pre></td>
 				</tr>
 			</tbody>
@@ -58,7 +42,7 @@
 		<input type="hidden" name="transId" value="${transaction.transId}" />
 		
 		<div class="form-row float-right">
-			<input type="submit" value="주문 취소" class="btn btn-primary" id="advance-set-submit" />
+			<input type="submit" value="주문 취소" class="btn btn-secondary" id="advance-set-submit" />
 		</div>
 		
 		</form>
