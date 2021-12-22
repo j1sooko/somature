@@ -13,16 +13,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />"
    type="text/css">
+<style>
+input{
+
+}
+</style>
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <%@include file="/WEB-INF/myPageNav.jsp" %>
 <div class="container my-1">
-	<table style="background-color: YellowGreen">
+	<table>
 		<tr>
 			<td>
 				<form name="searchKeywordForm" method="POST" action="<c:url value='/post/search' />">
-					검색: <input type="text" size=40 name="searchKeyword" placeholder="찾고싶은 게시물의 키워드를 검색하세요"><input type="submit" value="확인"> 
+					검색: <input type="text" size=40 name="searchKeyword" placeholder="찾고싶은 게시물의 키워드를 검색하세요">&nbsp;&nbsp;&nbsp;<input type="submit" value="확인"> 
 				</form>
 			</td>
 		</tr>
