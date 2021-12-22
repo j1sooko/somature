@@ -41,9 +41,11 @@
 		
 		<c:forEach var="post" items="${postList}">
 			<tr>
-				<td width="100" align="center" bgcolor="ffffff" height="20">
-					<a href="<c:url value='/post/postInfo'>
+				<td width="190" align="center" bgcolor="ffffff" height="20">
+					<a href="<c:url value='/post/sellerPostInfo'>
+
 					   			<c:param name='postId' value='${post.postId}'/>
+					   			<c:param name='setting' value='-1' />
 					   			<c:param name='writerId' value ='${post.writerId}' />
 			 		 		 </c:url>">
 			  		${post.title}</a>
