@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import controller.Controller;
 import controller.user.UserSessionUtils;
 import model.Post;
-import model.User;
 import model.dao.UserDAO;
 import model.service.PostManager;
 import model.service.UserManager;

@@ -35,6 +35,9 @@ public class TransactionManager {
 		return transactionDAO.create(transaction);
 	}
 	
+	public int remove(int transId) throws SQLException {
+		return transactionDAO.remove(transId);
+	}
 	
 	public Transaction findTransaction(int transId)
 			throws SQLException, UserNotFoundException {

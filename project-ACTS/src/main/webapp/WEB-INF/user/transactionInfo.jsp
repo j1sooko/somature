@@ -10,11 +10,12 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>주문 조회하기</title>
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 	<br>
+	<form method="POST" action="<c:url value='/user/transactionDelete' />">
 	<table style="background-color: YellowGreen">
 
 					<tr>
@@ -37,6 +38,12 @@
 				<td>${comment.createTime}
 			</tr>
 		</c:forEach>
-	</table>
+	</table>	
+			
+	<input type="hidden" name="transId" value="${transaction.transId}" />
+	<br>
+	<input type="submit" value="주문 취소" class="btn btn-primary" />
+	
+	</form>
 </body>
 </html>

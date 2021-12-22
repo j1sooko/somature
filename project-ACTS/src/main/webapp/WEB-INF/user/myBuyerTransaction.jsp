@@ -3,7 +3,6 @@
 <%@page import="java.util.*, model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-
 	@SuppressWarnings("unchecked") 
 	List<Transaction> transactionList = (List<Transaction>)request.getAttribute("transactionList");
 
@@ -17,8 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/WEB-INF/navbar.jsp" %>
-	
+<%@include file="/WEB-INF/navbar.jsp" %>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	    <div class="navbar-nav">
@@ -51,7 +49,7 @@
 		<c:forEach var="transaction" items="${transactionList}">
 			<tr>
 				<td width="190" align="center" bgcolor="ffffff" height="20">
-					<a href="<c:url value='/post/postInfo'>
+					<a href="<c:url value='/post/sellerPostInfo'>
 					   			<c:param name='postId' value='${transaction.post.postId}'/>
 					   			<c:param name='writerId' value ='${transaction.post.writerId}' />
 					   			<c:param name='setting' value='-1' />

@@ -68,6 +68,24 @@ public class TransactionDAO {
 			return null;
 		}
 		
+		public int remove(int transId) throws SQLException {
+			String sql = "DELETE TRANSACTION WHERE transId=?";		
+			jdbcUtil.setSqlAndParameters(sql, new Object[] {transId});	// JDBCUtil占쎈퓠 delete�눧硫몃궢 筌띲끆而� 癰귨옙占쎈땾 占쎄퐬占쎌젟
+
+			try {				
+				int result = jdbcUtil.executeUpdate();	// delete �눧占� 占쎈뼄占쎈뻬
+				return result;
+			} catch (Exception ex) {
+				jdbcUtil.rollback();
+				ex.printStackTrace();
+			}
+			finally {
+				jdbcUtil.commit();
+				jdbcUtil.close();	// resource 獄쏆꼹�넎
+			}		
+			return 0;
+		}
+		
 		public List<Transaction> findMyTransactionList(int userId) throws SQLException {
 	        String sql = "SELECT * " 
 	        		   + "FROM TRANSACTION "

@@ -75,6 +75,7 @@ public class RequestMapping {
         mappings.put("/post/transactionForm", new CreateTransactionFormController());
         mappings.put("/post/transaction", new CreateTransactionController());
         mappings.put("/user/transactionInfo", new TransactionInfoController());
+        mappings.put("/user/transactionDelete", new DeleteTransactionController());
         logger.info("Initialized Request Mapping!");
         
         // �뙎湲� 愿�由�
