@@ -28,6 +28,6 @@ public class SearchCategoryController implements Controller  {
 			
 			// postList 媛앹껜瑜� request�뿉 ���옣�븯�뿬 寃뚯떆湲� 由ъ뒪�듃 �솕硫댁쑝濡� �씠�룞(forwarding)
 			request.setAttribute("postList", postList);
-			return "/comm/main.jsp";
+			return "/post/searchPostList.jsp";
 	}
 }
