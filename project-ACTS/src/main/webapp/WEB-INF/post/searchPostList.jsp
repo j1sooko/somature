@@ -40,6 +40,7 @@ button{
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+	<%@include file="/WEB-INF/navbar.jsp" %>
 	<form name="searchKeywordForm" method="POST" action="<c:url value='/post/search' />" align = "center">
 		<input type="text" size=30 name="searchKeyword" placeholder="찾고싶은 게시물의 키워드를 검색하세요">&nbsp;&nbsp;&nbsp; <button type="button" class="btn text-white" style="background-color: #c9e4c5;">검색</button>
 	
@@ -60,9 +61,10 @@ button{
 		<c:forEach var="post" items="${postList}">
 			<tr>
 				<td width="190" align="center" bgcolor="ffffff" height="20">
-					<a href="<c:url value='/post/postInfo'>
+					<a href="<c:url value='/post/sellerPostInfo'>
 					   			<c:param name='postId' value='${post.postId}'/>
 					   			<c:param name='writerId' value ='${post.writerId}' />
+					   			<c:param name='setting' value = '-1' /> 
 			 		 		 </c:url>">
 			  		${post.title}</a>
 				</td>

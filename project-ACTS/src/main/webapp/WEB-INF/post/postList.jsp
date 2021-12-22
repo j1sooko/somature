@@ -38,6 +38,7 @@ a:active {
    
 </head>
 <body>
+
 	<form name="searchKeywordForm" method="POST" action="<c:url value='/post/search' />" align = "center">
 		<input type="text" size=30 name="searchKeyword" placeholder="찾고싶은 게시물의 키워드를 검색하세요">&nbsp;&nbsp;&nbsp; <button type="button" class="btn text-white btn-xs" style="background-color: #c9e4c5;"><i class="bi bi-search"></i></button>
 	
