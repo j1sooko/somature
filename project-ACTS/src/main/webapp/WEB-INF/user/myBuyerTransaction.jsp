@@ -71,7 +71,9 @@
 				</td>
 				<td width="190" align="center" bgcolor="ffffff" height="20">
 					<a href="<c:url value='/user/transactionInfo'>
-					   			<c:param name='transId' value='${transaction.transId}'/>
+					   			<c:param name="transId" value="${transaction.transId}" />
+								<c:param name="commenterId" value="${transaction.user.userId}" />
+								<c:param name="postId" value="${transaction.post.postId }" />
 			 		 		 </c:url>">
 			  		${transaction.transTitle}</a>
 				</td>

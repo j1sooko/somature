@@ -17,11 +17,23 @@ public class TransComment {
 		this.createTime = createTime;
 		this.commentContent = commentContent;
 	}
-	public int getCommnetId() {
+	
+	
+
+	public TransComment(int transId, int commenterId, String commentContent) {
+		super();
+		this.transId = transId;
+		this.commenterId = commenterId;
+		this.commentContent = commentContent;
+	}
+
+
+
+	public int getCommentId() {
 		return commentId;
 	}
 
-	public void setCommnetId(int commentId) {
+	public void setCommentId(int commentId) {
 		this.commentId = commentId;
 	}
 	public int getTransId() {
