@@ -23,6 +23,14 @@
 .ck-editor__editable {
 	min-height: 300px;
 }
+body {
+
+  padding-top: 70px;
+
+  padding-bottom: 30px;
+
+}
+
 </style>
 <script>
 function postCreate() {

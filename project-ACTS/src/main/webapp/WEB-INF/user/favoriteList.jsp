@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<table style="background-color: YellowGreen">
+	<table class="table table-striped">
 		<tr>
 			<td>
 				<form name="searchKeywordForm" method="POST" action="<c:url value='/post/search' />">
