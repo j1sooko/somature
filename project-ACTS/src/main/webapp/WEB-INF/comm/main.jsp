@@ -205,9 +205,13 @@
 		</div>
 	</div>
 	<!-- copyright section end -->
+	
 
-
-	<!-- end template -->
+	<!-- post create button -->
+	<div style="position: fixed; bottom: 5px; right: 5px;" id="i-color">
+		<a href="<c:url value='/post/upload/form'></c:url>" class="btn btn-light" role="button" >
+		<i class="bi bi-plus-circle-fill">&nbsp; 게시글 올리기</i></a>
+	</div>
 
 
 </body>
