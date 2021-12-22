@@ -31,6 +31,7 @@ function reviewCreate() {
 
 </head>
 <body>
+<%@include file="/WEB-INF/navbar.jsp" %>
 	<h2>이용 후기 등록</h2>
 	<h3>포스트 이름: <%= post.getTitle() %></h3>
 	<form name="form" method="POST" action="<c:url value='/review/upload' />" >
