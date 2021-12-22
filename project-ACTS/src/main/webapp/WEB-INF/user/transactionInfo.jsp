@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Transaction transaction = (Transaction)request.getAttribute("transaction");
-	List<TransComment> commentList = (List<TransComment>)request.getAttribute("commentList");
+	//List<TransComment> commentList = (List<TransComment>)request.getAttribute("commentList");
 	
 %>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<div class="container">
+
   <!-- Content here -->
 <div class="container my-1">
 	<div class="row">
@@ -48,6 +48,7 @@
 		
 		</form>
 	</div>
-</div>
+	</div>
+
 </body>
 </html>

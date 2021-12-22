@@ -55,6 +55,7 @@ function userList(targetUri) {
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <%@include file="/WEB-INF/myPageNav.jsp" %>
+<div class="container my-1">
 	<br>
 	<!-- Update Form  -->
 	<form name="form" method="POST" action="<c:url value='/user/update' />">
@@ -65,7 +66,7 @@ function userList(targetUri) {
 				<td>
 					<table>
 						<tr>
-							<td class="title">&nbsp;&nbsp;<b>사용자 관리 - 수정</b>&nbsp;&nbsp;
+							<td class="title">&nbsp;&nbsp;<b>회원 정보 수정</b>&nbsp;&nbsp;
 							</td>
 						</tr>
 					</table> <br>
@@ -114,9 +115,10 @@ function userList(targetUri) {
 					</table> <br>
 					<table style="width: 100%">
 						<tr>
-							<td align="left"><input type="button" value="수정"
-								onClick="userModify()"> &nbsp; <input type="button"
-								value="목록" onClick="userList('<c:url value='/user/list' />')">
+							<td align="left">
+								<input type="button" value="수정"
+								onClick="userModify()" class="btn btn-secondary"> 
+							
 							</td>
 						</tr>
 					</table>
@@ -124,5 +126,6 @@ function userList(targetUri) {
 			</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>

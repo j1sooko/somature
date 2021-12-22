@@ -26,10 +26,10 @@ public class TransactionInfoController implements Controller {
 		
 		Transaction transaction = transManager.findTransaction(Integer.parseInt(request.getParameter("transId")));
 
-		List<TransComment> commentList = transCommentManager.findCommentListByTransId(Integer.parseInt(request.getParameter("postId")));
+		//List<TransComment> commentList = transCommentManager.findCommentListByTransId(Integer.parseInt(request.getParameter("postId")));
     	
 		request.setAttribute("transaction", transaction);
-		request.setAttribute("commentList", commentList);
+		//request.setAttribute("commentList", commentList);
 		return "/user/transactionInfo.jsp";
 	}
 

@@ -17,6 +17,7 @@
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <%@include file="/WEB-INF/myPageNav.jsp" %>
+<div class="container my-1">
 	<table style="background-color: YellowGreen">
 		<tr>
 			<td>
@@ -67,5 +68,6 @@
 			}
 		%>
 	</table>
+	</div>
 </body>
 </html>

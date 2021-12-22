@@ -8,14 +8,22 @@
 <head>
 <meta charset="UTF-8">
 <title>내 정보</title>
-<style>
-body{
-	font-family :"맑은 고딕";
+<script>
+function userDelete() {
+	var flag = confirm('정말 계정을 삭제하시겠습니까?');
+   if(flag)
+	   form.submit;
+   else
+	   return false;
 }
-</style>
+</script>
 </head>
 <body>
-<h3 align = "left">내 정보</h1>
+<%@include file="/WEB-INF/navbar.jsp" %>
+<%@include file="/WEB-INF/myPageNav.jsp" %>
+<div class="container my-1">
+<h3 align = "left">내 정보</h3>
+	<form method="POST" action="<c:url value='/user/delete' />">
 	<table>
 		<tr><td>아이디</td>
 			<td><%= user.getAccountId() %></td></tr>
@@ -31,6 +39,14 @@ body{
 			<td><%= user.getJoinDate() %></td></tr>
 
 	</table>
+	<input type="hidden" name="accountId" value="${user.accountId}" />
+	<div class="form-row float-right">
+			<input type="submit" onclick="userDelete()" value="회원 탈퇴" class="btn btn-secondary" id="advance-set-submit" />
+	</div>
+	
+   	</form>
+   	
 	<!-- <input type="button" value="이전으로 돌아가기" onClick="history.go(-1)"> -->
+	</div>
 </body>
 </html>
