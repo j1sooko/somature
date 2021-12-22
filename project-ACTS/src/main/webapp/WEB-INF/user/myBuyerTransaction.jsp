@@ -5,7 +5,7 @@
 <%
 	@SuppressWarnings("unchecked") 
 	List<Transaction> transactionList = (List<Transaction>)request.getAttribute("transactionList");
-
+	
 	int userId = (int) request.getAttribute("userId");
 
 %>
@@ -17,6 +17,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
+<%@include file="/WEB-INF/myPageNav.jsp" %>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	    <div class="navbar-nav">
