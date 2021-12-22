@@ -51,18 +51,6 @@ function postCreate() {
 		return false;
 	}
 	
-	
-	//editor = CKEDITOR.instances.content_textarea;
-	//var mytext = editor.getData();
-	//if (mytext == "") {
-		//alert("내용을 입력하십시오.");
-		//form.description.focus();
-		//return false;
-	//}
-	
-
-
-
 	form.submit();
 }
 
@@ -72,7 +60,7 @@ function postCreate() {
 <%@include file="/WEB-INF/navbar.jsp" %>
 <div class="container">
   <!-- Content here -->
-<h1>작성하기</h1>
+<h3>작성하기</h3>
 
 	<!-- title -->
 	<form name="form" method="POST" action="<c:url value='/post/upload' />" enctype="multipart/form-data">
@@ -135,7 +123,7 @@ function postCreate() {
 		<!--  이미지 업로드 -->
 	<input type="file" id="image" accept="image/*"
 		onchange="setThumbnail(event);" name="image" />
-	<br><%=request.getRealPath("/") %>
+	
 	<div id="image_container"></div>
 	<script>
 		function setThumbnail(event) {

@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html; charset=utf-8"%>
 <%@page import="java.util.*, model.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -24,6 +25,7 @@
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <%@include file="/WEB-INF/myPageNav.jsp" %>
+<div class="container my-1">
 	<table style="background-color: YellowGreen">
 		<tr>
 			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
@@ -42,10 +44,8 @@
 		<c:forEach var="post" items="${postList}">
 			<tr>
 				<td width="190" align="center" bgcolor="ffffff" height="20">
-					<a href="<c:url value='/post/sellerPostInfo'>
-
+					<a href="<c:url value='/post/postInfo'>
 					   			<c:param name='postId' value='${post.postId}'/>
-					   			<c:param name='setting' value='-1' />
 					   			<c:param name='writerId' value ='${post.writerId}' />
 			 		 		 </c:url>">
 			  		${post.title}</a>
@@ -58,7 +58,7 @@
 				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${post.pType}
 				</td>
-				<td width="100" align="center" bgcolor="ffffff" height="20">
+				<td width="200" align="center" bgcolor="ffffff" height="20">
 					${post.writerId}
 				</td>
 			</tr>
@@ -69,5 +69,7 @@
 			}
 		%>
 	</table>
+	</div>
 </body>
+
 </html>

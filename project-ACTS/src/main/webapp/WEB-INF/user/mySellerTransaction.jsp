@@ -17,6 +17,7 @@
 <body>
 	<%@include file="/WEB-INF/navbar.jsp" %>
 <%@include file="/WEB-INF/myPageNav.jsp" %>
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	    <div class="navbar-nav">
@@ -27,7 +28,7 @@
 	    </div>
 	  </div>
 	</nav>
-	
+	<div class="container my-1">
 	현재거래내역(의뢰받은 글)
 	
 	<table style="background-color: YellowGreen">
@@ -77,5 +78,6 @@
 			}
 		%>
 	</table>
+	</div>
 </body>
 </html>
