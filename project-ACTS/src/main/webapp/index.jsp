@@ -1,1 +1,1 @@
-<% response.sendRedirect(request.getContextPath() + "/comm/main"); %>
+<% response.sendRedirect(request.getContextPath() + "/user/register/form"); %>
