@@ -32,7 +32,7 @@
 	<div class="container my-1">
 	현재거래내역(의뢰한 글)
 	
-	<table style="background-color: YellowGreen">
+	<table class = "table table-striped">
 		<tr>
 			<td width="190" align="center" bgcolor="E6ECDE" height="22">제목</td>
 			<td width="200" align="center" bgcolor="E6ECDE">가격</td>

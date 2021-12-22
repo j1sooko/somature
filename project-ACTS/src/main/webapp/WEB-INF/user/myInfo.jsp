@@ -7,6 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel=stylesheet href="<c:url value='/css/user.css' />"
+   type="text/css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <title>내 정보</title>
 <script>
 function userDelete() {
@@ -16,6 +19,7 @@ function userDelete() {
    else
 	   return false;
 }
+
 </script>
 </head>
 <body>
@@ -25,6 +29,7 @@ function userDelete() {
 <h3 align = "left">내 정보</h3>
 	<form method="POST" action="<c:url value='/user/delete' />">
 	<table>
+
 		<tr><td>아이디</td>
 			<td><%= user.getAccountId() %></td></tr>
 		<tr><td>이름</td>

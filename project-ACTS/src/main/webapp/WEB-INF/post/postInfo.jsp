@@ -15,7 +15,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href="<c:url value='/css/user.css' />"
 	type="text/css">
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
@@ -126,7 +126,7 @@
 	
 	<br><br>
 	<h2>댓글 리스트</h2>
-	<table>
+	<table class = "table table striped" align = "center"> 
 		<!-- 댓글 리스트 -->
 		<c:forEach var="review" items="${reviewList}">
 			<tr>
