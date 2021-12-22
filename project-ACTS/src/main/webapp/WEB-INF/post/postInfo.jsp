@@ -126,7 +126,7 @@
 	
 	<br><br>
 	<h2>댓글 리스트</h2>
-	<table>
+	<table class = "table table striped" align = "center"> 
 		<!-- 댓글 리스트 -->
 		<c:forEach var="review" items="${reviewList}">
 			<tr>

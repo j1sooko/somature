@@ -19,10 +19,13 @@ table{
 	weight:50%;
 	
 }
+h3{
+	color: #b5cda3;
+}
 </style>
 </head>
 <body>
-<h3 align = "left">내 정보</h3>
+<h3 align = "center">내 정보</h3>
 	<table class = "table table-striped">
 		<tr><td>아이디</td>
 			<td><%= user.getAccountId() %></td></tr>
