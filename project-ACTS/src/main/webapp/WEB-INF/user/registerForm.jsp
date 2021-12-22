@@ -144,7 +144,8 @@ table {
     <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label> 
     </div>
     <div class="mb-4"></div> 
-    <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button> 
+    <button class="btn btn-primary btn-lg btn-block" type="submit" onClick="userCreate()" id="b">가입 완료</button> 
+    <button class="btn btn-primary btn-lg btn-block" type="reset" id="b">다시 입력</button> 
     </form> 
     </div>
      </div>
