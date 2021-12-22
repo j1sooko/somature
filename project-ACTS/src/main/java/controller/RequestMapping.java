@@ -42,11 +42,9 @@ public class RequestMapping {
         mappings.put("/user/register/form", new ForwardController("/user/registerForm.jsp"));
         mappings.put("/user/register", new RegisterUserController());
         
-        //筌띾뜆�뵠占쎈읂占쎌뵠筌욑옙 �꽴占썹뵳占�
-        mappings.put("/user/myInfo", new MyInfoController()); //野껋럩�뜚: 占쎄땀占쎌젟癰귣�以� 揶쏉옙占쎈뮉 �뚢뫂�뱜嚥▲끇�쑎
-        //占쎌쁽占쎈뻿占쎌벥 占쎌젟癰귣�占쏙옙 占쎈씜占쎈쑓占쎌뵠占쎈뱜占쎈릭�⑨옙 占쎈쾻嚥≪빜釉�占쎈뮉野껓옙.
-//        mappings.put("/user/update/form", new ForwardController("/user/updateForm.jsp")); //野껋럩�뜚: 占쎌쁽疫뀐옙 占쎌쁽占쎈뻿占쎌벥 占쎌젟癰귣�占쏙옙 占쎈땾占쎌젟占쎈릭�⑥쥙�쁽 占쎈막 占쎈르  
-        
+        //留덉씠�럹�씠吏� 愿�由�
+        mappings.put("/user/myInfo", new MyInfoController()); //寃쎌썝: �궡�젙蹂대줈 媛��뒗 而⑦듃濡ㅻ윭
+
         mappings.put("/user/update", new UpdateUserController());
         mappings.put("/user/myPost", new MyPostController());
 
