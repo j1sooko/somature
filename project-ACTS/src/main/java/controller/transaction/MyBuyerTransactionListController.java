@@ -18,9 +18,13 @@ import model.service.UserManager;
 public class MyBuyerTransactionListController implements Controller{
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {			
 		
-		int userId = Integer.parseInt(request.getParameter("userId"));
-		System.out.println("userID" + userId);
+		
+		UserManager manager = UserManager.getInstance();
+		HttpSession session = request.getSession();
 		TransactionManager transactionMan =  TransactionManager.getInstance();
+		
+		String userId1 = UserSessionUtils.getLoginUserId(session);
+		int userId = manager.findUser(userId1).getUserId();
 		List<Transaction> transactionList;
 	
 		transactionList = transactionMan.findMyTransactionList(userId);
