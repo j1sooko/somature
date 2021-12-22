@@ -54,7 +54,8 @@
 					<a href="<c:url value='/post/postInfo'>
 					   			<c:param name='postId' value='${transaction.post.postId}'/>
 					   			<c:param name='writerId' value ='${transaction.post.writerId}' />
-			 		 		 </c:url>"> ${transaction.post.title}
+					   			<c:param name='setting' value='-1' />
+			 		 		</c:url>"> ${transaction.post.title}
 			 		 </a>
 				</td>
 				
