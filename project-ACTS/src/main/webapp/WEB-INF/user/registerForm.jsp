@@ -93,49 +93,50 @@ table {
 
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
+
 	<div class="container"> 
     <div class="input-form-backgroud row"> <div class="input-form col-md-12 mx-auto"> 
     <h4 class="mb-3">회원가입</h4> 
-    <form class="validation-form" novalidate> 
+    <form name = "form" method="POST" action="<c:url value='/user/register' />"> 
     <div class="row"> 
     <div class="col-md-6 mb-3"> 
     <label for="name">이름</label> 
-    <input type="text" class="form-control" id="name" placeholder="" value="" required> 
+    <input type="text" class="form-control" name="name" placeholder="" value="" required> 
     <div class="invalid-feedback"> 이름을 입력해주세요. </div> 
     </div> 
     <div class="col-md-6 mb-3"> 
     <label for="nickName">별명</label> 
-    <input type="text" class="form-control" id="nickName" placeholder="" value="" required>
+    <input type="text" class="form-control" name="nickName" placeholder="" value="" required>
      <div class="invalid-feedback"> 별명을 입력해주세요. </div>
      </div> 
     </div> 
     <div class="mb-3"> 
         <label for="accountId">아이디</label>
-         <input type="password" class="form-control" id="accountId" placeholder="" required> 
+         <input type="text" class="form-control" name="accountId" placeholder="" required> 
         <div class="invalid-feedback"> 아이디를 입력해주세요. </div> 
     </div>
     <div class="mb-3"> 
         <label for="password">비밀번호</label>
-         <input type="password" class="form-control" id="password" placeholder="" required> 
+         <input type="password" class="form-control" name="password" placeholder="" required> 
         <div class="invalid-feedback"> 비밀번호를 입력해주세요. </div> 
     </div>
     <div class="mb-3"> 
         <label for="password2">비밀번호 확인</label>
-         <input type="password" class="form-control" id="password2" placeholder="" required> 
+         <input type="password" class="form-control" name="password2" placeholder="" required> 
     </div>
     <div class="mb-3"> 
         <label for="phone">전화번호</label>
-         <input type="text" class="form-control" id="phone" placeholder="" required> 
+         <input type="text" class="form-control" name="phone" placeholder="" required> 
         <div class="invalid-feedback"> 전화번호를 입력해주세요. </div> 
     </div>
     <div class="mb-3"> 
     <label for="email">이메일</label>
-     <input type="email" class="form-control" id="email" placeholder="you@example.com" required> 
+     <input type="email" class="form-control" name="email" placeholder="you@example.com" required> 
     <div class="invalid-feedback"> 이메일을 입력해주세요. </div> 
     </div> 
     <div class="mb-3"> 
     <label for="regNum">주민등록번호</label> 
-    <input type="text" class="form-control" id="regNum" placeholder="" required> 
+    <input type="text" class="form-control" name="regNum" placeholder="" required> 
     <div class="invalid-feedback"> 주민등록번호를 입력해주세요. </div>
     </div> 
     <hr class="mb-4">
