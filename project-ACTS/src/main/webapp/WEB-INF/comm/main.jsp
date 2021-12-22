@@ -99,15 +99,13 @@
 						</div>
 					</div>
 					<div class="main">
-						<form id="searchKeywordForm" method="POST"
-							action="<c:url value='/post/search' />">
+						<form id="searchKeywordForm" method="POST" action="<c:url value='/post/search' />">
 							<!-- Another variation with a button -->
 							<div class="input-group">
-								<input type="text" class="form-control"
+								<input type="text" name="searchKeyword" class="form-control"
 									placeholder="찾고 싶은 게시물을 검색하세요">
 								<div class="input-group-append">
-									<button class="btn btn-secondary" type="submit"
-										form="searchKeywordForm"
+									<button class="btn btn-secondary"
 										style="background-color: #b5cda3; border-color: #b5cda3">
 										<i class="fa fa-search"></i>
 									</button>

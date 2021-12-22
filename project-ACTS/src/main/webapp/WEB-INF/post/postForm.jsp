@@ -24,9 +24,6 @@
 	min-height: 300px;
 }
 body {
-
-  padding-top: 70px;
-
   padding-bottom: 30px;
 
 }
@@ -59,7 +56,10 @@ function postCreate() {
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
 <div class="container">
+<br><br>
+
   <!-- Content here -->
+
 <h3>작성하기</h3>
 
 	<!-- title -->
