@@ -14,36 +14,56 @@
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-	<br>
+<div class="container">
+  <!-- Content here -->
+
+<div class="card text-center">
+  <div class="card-header">
+   ${transaction.transTitle}
+  </div>
+  <div class="card-body">
+    <p class="card-text">${transaction.transTitle}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="container my-1">
+	<div class="row">
 	<form method="POST" action="<c:url value='/user/transactionDelete' />">
-	<table style="background-color: YellowGreen">
-
-					<tr>
-						<td width="120" align="center" bgcolor="E6ECDE" height="22">제목</td>
-						<td width="470" bgcolor="ffffff" style="padding-left: 10">
-							${transaction.transTitle}</td>
-					</tr>
-
-					<tr>
-						<td width="120" align="center" bgcolor="E6ECDE" height="22">내용</td>
-						<td width="470" bgcolor="ffffff" style="padding-left: 10">
-							${transaction.transContents}</td>
-					</tr>
-	</table>
-	<table>
-		<c:forEach var="comment" items="${commentList}">
-			<tr>
-				<td>${comment.commenterId}</td>
-				<td>${comment.commentContent}</td>
-				<td>${comment.createTime}
-			</tr>
-		</c:forEach>
-	</table>	
-			
-	<input type="hidden" name="transId" value="${transaction.transId}" />
-	<br>
-	<input type="submit" value="주문 취소" class="btn btn-primary" />
-	
-	</form>
+		<table class="table">
+			<thead>
+				<tr class="table-active">
+					<th scope="col" style="width: 60%">${transaction.transTitle}<br>
+						</th>
+				
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><pre>
+					<div class="card text-center">
+					  <div class="card-header">
+					   ${transaction.transTitle}
+					  </div>
+					  <div class="card-body">
+					    <p class="card-text">${transaction.transTitle}</p>
+					    <a href="#" class="btn btn-primary">Go somewhere</a>
+					  </div>
+					</div>
+					
+					
+					</pre></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="hidden" name="transId" value="${transaction.transId}" />
+		
+		<div class="form-row float-right">
+			<input type="submit" value="주문 취소" class="btn btn-primary" id="advance-set-submit" />
+		</div>
+		
+		</form>
+	</div>
+</div>
 </body>
 </html>
