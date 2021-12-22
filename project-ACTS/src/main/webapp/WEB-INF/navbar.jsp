@@ -13,6 +13,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
 <style>
 i {
 	font-size: 2rem;
@@ -24,7 +25,14 @@ i {
 	color: white;
 	font-size: 30px;
 	font-weight: bold;
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
+
+body {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+
 </style>
 
 </head>
@@ -36,7 +44,7 @@ i {
 				Acts <img src="<c:url value='/images/sprout2.png' />" border="0"
 				width="45" height="30" />
 			</a>
-			<div align="right">
+			<div align="right" id="font">
 				<c:if test="${accountId eq null}">
 					<a href="<c:url value='/user/login/form' />" class="btn btn-light"
 						role="button">LOGIN</a>
@@ -45,11 +53,6 @@ i {
 					<a href="<c:url value='/user/logout' />" class="btn btn-light"
 						role="button">LOGOUT</a>
 				</c:if>
-				
-				<a href="<c:url value='/comm/buyerPage' />">의뢰게시판</a>
-					
-				<a href="<c:url value='/comm/search' />">
-					<img src="<c:url value='/images/searchIcon.GIF' />" /></a>
 				
 				<a href="<c:url value='/user/myPage' />">
 				<img src="<c:url value='/images/mypageIcon.GIF' />" /></a>
