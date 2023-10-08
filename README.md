@@ -47,7 +47,8 @@
 ![image](https://user-images.githubusercontent.com/70093771/213364332-02eac422-37e4-45b7-a721-b0a36d498fcd.png)
 
 ## DB 설계
-![image](https://user-images.githubusercontent.com/70093771/213364430-8291513a-6ab1-4b2c-983e-e17227c50fb7.png)
+![image](https://github.com/j1sooko/somature/assets/70093771/f7599243-f218-4d54-a03c-9ea5d8e70d51)
+
 
 ## MVC 구조
 ![image](https://user-images.githubusercontent.com/70093771/213364912-b43d57f4-8905-4fcb-84e1-4b96d80ec66d.png)
